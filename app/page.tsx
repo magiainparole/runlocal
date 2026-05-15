@@ -30,8 +30,14 @@ export default function Home() {
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
-              href="/guides/ollama"
+              href="/picker"
               className="inline-flex items-center gap-2 rounded-md bg-ink text-white dark:bg-brand-light dark:text-ink px-4 py-2 font-medium hover:bg-brand-dark dark:hover:bg-brand transition"
+            >
+              Find a model for your hardware →
+            </Link>
+            <Link
+              href="/guides/ollama"
+              className="inline-flex items-center gap-2 rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 font-medium hover:border-brand transition"
             >
               Run your first model
             </Link>
@@ -39,7 +45,7 @@ export default function Home() {
               href="/models"
               className="inline-flex items-center gap-2 rounded-md border border-slate-300 dark:border-slate-700 px-4 py-2 font-medium hover:border-brand transition"
             >
-              Browse the model directory
+              Browse the directory
             </Link>
           </div>
         </div>

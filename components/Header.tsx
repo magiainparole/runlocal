@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const nav = [
+  { href: "/picker", label: "Picker" },
   { href: "/models", label: "Models" },
   { href: "/tools", label: "Tools" },
   { href: "/guides", label: "Guides" },
