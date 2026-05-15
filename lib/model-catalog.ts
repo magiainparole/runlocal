@@ -75,6 +75,26 @@ export const catalog: CatalogModel[] = [
       { name: "Q8_0",   qualityBucket: "near-fp16", memoryGb: 5.5 }
     ]
   },
+  {
+    id: "gemma-4-2b",
+    family: "Gemma 4",
+    variant: "2B Instruct",
+    paramBillions: 2,
+    isMoE: false,
+    origin: "Google · United States",
+    license: { tier: "open-weight", label: "Gemma Terms of Use" },
+    contextWindow: 128_000,
+    releaseYear: 2026,
+    useCase: { general: 6, code: 4, longContext: 6, math: 5 },
+    ollamaTag: "gemma4:2b-instruct",
+    hfPath: "bartowski/gemma-4-2b-it-GGUF",
+    quants: [
+      { name: "Q4_K_M", qualityBucket: "high",      memoryGb: 1.8 },
+      { name: "Q5_K_M", qualityBucket: "high",      memoryGb: 2.1 },
+      { name: "Q8_0",   qualityBucket: "near-fp16", memoryGb: 2.8 }
+    ],
+    notes: "Tuned for on-device deployment. Runs comfortably on phones and lightweight laptops."
+  },
 
   // ── Medium (7–9B) ──────────────────────────────────────────────────────
   {
@@ -354,7 +374,28 @@ export const catalog: CatalogModel[] = [
       { name: "Q4_K_M", qualityBucket: "high",      memoryGb: 6.0 },
       { name: "Q5_K_M", qualityBucket: "high",      memoryGb: 7.0 },
       { name: "Q8_0",   qualityBucket: "near-fp16", memoryGb: 10.0 }
-    ]
+    ],
+    notes: "Strong Apple Silicon performance via MLX. Long context (128k) makes it the better choice over Gemma 2 9B."
+  },
+  {
+    id: "gemma-4-27b",
+    family: "Gemma 4",
+    variant: "27B Instruct",
+    paramBillions: 27,
+    isMoE: false,
+    origin: "Google · United States",
+    license: { tier: "open-weight", label: "Gemma Terms of Use" },
+    contextWindow: 128_000,
+    releaseYear: 2026,
+    useCase: { general: 9, code: 7, longContext: 8, math: 8 },
+    ollamaTag: "gemma4:27b-instruct",
+    hfPath: "bartowski/gemma-4-27b-it-GGUF",
+    quants: [
+      { name: "Q4_K_M", qualityBucket: "high",      memoryGb: 17.0 },
+      { name: "Q5_K_M", qualityBucket: "high",      memoryGb: 20.0 },
+      { name: "Q8_0",   qualityBucket: "near-fp16", memoryGb: 29.0 }
+    ],
+    notes: "Excellent general-purpose model at workstation scale. 128k context, MLX-friendly on Apple Silicon."
   },
   {
     id: "mistral-medium-3-5",

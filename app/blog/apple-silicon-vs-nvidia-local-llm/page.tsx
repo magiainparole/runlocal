@@ -153,6 +153,31 @@ export default function PostHardware() {
         axis without external power.
       </p>
 
+      <h2>The Gemma 4 case for Apple Silicon specifically</h2>
+      <p>
+        One model family deserves its own paragraph here because it has been
+        engineered with Apple Silicon in mind. Gemma 4, released by Google
+        DeepMind in early 2026, ships in 2B, 9B and 27B variants with 128k
+        context and native MLX support out of the box. The 2B fits on an
+        iPhone-class device with battery to spare; the 9B runs comfortably
+        on a 16 GB MacBook Air at conversational speeds; the 27B becomes a
+        plausible everyday workstation model on a 32 GB Mac with room left
+        over for the KV cache at long contexts.
+      </p>
+      <p>
+        The point is not that Gemma 4 is the strongest open weight model
+        by raw benchmark numbers. It is not. DeepSeek V4 and Qwen 3.5
+        outperform it on most evaluations. The point is that Gemma 4 is
+        the model family that most consistently benefits from the
+        unified-memory architecture and the MLX toolchain, and the one
+        whose release cadence tracks Apple&apos;s most closely. For
+        someone buying a Mac specifically to run local AI, the Gemma 4
+        9B and 27B are the strongest argument for that choice. They are
+        also a useful baseline for spotting when a model has been ported
+        well to Apple Silicon versus when it has been quantized but not
+        optimized.
+      </p>
+
       <h2>The case for not picking yet</h2>
       <p>
         Two trends to watch in the second half of 2026. AMD&apos;s ROCm
