@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #0B1220;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0B1220;
+    --foreground: #E2E8F0;
+  }
+}
+
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "ss01", "cv01", "cv02";
+  -webkit-font-smoothing: antialiased;
+}
+
+.prose-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.prose-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.prose-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+.prose-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+.prose-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  list-style: decimal;
+}
+.prose-content li {
+  margin-bottom: 0.4rem;
+  line-height: 1.7;
+}
+.prose-content pre {
+  background: #0F172A;
+  color: #E2E8F0;
+  padding: 1rem 1.2rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.prose-content code {
+  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
+  background: rgba(15, 118, 110, 0.12);
+  color: #0F766E;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  font-size: 0.9em;
+}
+.prose-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+.prose-content a {
+  color: #0F766E;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-content blockquote {
+  border-left: 3px solid #0EA5A4;
+  padding-left: 1rem;
+  color: #475569;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose-content code {
+    background: rgba(94, 234, 212, 0.15);
+    color: #5EEAD4;
+  }
+  .prose-content blockquote {
+    color: #94A3B8;
+  }
+}
