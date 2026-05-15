@@ -9,6 +9,33 @@ export type PostMeta = {
 
 export const posts: PostMeta[] = [
   {
+    slug: "gguf-quantization-explained",
+    title: "Choosing a GGUF quantization without lying to yourself",
+    subtitle:
+      "Q4, Q5, Q8 and the rest of the GGUF zoo, with a practical decision rule that holds up across hardware classes.",
+    date: "2026-05-15",
+    readingTime: "10 min",
+    tags: ["Quantization", "llama.cpp", "Guide"]
+  },
+  {
+    slug: "apple-silicon-vs-nvidia-local-llm",
+    title: "Apple Silicon or NVIDIA for local LLMs in 2026",
+    subtitle:
+      "Unified memory, raw VRAM, and the workloads where each wins. A practical comparison that goes beyond benchmark snippets.",
+    date: "2026-05-14",
+    readingTime: "12 min",
+    tags: ["Hardware", "Comparison", "Apple Silicon"]
+  },
+  {
+    slug: "opensuse-for-ai-workloads",
+    title: "Why openSUSE is a serious option for running AI locally",
+    subtitle:
+      "Rolling releases, immutable variants, and an honest line between community Linux and paid enterprise. A practical look at when openSUSE earns its place in an AI stack.",
+    date: "2026-05-13",
+    readingTime: "9 min",
+    tags: ["openSUSE", "Linux", "Infrastructure"]
+  },
+  {
     slug: "open-weights-state-of-play-2026",
     title: "The state of open weights in May 2026",
     subtitle:
