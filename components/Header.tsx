@@ -12,15 +12,15 @@ const nav = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur bg-white/80 dark:bg-ink/80 border-b border-slate-200/60 dark:border-slate-800/60">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
         <Link href="/" className="flex items-center gap-2" aria-label="RunLocal home">
           <Image
             src="/logo.png"
             alt="RunLocal"
-            width={140}
-            height={32}
+            width={320}
+            height={72}
             priority
-            className="h-7 w-auto"
+            className="h-12 sm:h-14 w-auto"
           />
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
