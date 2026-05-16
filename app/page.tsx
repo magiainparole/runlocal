@@ -20,14 +20,18 @@ export default function Home() {
             Hardware-aware · Open source · Updated weekly
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-4xl">
-            Run AI on your own computer.
+            Local AI: run open source models on your own computer.
           </h1>
+          <p className="mt-3 text-base sm:text-lg text-brand-dark dark:text-brand-light font-medium">
+            The hub for local LLMs, install guides and a hardware picker.
+          </p>
           <p className="mt-5 max-w-2xl text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
             You can run AI models like the ones behind ChatGPT or Claude
             directly on your laptop or desktop, without sending your data
-            anywhere. This site shows you which model to choose for your
-            hardware, which free software to install, and how to get
-            started in about ten minutes. No prior knowledge required.
+            anywhere. RunLocal shows you which open source model to choose
+            for your hardware, which free software to install (Ollama,
+            LM Studio, llama.cpp), and how to get started in about ten
+            minutes. No prior knowledge required.
           </p>
           <p className="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             New to this? Start with the{" "}
