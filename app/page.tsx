@@ -17,7 +17,7 @@ export default function Home() {
       <section className="relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
           <p className="text-sm font-medium text-brand-dark dark:text-brand-light tracking-wide uppercase mb-4">
-            Independent · No tracking · Updated monthly
+            Hardware-aware · Open source · Updated weekly
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-4xl">
             Run AI on your own computer.
