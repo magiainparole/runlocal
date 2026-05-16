@@ -1,7 +1,10 @@
 # RunLocal
 
-A practical hub for open source AI. Curated models, the tools to run them,
-hands-on install guides, and editorial coverage of the ecosystem.
+Run AI on your own computer. RunLocal helps people pick the right open
+weight model for their hardware, install free software to run it, and
+get started without prior expertise. Built around four pillars: a
+hardware-aware picker, a curated model directory, an install-guide
+library, and editorial coverage of the ecosystem.
 
 Built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
 

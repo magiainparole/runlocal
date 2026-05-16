@@ -5,24 +5,24 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "RunLocal — Open Source AI, in your hands",
+    default: "RunLocal — Run AI on your own computer",
     template: "%s · RunLocal"
   },
   description:
-    "A practical hub for open source AI: models you can run locally, the tools to run them, hands-on install guides, and editorial analysis of the ecosystem.",
+    "Run AI on your own laptop or desktop. We help you find the right model for your hardware, install free software, and get started in ten minutes. No prior knowledge required.",
   metadataBase: new URL("https://runlocal.dev"),
   openGraph: {
-    title: "RunLocal — Open Source AI, in your hands",
+    title: "RunLocal — Run AI on your own computer",
     description:
-      "Models, tools, install guides and analysis for running AI on your own hardware.",
+      "Find the right AI model for your hardware. Install in ten minutes. No data leaves your computer.",
     type: "website",
     url: "https://runlocal.dev"
   },
   twitter: {
     card: "summary_large_image",
-    title: "RunLocal — Open Source AI, in your hands",
+    title: "RunLocal — Run AI on your own computer",
     description:
-      "Models, tools, install guides and analysis for running AI on your own hardware."
+      "Find the right AI model for your hardware. Install in ten minutes. No data leaves your computer."
   }
 };
 
