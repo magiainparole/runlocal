@@ -16,7 +16,16 @@ export default function PostHardware() {
       <h1 className="text-4xl font-bold tracking-tight">
         Apple Silicon or NVIDIA for local LLMs in 2026
       </h1>
-      <p className="mt-2 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
+        two main types of hardware run AI well today. Mac computers with
+        Apple Silicon (the M1, M2, M3, M4 chips) and Windows or Linux
+        machines with an NVIDIA graphics card. They have very different
+        strengths. This post helps you pick.
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         The question used to be easy. If you wanted to run a large language
         model locally, you bought an NVIDIA card and accepted the noise, the
         heat and the driver dance. Apple Silicon was an interesting curiosity.

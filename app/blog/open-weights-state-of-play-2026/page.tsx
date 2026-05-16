@@ -16,7 +16,21 @@ export default function PostStateOfPlay() {
       <h1 className="text-4xl font-bold tracking-tight">
         The state of open weights in May 2026
       </h1>
-      <p className="mt-2 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
+        AI companies sometimes release the &ldquo;weights&rdquo; (the
+        internal numbers that make a model work) so anyone can download and
+        run the model themselves. This is called &ldquo;open weight.&rdquo;
+        Many companies released big new ones recently; this post is a tour
+        of who released what, who is leading, and what the licences
+        actually let you do.{" "}
+        <a href="/glossary#open-weight" className="text-brand-dark dark:text-brand-light hover:underline">
+          What is open weight?
+        </a>
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Five frontier-class open-weight releases shipped in the last thirty
         days. Three of them came from Chinese labs. A short tour of where the
         field actually is, written for readers who already know that

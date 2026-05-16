@@ -18,13 +18,19 @@ export default function ToolsPage() {
           Tool catalog
         </p>
         <h1 className="text-4xl font-bold tracking-tight">
-          The software stack for running open weights at home or in production.
+          The software you need to actually run an AI model.
         </h1>
         <p className="mt-4 text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed">
-          Picking an inference tool is mostly about matching your workload to
-          its strengths. A single user on a laptop wants something different
-          from a team serving requests at scale. The categories below cover the
-          full path from one-line install to multi-GPU production.
+          A model is just a file. To use it, you need software that loads
+          the file and lets you talk to it. The tools below cover everything
+          from one-click chat apps for beginners to industrial servers for
+          teams. Pick by category: a Runtime is the engine, a GUI is the
+          friendly app on top, a Server is for sharing it with multiple
+          users at once. If you are just starting,{" "}
+          <a href="/guides/ollama" className="text-brand-dark dark:text-brand-light hover:underline">
+            Ollama
+          </a>
+          {" "}is the easiest entry point.
         </p>
       </header>
 

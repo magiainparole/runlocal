@@ -16,7 +16,20 @@ export default function PostQuantization() {
       <h1 className="text-4xl font-bold tracking-tight">
         Choosing a GGUF quantization without lying to yourself
       </h1>
-      <p className="mt-2 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
+        when you download an AI model to run locally, you usually have to
+        pick a &ldquo;flavour&rdquo;: smaller and faster but slightly less
+        precise, or larger and slower but more accurate. The flavours have
+        cryptic names like Q4_K_M. This post tells you how to pick one
+        without overthinking it.{" "}
+        <a href="/glossary#quantization" className="text-brand-dark dark:text-brand-light hover:underline">
+          What is quantization?
+        </a>
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Every model on Hugging Face that comes packaged for llama.cpp arrives in
         a parade of quantization variants: <code>Q2_K</code>,{" "}
         <code>Q3_K_S</code>, <code>Q4_K_M</code>, <code>Q5_K_M</code>,{" "}

@@ -16,11 +16,23 @@ export default function OllamaGuide() {
       <h1 className="text-4xl font-bold tracking-tight">
         Install Ollama and run your first local model
       </h1>
-      <p className="mt-4 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Before you start:</strong>{" "}
+        Ollama is a free desktop application. It downloads an AI model and
+        runs it on your computer so you can chat with it like ChatGPT, but
+        without sending anything to the internet. You need at least 8 GB
+        of RAM. A discrete graphics card (NVIDIA, AMD) makes it much faster
+        but is not required.
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Ollama is the shortest path to a local large language model. It handles
         downloading, quantization, GPU offloading, and exposes an
         OpenAI-compatible API on <code>localhost:11434</code>. This guide takes
         you from a clean machine to a working setup in roughly ten minutes.
+        Unfamiliar with any of these terms? The{" "}
+        <Link href="/glossary">glossary</Link> defines them in plain English.
       </p>
 
       <h2>What you need before starting</h2>

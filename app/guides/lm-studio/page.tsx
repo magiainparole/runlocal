@@ -16,7 +16,17 @@ export default function LmStudioGuide() {
       <h1 className="text-4xl font-bold tracking-tight">
         LM Studio setup and side-by-side model evaluation
       </h1>
-      <p className="mt-4 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Before you start:</strong>{" "}
+        LM Studio is a free desktop app with a nice chat interface. It
+        works on Mac, Windows and Linux. Unlike Ollama, which is best for
+        running one model you have already chosen, LM Studio is best when
+        you want to try a few models and compare them. You need at least
+        16 GB of RAM for a useful experience.
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         LM Studio is the most polished desktop client for running open weights
         on your machine. It uses llama.cpp underneath, adds a model browser
         wired to Hugging Face, a chat UI, and a one-click OpenAI-compatible

@@ -19,9 +19,11 @@ export default function GuidesIndex() {
           Step-by-step guides for getting AI running on your own machine.
         </h1>
         <p className="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed">
-          Every guide is written from a real install, on real hardware, with
-          the wrong turns kept in so you can avoid them. Commands assume a
-          reasonably modern system. Where they do not, the page says so.
+          Pick the guide that matches how you like to work. If you have
+          never installed AI software before, start with Ollama — it is
+          the smoothest path. If you want a graphical chat interface,
+          start with LM Studio. The llama.cpp guide is for users who like
+          the command line and want maximum control.
         </p>
       </header>
 

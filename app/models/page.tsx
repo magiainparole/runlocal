@@ -24,14 +24,21 @@ export default function ModelsPage() {
           Model directory
         </p>
         <h1 className="text-4xl font-bold tracking-tight">
-          Open source models, with the license fine print included.
+          AI models you can download and run yourself.
         </h1>
         <p className="mt-4 text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed">
-          The frontier of open weights moves quickly. Five major releases shipped
-          in the last thirty days alone. This directory aims to stay honest about
-          what is truly open, what is open-ish, and which models are realistic on
-          which hardware. License notes are written in plain English; before
-          using anything commercially, read the actual terms.
+          Each entry below is a family of AI models you can download for
+          free and run on your own computer. The label on each card tells
+          you who made it, how big it is, what licence it comes under, and
+          what it is good at. New to all this? The{" "}
+          <a href="/glossary" className="text-brand-dark dark:text-brand-light hover:underline">
+            glossary
+          </a>
+          {" "}defines every term used here, or try the{" "}
+          <a href="/picker" className="text-brand-dark dark:text-brand-light hover:underline">
+            picker
+          </a>
+          {" "}to find one that fits your machine.
         </p>
       </header>
 

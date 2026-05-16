@@ -16,7 +16,17 @@ export default function PostEngineComparison() {
       <h1 className="text-4xl font-bold tracking-tight">
         Which local inference engine should you actually use
       </h1>
-      <p className="mt-2 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
+        to run an AI model on your computer, you need a piece of software
+        that actually executes it. There are four popular ones: Ollama,
+        llama.cpp, LM Studio, and vLLM. They sound like competitors but
+        they are designed for different jobs. This post tells you which
+        one to pick for what.
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Ollama, llama.cpp, LM Studio and vLLM are the four names that come up
         in every &ldquo;run LLMs locally&rdquo; conversation. They sound like
         competing products. They are mostly not. A short map of who solves what

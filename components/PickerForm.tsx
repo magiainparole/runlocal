@@ -119,7 +119,8 @@ export default function PickerForm() {
               className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 px-3 py-2 text-sm"
             />
             <p className="text-xs text-slate-500 mt-1.5">
-              Common configurations: 8, 16, 24, 32, 48, 64, 96, 128, 192 GB
+              Find it under Apple menu → About This Mac → Memory. Common
+              configurations: 8, 16, 24, 32, 48, 64, 96, 128, 192 GB.
             </p>
           </div>
         )}
@@ -145,8 +146,9 @@ export default function PickerForm() {
               className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 px-3 py-2 text-sm"
             />
             <p className="text-xs text-slate-500 mt-1.5">
-              Examples: RTX 4060 Ti 16 GB, RTX 4090 24 GB, RTX 5090 32 GB,
-              A6000 48 GB, H100 80 GB
+              On Windows: Task Manager → Performance → GPU → Dedicated GPU
+              memory. Common cards: RTX 4060 Ti 16 GB, RTX 4090 24 GB, RTX
+              5090 32 GB, A6000 48 GB, H100 80 GB.
             </p>
           </div>
         )}
@@ -170,8 +172,10 @@ export default function PickerForm() {
               className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 px-3 py-2 text-sm"
             />
             <p className="text-xs text-slate-500 mt-1.5">
-              CPU inference is slow but works. Expect 1–5 tokens per second
-              on a modern desktop.
+              Running AI on CPU is slow but works. Expect to wait a few
+              seconds per sentence. On Windows, find your RAM in System
+              Settings → About. On Linux, run &quot;free -h&quot; in a
+              terminal.
             </p>
           </div>
         )}

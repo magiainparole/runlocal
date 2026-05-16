@@ -7,7 +7,8 @@ const nav = [
   { href: "/tools", label: "Tools" },
   { href: "/guides", label: "Guides" },
   { href: "/opensuse", label: "openSUSE" },
-  { href: "/blog", label: "Blog" }
+  { href: "/blog", label: "Blog" },
+  { href: "/glossary", label: "Glossary" }
 ];
 
 export default function Header() {

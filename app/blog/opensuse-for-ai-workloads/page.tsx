@@ -16,7 +16,17 @@ export default function PostOpenSuse() {
       <h1 className="text-4xl font-bold tracking-tight">
         Why openSUSE is a serious option for running AI locally
       </h1>
-      <p className="mt-2 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
+        if you want to run AI on a Linux machine, most tutorials assume you
+        are using Ubuntu. openSUSE is a different free Linux distribution
+        that has some practical advantages for AI work: newer software,
+        safer updates, and a clear commercial backup if you ever need one.
+        This post explains why it is worth a look.
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Most articles about running local AI assume Ubuntu. There are good
         reasons for that: it is the path of least resistance, NVIDIA
         documents against it, and a critical mass of GitHub repositories

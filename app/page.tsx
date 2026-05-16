@@ -20,13 +20,25 @@ export default function Home() {
             Independent · No tracking · Updated monthly
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-4xl">
-            Open source AI, on hardware you actually own.
+            Run AI on your own computer.
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-            A practical hub for running large language models locally. Curated
-            models, the tools to serve them, hands-on install guides, and
-            opinionated coverage of the ecosystem written for people who would
-            rather understand than guess.
+            You can run AI models like the ones behind ChatGPT or Claude
+            directly on your laptop or desktop, without sending your data
+            anywhere. This site shows you which model to choose for your
+            hardware, which free software to install, and how to get
+            started in about ten minutes. No prior knowledge required.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            New to this? Start with the{" "}
+            <Link href="/glossary" className="text-brand-dark dark:text-brand-light hover:underline">
+              glossary
+            </Link>
+            {" "}for plain-language definitions, or jump straight to the{" "}
+            <Link href="/picker" className="text-brand-dark dark:text-brand-light hover:underline">
+              hardware picker
+            </Link>
+            {" "}to see what your computer can run.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
@@ -164,27 +176,36 @@ export default function Home() {
       {/* Why RunLocal */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         <div className="rounded-2xl bg-gradient-to-br from-brand/10 via-transparent to-transparent border border-brand/30 p-8 sm:p-10">
-          <h2 className="text-2xl font-bold mb-4">Why local, why open</h2>
+          <h2 className="text-2xl font-bold mb-2">Why bother running AI locally?</h2>
+          <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 max-w-3xl">
+            The big cloud services are easier to start with. But there are
+            real reasons to do it yourself. Three of them.
+          </p>
           <div className="grid md:grid-cols-3 gap-6 text-sm leading-relaxed">
             <div>
-              <h3 className="font-semibold mb-2">Control over data</h3>
+              <h3 className="font-semibold mb-2">Your data stays with you</h3>
               <p className="text-slate-700 dark:text-slate-300">
-                Inputs and outputs stay on your hardware. Useful when your data
-                is sensitive, regulated, or just yours.
+                What you type and what the model answers never leave your
+                computer. Handy when you are working with personal notes,
+                client documents, internal code, or anything you would not
+                paste into a public website.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">No vendor capture</h3>
+              <h3 className="font-semibold mb-2">It works even when the cloud does not</h3>
               <p className="text-slate-700 dark:text-slate-300">
-                Open weights mean a model can outlive its publisher. You can
-                still run a 2024 release in 2030 if your hardware does.
+                The model file lives on your disk. If the company that made
+                it shuts down, raises prices, or simply changes its terms,
+                your setup keeps working. The model you download today still
+                runs in 2030 if your computer does.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Cost predictability</h3>
+              <h3 className="font-semibold mb-2">No surprise bills</h3>
               <p className="text-slate-700 dark:text-slate-300">
-                Inference cost is hardware amortization plus electricity. No
-                per-token surprises on the invoice.
+                Cloud AI charges per use. Local AI costs you the price of
+                your computer, plus electricity. After the first month, the
+                marginal cost of an extra question is essentially zero.
               </p>
             </div>
           </div>

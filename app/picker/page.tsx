@@ -15,15 +15,46 @@ export default function PickerPage() {
           Picker · Hardware-aware recommender
         </p>
         <h1 className="text-4xl font-bold tracking-tight">
-          Which local LLM should you actually run?
+          Which AI model can your computer actually run?
         </h1>
         <p className="mt-4 text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed">
-          Tell the form what hardware you have and what you want to do with
-          it. The tool excludes anything that will not fit comfortably in
-          your memory budget, then ranks the rest by use-case fit, quality
-          of the chosen quantization and recency. The recommendations
-          update live as you change inputs. No data leaves your browser.
+          Different AI models need different amounts of memory. A small
+          model fits on a phone, a frontier-grade model needs a workstation.
+          Tell us what hardware you have and what you want to do, and the
+          tool will suggest the best options that will actually run on your
+          machine. The form updates as you type. Nothing is sent to a
+          server.
         </p>
+        <details className="mt-4 max-w-3xl text-sm">
+          <summary className="cursor-pointer text-brand-dark dark:text-brand-light font-medium">
+            How do I find my specs?
+          </summary>
+          <div className="mt-3 rounded-md border border-slate-200 dark:border-slate-800 p-4 space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
+            <p>
+              <strong>On a Mac:</strong> click the Apple menu → About This
+              Mac. The number next to &quot;Memory&quot; is your unified
+              memory. Pick &quot;Apple Silicon&quot; in the form below.
+            </p>
+            <p>
+              <strong>On Windows with an NVIDIA GPU:</strong> open Task
+              Manager → Performance → GPU. The number next to
+              &quot;Dedicated GPU memory&quot; is your VRAM. Pick
+              &quot;NVIDIA GPU&quot; in the form below.
+            </p>
+            <p>
+              <strong>On Windows or Linux without a discrete GPU:</strong>{" "}
+              pick &quot;CPU only&quot; and enter your system RAM. AI will
+              run slowly, but it will run.
+            </p>
+            <p>
+              Not sure which terms apply? Open the{" "}
+              <a href="/glossary" className="text-brand-dark dark:text-brand-light hover:underline">
+                glossary
+              </a>
+              {" "}in a new tab.
+            </p>
+          </div>
+        </details>
       </header>
 
       <PickerForm />

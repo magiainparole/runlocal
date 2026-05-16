@@ -16,7 +16,18 @@ export default function LlamaCppGuide() {
       <h1 className="text-4xl font-bold tracking-tight">
         Build and run llama.cpp from source
       </h1>
-      <p className="mt-4 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+
+      <aside className="mt-5 rounded-md border border-amber-300/60 bg-amber-50 dark:bg-amber-950/30 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Heads up:</strong>{" "}
+        this guide is for people who are comfortable with the command line
+        and willing to compile software from source. If you just want to
+        run AI locally without fuss, install{" "}
+        <Link href="/guides/ollama">Ollama</Link> instead. Come back to
+        this guide when you want maximum performance or the most recent
+        features.
+      </aside>
+
+      <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         llama.cpp is the reference C and C++ implementation behind most local
         LLM tools, including Ollama and LM Studio. Building it from source gives
         you finer control over quantization, sampling, and which backend
