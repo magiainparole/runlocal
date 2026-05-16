@@ -24,16 +24,16 @@ export const metadata: Metadata = {
     "self-hosted AI"
   ],
   authors: [{ name: "RunLocal" }],
-  metadataBase: new URL("https://runlocal.dev"),
+  metadataBase: new URL("https://runlocal.blog"),
   alternates: {
-    canonical: "https://runlocal.dev"
+    canonical: "https://runlocal.blog"
   },
   openGraph: {
     title: "RunLocal — Local AI on your own hardware",
     description:
       "Pick the right open source AI model for your computer. Install in ten minutes with Ollama or LM Studio. Nothing leaves your machine.",
     type: "website",
-    url: "https://runlocal.dev",
+    url: "https://runlocal.blog",
     siteName: "RunLocal"
   },
   twitter: {
@@ -48,7 +48,7 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "RunLocal",
-  url: "https://runlocal.dev",
+  url: "https://runlocal.blog",
   description:
     "Local AI made simple. Pick the right open source AI model for your laptop or desktop, install free software like Ollama or LM Studio, and run large language models on your own hardware.",
   inLanguage: "en",

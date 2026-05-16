@@ -6,6 +6,8 @@ get started without prior expertise. Built around four pillars: a
 hardware-aware picker, a curated model directory, an install-guide
 library, and editorial coverage of the ecosystem.
 
+Live at [runlocal.blog](https://runlocal.blog).
+
 Built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
 
 ## Quick start

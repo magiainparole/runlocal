@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { guides } from "@/lib/guides";
 import { posts } from "@/lib/posts";
 
-const BASE_URL = "https://runlocal.dev";
+const BASE_URL = "https://runlocal.blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
