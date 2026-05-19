@@ -30,92 +30,95 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-30 backdrop-blur bg-white/80 dark:bg-ink/80 border-b border-slate-200/60 dark:border-slate-800/60">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
-        <Link
-          href="/"
-          className="flex items-center gap-2"
-          aria-label="RunLocal home"
-          onClick={() => setOpen(false)}
-        >
-          <Image
-            src="/logo.png"
-            alt="RunLocal"
-            width={320}
-            height={72}
-            priority
-            className="h-12 sm:h-14 w-auto"
-          />
-        </Link>
+    <>
+      <header className="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-ink/80 border-b border-slate-200/60 dark:border-slate-800/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
+          <Link
+            href="/"
+            className="flex items-center gap-2"
+            aria-label="RunLocal home"
+            onClick={() => setOpen(false)}
+          >
+            <Image
+              src="/logo.png"
+              alt="RunLocal"
+              width={320}
+              height={72}
+              priority
+              className="h-12 sm:h-14 w-auto"
+            />
+          </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          {nav.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="text-slate-700 dark:text-slate-300 hover:text-brand-dark dark:hover:text-brand-light transition"
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            {nav.map((n) => (
+              <Link
+                key={n.href}
+                href={n.href}
+                className="text-slate-700 dark:text-slate-300 hover:text-brand-dark dark:hover:text-brand-light transition"
+              >
+                {n.label}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Desktop CTA */}
-        <Link
-          href="/guides/ollama"
-          className="hidden md:inline-flex items-center gap-2 rounded-md bg-ink text-white dark:bg-brand-light dark:text-ink px-3.5 py-1.5 text-sm font-medium hover:bg-brand-dark dark:hover:bg-brand transition"
-        >
-          Start with Ollama
-        </Link>
+          {/* Desktop CTA */}
+          <Link
+            href="/guides/ollama"
+            className="hidden md:inline-flex items-center gap-2 rounded-md bg-ink text-white dark:bg-brand-light dark:text-ink px-3.5 py-1.5 text-sm font-medium hover:bg-brand-dark dark:hover:bg-brand transition"
+          >
+            Start with Ollama
+          </Link>
 
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
-        >
-          {open ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          )}
-        </button>
-      </div>
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          >
+            {open ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </header>
 
-      {/* Mobile menu panel */}
+      {/* Mobile menu panel — rendered OUTSIDE the header so `position: fixed`
+          is not trapped by the backdrop-filter containing block. */}
       {open && (
         <div
           id="mobile-nav"
@@ -147,6 +150,6 @@ export default function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
