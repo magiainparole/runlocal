@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "fetchedAt": "2026-05-25T09:55:31.085Z",
+=======
+  "fetchedAt": "2026-05-27T12:19:27.776Z",
+>>>>>>> Stashed changes
   "source": "https://huggingface.co/api/models?pipeline_tag=text-generation&sort=likes&direction=-1&limit=100&full=true",
   "weights": {
     "downloads": 0.4,
@@ -13,23 +17,35 @@
       "name": "DeepSeek-V4-Pro",
       "author": "deepseek-ai",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+<<<<<<< Updated upstream
       "downloads": 4820866,
       "likes": 4244,
       "lastModified": "2026-05-06T04:18:44.000Z",
       "daysSinceUpdate": 19,
+=======
+      "downloads": 5019884,
+      "likes": 4331,
+      "lastModified": "2026-05-06T04:18:44.000Z",
+      "daysSinceUpdate": 21,
+>>>>>>> Stashed changes
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
+<<<<<<< Updated upstream
       "score": 0.8981431951473788
+=======
+      "score": 0.8970841600438694
+>>>>>>> Stashed changes
     },
     {
       "id": "deepseek-ai/DeepSeek-V4-Flash",
       "name": "DeepSeek-V4-Flash",
       "author": "deepseek-ai",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+<<<<<<< Updated upstream
       "downloads": 2953721,
       "likes": 1225,
       "lastModified": "2026-05-06T04:18:09.000Z",
@@ -68,46 +84,109 @@
       "likes": 1687,
       "lastModified": "2026-05-13T08:10:58.000Z",
       "daysSinceUpdate": 12,
+=======
+      "downloads": 3088308,
+      "likes": 1251,
+      "lastModified": "2026-05-06T04:18:09.000Z",
+      "daysSinceUpdate": 21,
+>>>>>>> Stashed changes
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
+<<<<<<< Updated upstream
       "score": 0.78663025354406
+=======
+      "score": 0.8332322450009793
     },
     {
-      "id": "MiniMaxAI/MiniMax-M2.7",
-      "name": "MiniMax-M2.7",
-      "author": "MiniMaxAI",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
-      "downloads": 902445,
-      "likes": 1145,
-      "lastModified": "2026-04-20T04:28:14.000Z",
-      "daysSinceUpdate": 35,
+      "id": "moonshotai/Kimi-K2-Instruct",
+      "name": "Kimi-K2-Instruct",
+      "author": "moonshotai",
+      "url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct",
+      "downloads": 790413,
+      "likes": 2362,
+      "lastModified": "2026-04-23T02:08:36.000Z",
+      "daysSinceUpdate": 34,
       "license": {
         "label": "Custom license",
         "tier": "open-weight"
       },
       "tags": [],
       "paramHint": null,
-      "score": 0.7852085133673934
+      "score": 0.8130500108974876
+>>>>>>> Stashed changes
     },
     {
-      "id": "deepseek-ai/DeepSeek-R1",
-      "name": "DeepSeek-R1",
-      "author": "deepseek-ai",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
-      "downloads": 4448742,
-      "likes": 13339,
-      "lastModified": "2025-03-27T04:01:59.000Z",
-      "daysSinceUpdate": 424,
+      "id": "MiniMaxAI/MiniMax-M2.7",
+      "name": "MiniMax-M2.7",
+      "author": "MiniMaxAI",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+<<<<<<< Updated upstream
+      "downloads": 902445,
+      "likes": 1145,
+      "lastModified": "2026-04-20T04:28:14.000Z",
+      "daysSinceUpdate": 35,
+=======
+      "downloads": 1124064,
+      "likes": 1155,
+      "lastModified": "2026-04-20T04:28:14.000Z",
+      "daysSinceUpdate": 37,
+>>>>>>> Stashed changes
+      "license": {
+        "label": "Custom license",
+        "tier": "open-weight"
+      },
+      "tags": [],
+      "paramHint": null,
+<<<<<<< Updated upstream
+      "score": 0.7852085133673934
+=======
+      "score": 0.7880030263254969
+    },
+    {
+      "id": "zai-org/GLM-5.1",
+      "name": "GLM-5.1",
+      "author": "zai-org",
+      "url": "https://huggingface.co/zai-org/GLM-5.1",
+      "downloads": 149180,
+      "likes": 1696,
+      "lastModified": "2026-05-13T08:10:58.000Z",
+      "daysSinceUpdate": 14,
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
+      "score": 0.781583823930275
+>>>>>>> Stashed changes
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-R1",
+      "name": "DeepSeek-R1",
+      "author": "deepseek-ai",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+<<<<<<< Updated upstream
+      "downloads": 4448742,
+      "likes": 13339,
+      "lastModified": "2025-03-27T04:01:59.000Z",
+      "daysSinceUpdate": 424,
+=======
+      "downloads": 4709606,
+      "likes": 13341,
+      "lastModified": "2025-03-27T04:01:59.000Z",
+      "daysSinceUpdate": 426,
+>>>>>>> Stashed changes
+      "license": {
+        "label": "MIT",
+        "tier": "permissive"
+      },
+      "tags": [],
+      "paramHint": null,
+<<<<<<< Updated upstream
       "score": 0.7655550781038202
     },
     {
@@ -126,90 +205,162 @@
       "tags": [],
       "paramHint": null,
       "score": 0.753278403117636
+=======
+      "score": 0.7662669059849171
+>>>>>>> Stashed changes
     },
     {
       "id": "meta-llama/Llama-3.1-8B-Instruct",
       "name": "Llama-3.1-8B-Instruct",
       "author": "meta-llama",
       "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+<<<<<<< Updated upstream
       "downloads": 10561150,
       "likes": 5896,
       "lastModified": "2024-09-25T17:00:57.000Z",
       "daysSinceUpdate": 606,
+=======
+      "downloads": 10533318,
+      "likes": 5909,
+      "lastModified": "2024-09-25T17:00:57.000Z",
+      "daysSinceUpdate": 608,
+>>>>>>> Stashed changes
       "license": {
         "label": "Llama 3.1 Community License",
         "tier": "open-weight"
       },
       "tags": [],
       "paramHint": "8B",
+<<<<<<< Updated upstream
       "score": 0.7518237569247875
+=======
+      "score": 0.7511647982714953
     },
     {
-      "id": "MiniMaxAI/MiniMax-M2.5",
-      "name": "MiniMax-M2.5",
-      "author": "MiniMaxAI",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
-      "downloads": 783421,
-      "likes": 1485,
-      "lastModified": "2026-03-10T13:42:23.000Z",
-      "daysSinceUpdate": 75,
-      "license": {
-        "label": "Custom license",
-        "tier": "open-weight"
-      },
-      "tags": [],
-      "paramHint": null,
-      "score": 0.74832765784885
-    },
-    {
-      "id": "openai-community/gpt2",
-      "name": "gpt2",
-      "author": "openai-community",
-      "url": "https://huggingface.co/openai-community/gpt2",
-      "downloads": 16982782,
-      "likes": 3259,
-      "lastModified": "2024-02-19T10:57:45.000Z",
-      "daysSinceUpdate": 825,
+      "id": "zai-org/GLM-5",
+      "name": "GLM-5",
+      "author": "zai-org",
+      "url": "https://huggingface.co/zai-org/GLM-5",
+      "downloads": 166141,
+      "likes": 2090,
+      "lastModified": "2026-04-05T07:48:51.000Z",
+      "daysSinceUpdate": 52,
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
+      "score": 0.7507204743329076
+>>>>>>> Stashed changes
+    },
+    {
+      "id": "MiniMaxAI/MiniMax-M2.5",
+      "name": "MiniMax-M2.5",
+      "author": "MiniMaxAI",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
+<<<<<<< Updated upstream
+      "downloads": 783421,
+      "likes": 1485,
+      "lastModified": "2026-03-10T13:42:23.000Z",
+      "daysSinceUpdate": 75,
+=======
+      "downloads": 796229,
+      "likes": 1486,
+      "lastModified": "2026-03-10T13:42:23.000Z",
+      "daysSinceUpdate": 77,
+>>>>>>> Stashed changes
+      "license": {
+        "label": "Custom license",
+        "tier": "open-weight"
+      },
+      "tags": [],
+      "paramHint": null,
+<<<<<<< Updated upstream
+      "score": 0.74832765784885
+=======
+      "score": 0.7459423149438935
+>>>>>>> Stashed changes
+    },
+    {
+      "id": "openai-community/gpt2",
+      "name": "gpt2",
+      "author": "openai-community",
+      "url": "https://huggingface.co/openai-community/gpt2",
+<<<<<<< Updated upstream
+      "downloads": 16982782,
+      "likes": 3259,
+      "lastModified": "2024-02-19T10:57:45.000Z",
+      "daysSinceUpdate": 825,
+=======
+      "downloads": 17051343,
+      "likes": 3261,
+      "lastModified": "2024-02-19T10:57:45.000Z",
+      "daysSinceUpdate": 828,
+>>>>>>> Stashed changes
+      "license": {
+        "label": "MIT",
+        "tier": "permissive"
+      },
+      "tags": [],
+      "paramHint": null,
+<<<<<<< Updated upstream
       "score": 0.7382067163423329
+=======
+      "score": 0.7376201282609811
+>>>>>>> Stashed changes
     },
     {
       "id": "openai/gpt-oss-20b",
       "name": "gpt-oss-20b",
       "author": "openai",
       "url": "https://huggingface.co/openai/gpt-oss-20b",
+<<<<<<< Updated upstream
       "downloads": 8082595,
       "likes": 4637,
       "lastModified": "2025-08-26T17:25:47.000Z",
       "daysSinceUpdate": 271,
+=======
+      "downloads": 8216581,
+      "likes": 4642,
+      "lastModified": "2025-08-26T17:25:47.000Z",
+      "daysSinceUpdate": 273,
+>>>>>>> Stashed changes
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": "20B",
+<<<<<<< Updated upstream
       "score": 0.735323053322013
+=======
+      "score": 0.7350830120985328
+>>>>>>> Stashed changes
     },
     {
       "id": "openai/gpt-oss-120b",
       "name": "gpt-oss-120b",
       "author": "openai",
       "url": "https://huggingface.co/openai/gpt-oss-120b",
+<<<<<<< Updated upstream
       "downloads": 5042041,
       "likes": 4798,
       "lastModified": "2025-08-26T17:25:03.000Z",
       "daysSinceUpdate": 271,
+=======
+      "downloads": 5020781,
+      "likes": 4811,
+      "lastModified": "2025-08-26T17:25:03.000Z",
+      "daysSinceUpdate": 273,
+>>>>>>> Stashed changes
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": "120B",
+<<<<<<< Updated upstream
       "score": 0.7254911680424205
     },
     {
@@ -255,30 +406,93 @@
       "likes": 1384,
       "lastModified": "2026-02-03T16:16:38.000Z",
       "daysSinceUpdate": 110,
+=======
+      "score": 0.724846938115868
+    },
+    {
+      "id": "meta-llama/Meta-Llama-3-8B",
+      "name": "Meta-Llama-3-8B",
+      "author": "meta-llama",
+      "url": "https://huggingface.co/meta-llama/Meta-Llama-3-8B",
+      "downloads": 2283910,
+      "likes": 6548,
+      "lastModified": "2024-09-27T15:52:33.000Z",
+      "daysSinceUpdate": 606,
+>>>>>>> Stashed changes
       "license": {
-        "label": "Apache 2.0",
-        "tier": "permissive"
+        "label": "Llama 3 Community License",
+        "tier": "open-weight"
       },
       "tags": [],
+<<<<<<< Updated upstream
       "paramHint": null,
       "score": 0.7141053154625401
+=======
+      "paramHint": "8B",
+      "score": 0.7190488136093679
+>>>>>>> Stashed changes
     },
     {
       "id": "zai-org/GLM-4.7-Flash",
       "name": "GLM-4.7-Flash",
       "author": "zai-org",
       "url": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+<<<<<<< Updated upstream
       "downloads": 913301,
       "likes": 1731,
       "lastModified": "2026-01-29T08:06:19.000Z",
       "daysSinceUpdate": 116,
+=======
+      "downloads": 962071,
+      "likes": 1733,
+      "lastModified": "2026-01-29T08:06:19.000Z",
+      "daysSinceUpdate": 118,
+>>>>>>> Stashed changes
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
+<<<<<<< Updated upstream
       "score": 0.7128862069002594
+=======
+      "score": 0.7113680842127298
+    },
+    {
+      "id": "Nanbeige/Nanbeige4.1-3B",
+      "name": "Nanbeige4.1-3B",
+      "author": "Nanbeige",
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.1-3B",
+      "downloads": 157478,
+      "likes": 1108,
+      "lastModified": "2026-03-25T01:56:21.000Z",
+      "daysSinceUpdate": 63,
+      "license": {
+        "label": "Apache 2.0",
+        "tier": "permissive"
+      },
+      "tags": [],
+      "paramHint": "3B",
+      "score": 0.7105155285421929
+    },
+    {
+      "id": "Qwen/Qwen3-Coder-Next",
+      "name": "Qwen3-Coder-Next",
+      "author": "Qwen",
+      "url": "https://huggingface.co/Qwen/Qwen3-Coder-Next",
+      "downloads": 1020760,
+      "likes": 1390,
+      "lastModified": "2026-02-03T16:16:38.000Z",
+      "daysSinceUpdate": 112,
+      "license": {
+        "label": "Apache 2.0",
+        "tier": "permissive"
+      },
+      "tags": [],
+      "paramHint": null,
+      "score": 0.7101646456183447
+>>>>>>> Stashed changes
     }
   ]
 }
