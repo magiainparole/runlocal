@@ -9,6 +9,15 @@ export type PostMeta = {
 
 export const posts: PostMeta[] = [
   {
+    slug: "kimi-k3-what-open-means-now",
+    title: "Kimi K3 changes the definition of 'open'",
+    subtitle:
+      "A 2.8-trillion-parameter model with public weights that almost nobody can run. What the largest open weight ever released actually means for people who run AI locally.",
+    date: "2026-07-18",
+    readingTime: "9 min",
+    tags: ["Frontier", "Kimi K3", "Analysis"]
+  },
+  {
     slug: "gguf-quantization-explained",
     title: "Choosing a GGUF quantization without lying to yourself",
     subtitle:
