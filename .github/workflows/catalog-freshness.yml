@@ -1,0 +1,58 @@
+name: Catalog freshness check
+
+# Runs every Monday at 06:30 UTC, right after the trending sync. Opens a
+# GitHub issue when popular models on Hugging Face are missing from the
+# curated catalog, so updating lib/models.ts stays a guided 10-minute job
+# instead of a from-scratch research session.
+on:
+  schedule:
+    - cron: "30 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: catalog-freshness
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+
+      - name: Run freshness check
+        env:
+          HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+          REPORT_PATH: /tmp/freshness-report.md
+        run: node scripts/check-catalog-freshness.mjs
+
+      - name: Open issue if report exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f /tmp/freshness-report.md ]; then
+            echo "No report — catalog is fresh."
+            exit 0
+          fi
+
+          TITLE="Catalog freshness: candidates for $(date -u +%Y-%m-%d)"
+
+          # Avoid piling up: close previous open freshness issues first.
+          for n in $(gh issue list --label catalog-freshness --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Superseded by this week's report."
+          done
+
+          gh label create catalog-freshness --color 0e8a16 --force
+          gh issue create \
+            --title "$TITLE" \
+            --label catalog-freshness \
+            --body-file /tmp/freshness-report.md

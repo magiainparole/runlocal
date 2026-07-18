@@ -1,0 +1,27 @@
+{
+  "comment": "Family substrings already covered by lib/models.ts or lib/frontier-models.ts. The freshness watchdog flags popular HF models whose id matches none of these. Lowercase, matched against the full model id.",
+  "coveredFamilies": [
+    "deepseek",
+    "qwen",
+    "llama",
+    "gemma",
+    "phi-",
+    "phi4",
+    "mistral",
+    "kimi",
+    "moonshot",
+    "glm",
+    "chatglm",
+    "minimax",
+    "gpt-oss",
+    "gpt2",
+    "eurollm",
+    "olmo",
+    "command-r",
+    "c4ai",
+    "yi-"
+  ],
+  "ignoredAuthors": [
+    "openai-community"
+  ]
+}
