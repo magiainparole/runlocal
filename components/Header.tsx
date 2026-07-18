@@ -3,8 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-const nav = [
+const navEn = [
   { href: "/picker", label: "Picker" },
   { href: "/models", label: "Models" },
   { href: "/frontier", label: "Frontier" },
@@ -16,8 +18,26 @@ const nav = [
   { href: "/glossary", label: "Glossary" }
 ];
 
+const navIt = [
+  { href: "/it/picker", label: "Picker" },
+  { href: "/it/models", label: "Modelli" },
+  { href: "/it/frontier", label: "Frontier" },
+  { href: "/it/trending", label: "Tendenze" },
+  { href: "/it/tools", label: "Strumenti" },
+  { href: "/it/guides", label: "Guide" },
+  { href: "/it/opensuse", label: "openSUSE" },
+  { href: "/it/blog", label: "Blog" },
+  { href: "/it/glossary", label: "Glossario" }
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname() || "/";
+  const isItalian = pathname === "/it" || pathname.startsWith("/it/");
+  const nav = isItalian ? navIt : navEn;
+  const homeHref = isItalian ? "/it" : "/";
+  const ctaHref = isItalian ? "/it/guides/ollama" : "/guides/ollama";
+  const ctaLabel = isItalian ? "Inizia con Ollama" : "Start with Ollama";
 
   // Lock body scroll when the mobile menu is open.
   useEffect(() => {
@@ -36,7 +56,7 @@ export default function Header() {
       <header className="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-ink/80 border-b border-slate-200/60 dark:border-slate-800/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
           <Link
-            href="/"
+            href={homeHref}
             className="flex items-center gap-2"
             aria-label="RunLocal home"
             onClick={() => setOpen(false)}
@@ -64,22 +84,27 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <Link
-            href="/guides/ollama"
-            className="hidden md:inline-flex items-center gap-2 rounded-md bg-ink text-white dark:bg-brand-light dark:text-ink px-3.5 py-1.5 text-sm font-medium hover:bg-brand-dark dark:hover:bg-brand transition"
-          >
-            Start with Ollama
-          </Link>
+          {/* Desktop CTA + language switcher */}
+          <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
+            <Link
+              href={ctaHref}
+              className="inline-flex items-center gap-2 rounded-md bg-ink text-white dark:bg-brand-light dark:text-ink px-3.5 py-1.5 text-sm font-medium hover:bg-brand-dark dark:hover:bg-brand transition"
+            >
+              {ctaLabel}
+            </Link>
+          </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile: switcher + hamburger grouped on the right */}
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            className="inline-flex items-center justify-center rounded-md p-2 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
           >
             {open ? (
               <svg
@@ -116,6 +141,7 @@ export default function Header() {
               </svg>
             )}
           </button>
+          </div>
         </div>
       </header>
 
@@ -139,11 +165,11 @@ export default function Header() {
             ))}
 
             <Link
-              href="/guides/ollama"
+              href={ctaHref}
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-ink text-white dark:bg-brand-light dark:text-ink px-4 py-3 text-base font-medium hover:bg-brand-dark dark:hover:bg-brand transition"
             >
-              Start with Ollama
+              {ctaLabel}
             </Link>
 
             <p className="mt-6 text-xs text-slate-500 dark:text-slate-400 text-center">
