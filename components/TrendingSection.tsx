@@ -56,9 +56,11 @@ export default async function TrendingSection({
           Browse HF directly →
         </a>
       </div>
-      <p className="text-slate-600 dark:text-slate-400 text-sm max-w-3xl mb-6 leading-relaxed">
-        {blurb}
-      </p>
+      {blurb && (
+        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-3xl mb-6 leading-relaxed">
+          {blurb}
+        </p>
+      )}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {models.map((m) => (
           <TrendingCard key={m.id} model={m} />

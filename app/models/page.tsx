@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ModelCard from "@/components/ModelCard";
-import TrendingSection from "@/components/TrendingSection";
 import { models } from "@/lib/models";
-import { frontierModels } from "@/lib/frontier-models";
 
 export const metadata: Metadata = {
   title: "Open source LLM directory",
@@ -72,113 +71,39 @@ export default function ModelsPage() {
         </p>
       </aside>
 
-      {/* Frontier open weights — too big for consumer hardware */}
-      <section className="mt-16">
-        <header className="mb-6">
-          <p className="text-sm font-medium text-brand-dark dark:text-brand-light tracking-wide uppercase mb-2">
+      {/* Cross-links to the dedicated Frontier and Trending pages */}
+      <section className="mt-16 grid sm:grid-cols-2 gap-5">
+        <Link
+          href="/frontier"
+          className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-ink-soft p-6 hover:border-brand transition block"
+        >
+          <p className="text-xs font-medium text-brand-dark dark:text-brand-light tracking-wide uppercase mb-2">
             Frontier open weights
           </p>
-          <h2 className="text-2xl font-bold">
-            The giants: open models you (probably) can&apos;t run at home.
+          <h2 className="text-xl font-bold">
+            The giants you (probably) can&apos;t run at home →
           </h2>
-          <p className="mt-3 text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed text-sm">
-            Some of the most important open-weight models are simply too large
-            for consumer hardware. They still matter: they set the benchmark
-            ceiling, their licenses shape the ecosystem, and their distilled
-            siblings are often the best models you <em>can</em> run. Here is
-            what each one would actually take — and the realistic way to use
-            it anyway.
+          <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            Kimi K3, GLM-5.2, Llama 4 Maverick, DeepSeek V4 Pro: what running
+            them actually takes, and the runnable sibling from each family.
           </p>
-        </header>
-
-        <div className="space-y-5">
-          {frontierModels.map((m) => (
-            <article
-              key={m.slug}
-              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-ink-soft p-6"
-            >
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <h3 className="text-xl font-semibold">{m.name}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
-                    {m.author} · {m.origin} · Released {m.released}
-                  </p>
-                </div>
-                <span
-                  className={`shrink-0 text-xs rounded-full px-3 py-1 ${
-                    m.licenseTier === "permissive"
-                      ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200"
-                      : "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200"
-                  }`}
-                >
-                  {m.license}
-                </span>
-              </div>
-
-              <p className="mt-3 text-slate-700 dark:text-slate-300 leading-relaxed">
-                {m.headline}
-              </p>
-
-              <dl className="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
-                <div>
-                  <dt className="text-[10px] uppercase tracking-wide text-slate-500">
-                    Size
-                  </dt>
-                  <dd className="font-medium">{m.totalParams}</dd>
-                </div>
-                <div>
-                  <dt className="text-[10px] uppercase tracking-wide text-slate-500">
-                    Context
-                  </dt>
-                  <dd className="font-medium">{m.contextWindow}</dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="text-[10px] uppercase tracking-wide text-slate-500">
-                    What running it yourself actually takes
-                  </dt>
-                  <dd className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {m.hardwareReality}
-                  </dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="text-[10px] uppercase tracking-wide text-slate-500">
-                    Realistic access
-                  </dt>
-                  <dd className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                    {m.accessInstead}
-                  </dd>
-                </div>
-                {m.littleSibling && (
-                  <div className="sm:col-span-2">
-                    <dt className="text-[10px] uppercase tracking-wide text-slate-500">
-                      Runnable sibling
-                    </dt>
-                    <dd className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                      {m.littleSibling}
-                    </dd>
-                  </div>
-                )}
-              </dl>
-
-              <a
-                href={m.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block text-sm text-brand-dark dark:text-brand-light hover:underline"
-              >
-                Official site →
-              </a>
-            </article>
-          ))}
-        </div>
+        </Link>
+        <Link
+          href="/trending"
+          className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-ink-soft p-6 hover:border-brand transition block"
+        >
+          <p className="text-xs font-medium text-brand-dark dark:text-brand-light tracking-wide uppercase mb-2">
+            Trending · refreshed weekly
+          </p>
+          <h2 className="text-xl font-bold">
+            What the community is downloading this week →
+          </h2>
+          <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            The live top 16 from Hugging Face, ranked by downloads, likes and
+            recency. Auto-updated every Monday.
+          </p>
+        </Link>
       </section>
-
-      {/* Auto-curated trending list from HF */}
-      <TrendingSection
-        limit={12}
-        heading="What's trending right now on Hugging Face"
-        blurb="Live snapshot from the Hugging Face Hub, ranked by a weighted mix of downloads, likes and recency. Different shape from the curated directory above: these are the releases the community is interacting with this week, not the editor's picks. Refreshes weekly."
-      />
     </div>
   );
 }

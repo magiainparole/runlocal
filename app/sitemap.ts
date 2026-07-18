@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/`,         lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE_URL}/picker`,   lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/models`,   lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
+    { url: `${BASE_URL}/frontier`, lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE_URL}/trending`, lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE_URL}/tools`,    lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/guides`,   lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/opensuse`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

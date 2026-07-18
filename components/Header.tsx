@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 const nav = [
   { href: "/picker", label: "Picker" },
   { href: "/models", label: "Models" },
+  { href: "/frontier", label: "Frontier" },
+  { href: "/trending", label: "Trending" },
   { href: "/tools", label: "Tools" },
   { href: "/guides", label: "Guides" },
   { href: "/opensuse", label: "openSUSE" },
