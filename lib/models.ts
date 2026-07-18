@@ -154,6 +154,20 @@ export const models: ModelEntry[] = [
     releaseYear: 2026
   },
   {
+    slug: "minicpm5-1b",
+    name: "MiniCPM5-1B",
+    author: "OpenBMB",
+    origin: "China",
+    license: "Apache 2.0 (check model card for variant terms)",
+    paramSizes: ["1B (larger MiniCPM variants available)"],
+    contextWindow: "128k tokens",
+    bestFor: ["On-device inference", "Edge deployments", "Low-memory hardware"],
+    notes:
+      "The edge-first family from OpenBMB (Tsinghua-affiliated). MiniCPM5-1B runs on phones and 8 GB laptops with room to spare, and holds its own against models twice its size. Nearly 400k downloads within two months of release.",
+    url: "https://huggingface.co/openbmb/MiniCPM5-1B",
+    releaseYear: 2026
+  },
+  {
     slug: "eurollm-22b",
     name: "EuroLLM-22B",
     author: "EuroLLM Consortium",

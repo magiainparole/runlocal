@@ -19,7 +19,9 @@
     "olmo",
     "command-r",
     "c4ai",
-    "yi-"
+    "yi-",
+    "minicpm",
+    "nanbeige"
   ],
   "ignoredAuthors": [
     "openai-community"

@@ -76,6 +76,25 @@ export const catalog: CatalogModel[] = [
     ]
   },
   {
+    id: "minicpm5-1b",
+    family: "MiniCPM5",
+    variant: "1B",
+    paramBillions: 1,
+    isMoE: false,
+    origin: "OpenBMB · China",
+    license: { tier: "permissive", label: "Apache 2.0" },
+    contextWindow: 128_000,
+    releaseYear: 2026,
+    useCase: { general: 5, code: 4, longContext: 5, math: 4 },
+    hfPath: "openbmb/MiniCPM5-1B",
+    quants: [
+      { name: "Q4_K_M", qualityBucket: "high",      memoryGb: 1.0 },
+      { name: "Q5_K_M", qualityBucket: "high",      memoryGb: 1.2 },
+      { name: "Q8_0",   qualityBucket: "near-fp16", memoryGb: 1.6 }
+    ],
+    notes: "Edge-first 1B from OpenBMB. Runs on phones and any laptop. The realistic choice when even Gemma 4 2B is too heavy."
+  },
+  {
     id: "gemma-4-2b",
     family: "Gemma 4",
     variant: "2B Instruct",
