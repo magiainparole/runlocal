@@ -99,7 +99,7 @@ export const models: ModelEntry[] = [
   },
   {
     slug: "kimi-k2",
-    name: "Kimi K2.6 Thinking",
+    name: "Kimi K2.7 Code",
     author: "Moonshot AI",
     origin: "China",
     license: "Moonshot Open License",
@@ -107,23 +107,51 @@ export const models: ModelEntry[] = [
     contextWindow: "2M tokens",
     bestFor: ["Coding agents", "Agentic workflows", "Long documents"],
     notes:
-      "Leads several agentic-coding benchmarks in early 2026. Long-context handling rivals Llama 4 Scout, with stronger agent traces.",
+      "June 2026 update of the K2 line: +21.8% over K2.6 on Kimi Code Bench v2, plus a HighSpeed variant with ~6× faster inference. For the frontier-scale Kimi K3 (2.8T), see the Frontier section below.",
     url: "https://www.moonshot.cn",
-    releaseYear: 2025
+    releaseYear: 2026
+  },
+  {
+    slug: "qwen-3-6",
+    name: "Qwen 3.6",
+    author: "Alibaba (Qwen team)",
+    origin: "China",
+    license: "Apache 2.0 (small sizes); Qwen License (larger)",
+    paramSizes: ["Ladder of sizes from sub-1B to large MoE"],
+    contextWindow: "Up to 1M (long-context variants)",
+    bestFor: ["Multilingual", "Code", "Cost-sensitive deployments"],
+    notes:
+      "Mid-2026 refresh of the Qwen family. Keeps the permissive licensing on smaller sizes that made Qwen the default choice for commercial local deployments, with improved multilingual coverage.",
+    url: "https://qwenlm.github.io",
+    releaseYear: 2026
+  },
+  {
+    slug: "minimax-m3",
+    name: "MiniMax M3",
+    author: "MiniMax",
+    origin: "China",
+    license: "MiniMax License (custom)",
+    paramSizes: ["Large MoE"],
+    contextWindow: "1M tokens, native multimodal",
+    bestFor: ["Agentic coding", "Multimodal workflows", "Long documents"],
+    notes:
+      "Released June 1, 2026: the first open weight to combine frontier coding (vendor-reported 59.0% on SWE-Bench Pro), a 1M-token context and native multimodality in one model. Quantized builds are demanding; check the memory estimates before downloading.",
+    url: "https://www.minimax.io",
+    releaseYear: 2026
   },
   {
     slug: "glm-5",
-    name: "GLM 5.1",
-    author: "Zhipu AI",
+    name: "GLM 5.1 / 5.2 family",
+    author: "Z.ai (Zhipu)",
     origin: "China",
-    license: "GLM Open License",
-    paramSizes: ["9B", "32B", "MoE variants"],
+    license: "MIT",
+    paramSizes: ["9B", "32B", "MoE variants; 5.2 flagship is 744B"],
     contextWindow: "1M tokens",
     bestFor: ["Bilingual EN/ZH workloads", "Agentic coding"],
     notes:
-      "Quiet challenger that closes in on DeepSeek and Kimi on agentic benchmarks. Permissive enough for most commercial settings, but read the license.",
+      "GLM-5.2 (June 2026) is the current #1 open weight on the Artificial Analysis Intelligence Index — but at 744B it belongs in the Frontier section below. The smaller 5.1-era sizes and GLM-4.7-Flash remain the runnable entry points, all MIT licensed.",
     url: "https://chatglm.cn",
-    releaseYear: 2025
+    releaseYear: 2026
   },
   {
     slug: "eurollm-22b",
