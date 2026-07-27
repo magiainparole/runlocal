@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-20T08:46:36.688Z",
+  "fetchedAt": "2026-07-27T09:37:35.803Z",
   "source": "https://huggingface.co/api/models?pipeline_tag=text-generation&sort=likes&direction=-1&limit=100&full=true",
   "weights": {
     "downloads": 0.4,
@@ -13,44 +13,61 @@
       "name": "DeepSeek-V4-Pro",
       "author": "deepseek-ai",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
-      "downloads": 1461358,
-      "likes": 5264,
+      "downloads": 1648028,
+      "likes": 5318,
       "lastModified": "2026-06-22T12:12:50.000Z",
-      "daysSinceUpdate": 27,
+      "daysSinceUpdate": 34,
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
-      "score": 0.8635472991120143
+      "score": 0.8569006013174493
     },
     {
       "id": "zai-org/GLM-5.2",
       "name": "GLM-5.2",
       "author": "zai-org",
       "url": "https://huggingface.co/zai-org/GLM-5.2",
-      "downloads": 531947,
-      "likes": 4184,
+      "downloads": 1003547,
+      "likes": 4495,
       "lastModified": "2026-07-02T08:08:14.000Z",
-      "daysSinceUpdate": 18,
+      "daysSinceUpdate": 25,
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
-      "score": 0.8401755042924016
+      "score": 0.848261715019577
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-V4-Flash",
+      "name": "DeepSeek-V4-Flash",
+      "author": "deepseek-ai",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+      "downloads": 3113868,
+      "likes": 1833,
+      "lastModified": "2026-06-22T12:12:13.000Z",
+      "daysSinceUpdate": 34,
+      "license": {
+        "label": "MIT",
+        "tier": "permissive"
+      },
+      "tags": [],
+      "paramHint": null,
+      "score": 0.8269607571485209
     },
     {
       "id": "microsoft/phi-4",
       "name": "phi-4",
       "author": "microsoft",
       "url": "https://huggingface.co/microsoft/phi-4",
-      "downloads": 760936,
-      "likes": 2278,
+      "downloads": 713263,
+      "likes": 2282,
       "lastModified": "2026-07-14T14:22:25.000Z",
-      "daysSinceUpdate": 5,
+      "daysSinceUpdate": 12,
       "license": {
         "label": "MIT",
         "tier": "permissive"
@@ -61,34 +78,34 @@
         "chat"
       ],
       "paramHint": null,
-      "score": 0.8374559777598221
+      "score": 0.8262413162926229
     },
     {
-      "id": "deepseek-ai/DeepSeek-V4-Flash",
-      "name": "DeepSeek-V4-Flash",
-      "author": "deepseek-ai",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
-      "downloads": 2889113,
-      "likes": 1776,
-      "lastModified": "2026-06-22T12:12:13.000Z",
-      "daysSinceUpdate": 27,
+      "id": "prism-ml/Ternary-Bonsai-27B-gguf",
+      "name": "Ternary-Bonsai-27B-gguf",
+      "author": "prism-ml",
+      "url": "https://huggingface.co/prism-ml/Ternary-Bonsai-27B-gguf",
+      "downloads": 648938,
+      "likes": 1053,
+      "lastModified": "2026-07-18T06:05:31.000Z",
+      "daysSinceUpdate": 9,
       "license": {
-        "label": "MIT",
+        "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
-      "paramHint": null,
-      "score": 0.8338539307719671
+      "paramHint": "27B",
+      "score": 0.7948654635528929
     },
     {
       "id": "yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF",
       "name": "gemma-4-12B-coder-fable5-composer2.5-v1-GGUF",
       "author": "yuxinlu1",
       "url": "https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF",
-      "downloads": 399208,
-      "likes": 2739,
+      "downloads": 276821,
+      "likes": 2765,
       "lastModified": "2026-06-19T03:52:11.000Z",
-      "daysSinceUpdate": 31,
+      "daysSinceUpdate": 38,
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
@@ -98,17 +115,34 @@
         "reasoning"
       ],
       "paramHint": "12B",
-      "score": 0.8011785363725711
+      "score": 0.7833481103423185
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-R1",
+      "name": "DeepSeek-R1",
+      "author": "deepseek-ai",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "downloads": 8860456,
+      "likes": 13509,
+      "lastModified": "2025-03-27T04:01:59.000Z",
+      "daysSinceUpdate": 487,
+      "license": {
+        "label": "MIT",
+        "tier": "permissive"
+      },
+      "tags": [],
+      "paramHint": null,
+      "score": 0.7731112630867198
     },
     {
       "id": "yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF",
       "name": "gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF",
       "author": "yuxinlu1",
       "url": "https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF",
-      "downloads": 517443,
-      "likes": 1236,
+      "downloads": 448399,
+      "likes": 1300,
       "lastModified": "2026-06-19T09:31:48.000Z",
-      "daysSinceUpdate": 30,
+      "daysSinceUpdate": 38,
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
@@ -117,177 +151,143 @@
         "reasoning"
       ],
       "paramHint": "12B",
-      "score": 0.774925176729552
-    },
-    {
-      "id": "deepseek-ai/DeepSeek-R1",
-      "name": "DeepSeek-R1",
-      "author": "deepseek-ai",
-      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
-      "downloads": 8580743,
-      "likes": 13484,
-      "lastModified": "2025-03-27T04:01:59.000Z",
-      "daysSinceUpdate": 480,
-      "license": {
-        "label": "MIT",
-        "tier": "permissive"
-      },
-      "tags": [],
-      "paramHint": null,
-      "score": 0.7746481371857437
+      "score": 0.762876024944689
     },
     {
       "id": "meta-llama/Llama-3.1-8B-Instruct",
       "name": "Llama-3.1-8B-Instruct",
       "author": "meta-llama",
       "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
-      "downloads": 7911617,
-      "likes": 6353,
+      "downloads": 7952157,
+      "likes": 6400,
       "lastModified": "2024-09-25T17:00:57.000Z",
-      "daysSinceUpdate": 662,
+      "daysSinceUpdate": 669,
       "license": {
         "label": "Llama 3.1 Community License",
         "tier": "open-weight"
       },
       "tags": [],
       "paramHint": "8B",
-      "score": 0.7410900713101345
+      "score": 0.7391740617885505
     },
     {
       "id": "openbmb/MiniCPM5-1B",
       "name": "MiniCPM5-1B",
       "author": "openbmb",
       "url": "https://huggingface.co/openbmb/MiniCPM5-1B",
-      "downloads": 398340,
-      "likes": 980,
+      "downloads": 594706,
+      "likes": 1006,
       "lastModified": "2026-05-26T04:24:04.000Z",
-      "daysSinceUpdate": 55,
+      "daysSinceUpdate": 62,
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": "1B",
-      "score": 0.7312552063033397
+      "score": 0.7320226709665665
     },
     {
       "id": "openai/gpt-oss-20b",
       "name": "gpt-oss-20b",
       "author": "openai",
       "url": "https://huggingface.co/openai/gpt-oss-20b",
-      "downloads": 7206427,
-      "likes": 4821,
+      "downloads": 7983620,
+      "likes": 4845,
       "lastModified": "2025-08-26T17:25:47.000Z",
-      "daysSinceUpdate": 327,
+      "daysSinceUpdate": 334,
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": "20B",
-      "score": 0.7272939749795606
+      "score": 0.7275620210201558
     },
     {
       "id": "openai-community/gpt2",
       "name": "gpt2",
       "author": "openai-community",
       "url": "https://huggingface.co/openai-community/gpt2",
-      "downloads": 13330731,
-      "likes": 3360,
+      "downloads": 13838843,
+      "likes": 3370,
       "lastModified": "2024-02-19T10:57:45.000Z",
-      "daysSinceUpdate": 881,
+      "daysSinceUpdate": 888,
       "license": {
         "label": "MIT",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": null,
-      "score": 0.7265453815874934
-    },
-    {
-      "id": "MiniMaxAI/MiniMax-M2.7",
-      "name": "MiniMax-M2.7",
-      "author": "MiniMaxAI",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
-      "downloads": 983822,
-      "likes": 1231,
-      "lastModified": "2026-04-20T04:28:14.000Z",
-      "daysSinceUpdate": 91,
-      "license": {
-        "label": "Custom license",
-        "tier": "open-weight"
-      },
-      "tags": [],
-      "paramHint": null,
-      "score": 0.7220554960004452
+      "score": 0.7251281874603983
     },
     {
       "id": "openai/gpt-oss-120b",
       "name": "gpt-oss-120b",
       "author": "openai",
       "url": "https://huggingface.co/openai/gpt-oss-120b",
-      "downloads": 4362753,
-      "likes": 4998,
+      "downloads": 4332070,
+      "likes": 5033,
       "lastModified": "2025-08-26T17:25:03.000Z",
-      "daysSinceUpdate": 327,
+      "daysSinceUpdate": 334,
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": "120B",
-      "score": 0.7170330639035777
+      "score": 0.714903876793624
     },
     {
-      "id": "moonshotai/Kimi-K2-Instruct",
-      "name": "Kimi-K2-Instruct",
-      "author": "moonshotai",
-      "url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct",
-      "downloads": 211921,
-      "likes": 2368,
-      "lastModified": "2026-04-23T02:08:36.000Z",
-      "daysSinceUpdate": 88,
+      "id": "MiniMaxAI/MiniMax-M2.7",
+      "name": "MiniMax-M2.7",
+      "author": "MiniMaxAI",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+      "downloads": 951553,
+      "likes": 1231,
+      "lastModified": "2026-04-20T04:28:14.000Z",
+      "daysSinceUpdate": 98,
       "license": {
         "label": "Custom license",
         "tier": "open-weight"
       },
       "tags": [],
       "paramHint": null,
-      "score": 0.716864577696148
-    },
-    {
-      "id": "zai-org/GLM-5.1",
-      "name": "GLM-5.1",
-      "author": "zai-org",
-      "url": "https://huggingface.co/zai-org/GLM-5.1",
-      "downloads": 82658,
-      "likes": 1836,
-      "lastModified": "2026-05-13T08:10:58.000Z",
-      "daysSinceUpdate": 68,
-      "license": {
-        "label": "MIT",
-        "tier": "permissive"
-      },
-      "tags": [],
-      "paramHint": null,
-      "score": 0.7062946439360832
+      "score": 0.7114665371201279
     },
     {
       "id": "Qwen/Qwen3-0.6B",
       "name": "Qwen3-0.6B",
       "author": "Qwen",
       "url": "https://huggingface.co/Qwen/Qwen3-0.6B",
-      "downloads": 25275857,
-      "likes": 1431,
+      "downloads": 28062952,
+      "likes": 1453,
       "lastModified": "2025-07-26T03:46:27.000Z",
-      "daysSinceUpdate": 359,
+      "daysSinceUpdate": 366,
       "license": {
         "label": "Apache 2.0",
         "tier": "permissive"
       },
       "tags": [],
       "paramHint": "0.6B",
-      "score": 0.7056713722192777
+      "score": 0.7062530411569471
+    },
+    {
+      "id": "moonshotai/Kimi-K2-Instruct",
+      "name": "Kimi-K2-Instruct",
+      "author": "moonshotai",
+      "url": "https://huggingface.co/moonshotai/Kimi-K2-Instruct",
+      "downloads": 191911,
+      "likes": 2370,
+      "lastModified": "2026-04-23T02:08:36.000Z",
+      "daysSinceUpdate": 95,
+      "license": {
+        "label": "Custom license",
+        "tier": "open-weight"
+      },
+      "tags": [],
+      "paramHint": null,
+      "score": 0.7049900485764868
     }
   ]
 }
