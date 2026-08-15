@@ -1,9 +1,6 @@
-// Frontier open-weight models: too large for consumer hardware, but worth
-// knowing about. These entries power the "Frontier open weights" section on
-// the /models page. The point of the section is honest expectation-setting:
-// these are the models making headlines, and here is what it would actually
-// take to run them yourself — plus the realistic alternatives (API access,
-// cloud rental, or a distilled sibling from the same family).
+// Frontier models and previews that are too large for consumer hardware or
+// are not currently available as downloadable open weights. This section is
+// intentionally separate from the hardware picker.
 
 export type FrontierModel = {
   slug: string;
@@ -12,35 +9,55 @@ export type FrontierModel = {
   origin: string;
   license: string;
   licenseTier: "permissive" | "open-weight";
-  totalParams: string;       // e.g. "2.8T MoE (16 of 896 experts active)"
+  totalParams: string;
   contextWindow: string;
-  released: string;          // human-readable date
-  headline: string;          // why this model matters, one sentence
-  hardwareReality: string;   // what it takes to run it, in plain words
-  accessInstead: string;     // realistic way to use it without the hardware
-  littleSibling?: string;    // runnable model from the same family, if any
+  released: string;
+  headline: string;
+  hardwareReality: string;
+  accessInstead: string;
+  littleSibling?: string;
   url: string;
 };
 
 export const frontierModels: FrontierModel[] = [
   {
+    slug: "qwen-3-8-max-preview",
+    name: "Qwen3.8-Max-Preview",
+    author: "Alibaba (Qwen team)",
+    origin: "China",
+    license: "Cloud/API preview — no verified downloadable open weights as of Aug 15, 2026",
+    licenseTier: "open-weight",
+    totalParams: "Not disclosed for a downloadable checkpoint",
+    contextWindow: "Cloud/API model; see provider documentation",
+    released: "August 2026",
+    headline:
+      "Qwen 3.8 is newer than the open-weight Qwen 3.6 generation, but the Max preview is currently a hosted model rather than a model RunLocal can honestly recommend for local inference.",
+    hardwareReality:
+      "There is no official Qwen3.8-27B or other verified downloadable Qwen 3.8 checkpoint to size for local hardware today. RunLocal will not invent a VRAM requirement for a model whose weights are not published.",
+    accessInstead:
+      "Use the hosted Qwen3.8-Max-Preview through Alibaba/Qwen-compatible cloud access where available, or use Qwen3.6-27B locally.",
+    littleSibling:
+      "Qwen3.6-27B — the current verified open-weight workstation-class Qwen model for local use.",
+    url: "https://qwen.ai"
+  },
+  {
     slug: "kimi-k3",
     name: "Kimi K3",
     author: "Moonshot AI",
     origin: "China",
-    license: "Moonshot Open License (weights expected July 27, 2026)",
+    license: "Moonshot Open License",
     licenseTier: "open-weight",
     totalParams: "2.8T MoE (16 of 896 experts active, ~1.8%)",
     contextWindow: "1M tokens, native multimodal",
-    released: "July 16, 2026",
+    released: "July 16, 2026; weights published July 27, 2026",
     headline:
-      "The largest open-weight model ever released. Ranked fourth among all frontier models on independent testing, ahead of several closed flagships, and first in the Frontend Code Arena.",
+      "A frontier-scale open-weight MoE model with public weights, but far beyond a normal single-workstation deployment.",
     hardwareReality:
-      "Even at aggressive 4-bit quantization the weights alone exceed 1.4 TB. Running it means a multi-node GPU cluster — think 16+ datacenter GPUs with fast interconnect. This is not a homelab project; it is infrastructure.",
+      "Even at aggressive 4-bit quantization the weights alone exceed 1.4 TB. Running it means a multi-node GPU cluster with fast interconnect, not a normal homelab.",
     accessInstead:
-      "Moonshot's API at $3 per million input tokens and $15 per million output. Cloud GPU rental for batch workloads. Several inference providers are expected to host it once weights land.",
+      "Use Moonshot's API or a hosted inference provider unless you operate datacenter-class multi-node hardware.",
     littleSibling:
-      "Kimi K2.7 Code (June 2026) — the agentic-coding sibling that quantized builds can run on a 96 GB+ workstation.",
+      "Kimi K2.7 Code — a smaller agentic-coding sibling, though still demanding when self-hosted.",
     url: "https://www.moonshot.cn"
   },
   {
@@ -50,17 +67,17 @@ export const frontierModels: FrontierModel[] = [
     origin: "China",
     license: "MIT",
     licenseTier: "permissive",
-    totalParams: "744B",
+    totalParams: "~744B class",
     contextWindow: "1M tokens",
-    released: "June 13, 2026",
+    released: "June 2026",
     headline:
-      "The current #1 open-weight model on the Artificial Analysis Intelligence Index. Beats GPT-5.5 on several long-horizon coding benchmarks at roughly one-sixth the price — under an MIT license.",
+      "A frontier-scale open-weight GLM release with permissive licensing and strong coding/agentic positioning.",
     hardwareReality:
-      "Around 370–400 GB at 4-bit quantization. Technically within reach of a maxed-out Mac Studio cluster or a 4× H100 node, but far outside single consumer GPUs. Budget five figures for hardware that runs it acceptably.",
+      "Hundreds of gigabytes of memory are required even after aggressive quantization. This is multi-GPU or cluster territory rather than a consumer desktop.",
     accessInstead:
-      "Z.ai's API is aggressively priced. Most inference providers (Together, Fireworks, DeepInfra) host it. The MIT license means anyone can serve it, which keeps prices competitive.",
+      "Use Z.ai's API or third-party inference providers; smaller GLM variants remain the practical local entry points.",
     littleSibling:
-      "GLM-4.7-Flash — the distilled fast variant that runs on a 24 GB GPU and stays in our trending list.",
+      "GLM-4.7-Flash and other smaller GLM variants are the realistic local alternatives.",
     url: "https://chatglm.cn"
   },
   {
@@ -74,13 +91,13 @@ export const frontierModels: FrontierModel[] = [
     contextWindow: "1M tokens",
     released: "2025",
     headline:
-      "Meta's frontier-tier open weight. The MoE design means inference speed comparable to a 17B dense model — if you can fit the full weights in memory.",
+      "Meta's frontier-tier open weight. MoE reduces active compute, but the full weights still have to fit in memory.",
     hardwareReality:
-      "Roughly 200–230 GB at 4-bit. A 4× A6000 workstation or a 256 GB unified-memory Mac cluster gets you there; a single consumer GPU does not. The active-parameter trick helps speed, not memory.",
+      "Roughly 200+ GB at 4-bit. A multi-GPU workstation or large unified-memory system is required; a single consumer GPU is not enough.",
     accessInstead:
-      "Hosted by every major inference provider. Meta's own llama.com API. Often the cheapest frontier-class option per token because so many providers compete on it.",
+      "Hosted by major inference providers and available through Meta-compatible hosted access.",
     littleSibling:
-      "Llama 4 Scout — same family, 109B total, runs (tightly) on a 96 GB workstation and features in our picker.",
+      "Llama 4 Scout — same family, 109B total, still demanding but materially more approachable.",
     url: "https://llama.meta.com"
   },
   {
@@ -90,17 +107,17 @@ export const frontierModels: FrontierModel[] = [
     origin: "China",
     license: "MIT",
     licenseTier: "permissive",
-    totalParams: "Large-scale MoE",
+    totalParams: "1.6T MoE (49B active)",
     contextWindow: "1M tokens",
-    released: "May 2026",
+    released: "2026",
     headline:
-      "The model that has dominated our trending list since launch: top open-weight scores on SWE-Bench Verified and GPQA Diamond, MIT licensed, and the default recommendation for serious code and math work.",
+      "DeepSeek's frontier V4 checkpoint: enormous total capacity with 49B active parameters per token and permissive licensing.",
     hardwareReality:
-      "The full MoE needs several hundred gigabytes of memory across multiple GPUs. Community 4-bit builds exist but still demand workstation-cluster territory, not a desktop.",
+      "The full 1.6T-parameter MoE remains a cluster-scale deployment. Active parameters help compute efficiency but do not remove the need to store the full model weights.",
     accessInstead:
-      "DeepSeek's own API is famously cheap. The MIT license means third-party hosting is plentiful and prices keep falling.",
+      "DeepSeek's API and third-party hosted inference are the realistic routes for most users.",
     littleSibling:
-      "DeepSeek V4 Flash — the distilled variant. Quantized builds run on high-memory workstations, and it holds the #2 spot in our trending list.",
-    url: "https://www.deepseek.com"
+      "DeepSeek V4 Flash — 284B total / 13B active, substantially lighter on compute but still a high-memory local model.",
+    url: "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro"
   }
 ];
