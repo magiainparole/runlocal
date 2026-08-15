@@ -1,6 +1,6 @@
 // Hardware-aware model recommender. Pure function, runs entirely in browser.
 
-import { catalog, type CatalogModel, type CatalogQuant } from "./model-catalog";
+import { catalog, type CatalogModel, type CatalogQuant } from "./model-registry";
 
 export type Platform =
   | "apple-silicon"
@@ -48,18 +48,9 @@ export function computeAvailableMemory(spec: HardwareSpec): number {
   }
 }
 
-// Exact active-parameter counts for the MoE models currently in the picker.
-// Total parameters determine memory; active parameters are a better proxy for
-// inference compute and therefore for the coarse speed bucket.
-const ACTIVE_PARAMS_B: Record<string, number> = {
-  "gemma-4-26b-a4b": 4,
-  "mistral-small-4-119b-a6b": 6.5,
-  "deepseek-v4-flash": 13
-};
-
 function activeParams(model: CatalogModel): number {
   if (!model.isMoE) return model.paramBillions;
-  return ACTIVE_PARAMS_B[model.id] ?? model.paramBillions * 0.2;
+  return model.activeParamBillions ?? model.paramBillions * 0.2;
 }
 
 function predictSpeed(
@@ -134,8 +125,6 @@ function buildLlamaCppCommand(model: CatalogModel, quant: CatalogQuant): string 
     return "# No verified GGUF source in the RunLocal catalog yet; open the official model card and choose a current GGUF quantization.";
   }
 
-  // Official Transformers/Safetensors repos are useful references but are not
-  // directly runnable by llama.cpp as GGUF files. Never manufacture a filename.
   if (!/gguf/i.test(model.hfPath)) {
     return `# Official model: https://huggingface.co/${model.hfPath}\n# Choose a trusted GGUF conversion for ${quant.name}; RunLocal will not guess a download filename.`;
   }
