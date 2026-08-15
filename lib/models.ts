@@ -28,45 +28,73 @@ export const models: ModelEntry[] = [
     releaseYear: 2025
   },
   {
+    slug: "qwen-3-6",
+    name: "Qwen 3.6",
+    author: "Alibaba (Qwen team)",
+    origin: "China",
+    license: "Apache 2.0 on official open-weight checkpoints",
+    paramSizes: ["27B dense", "35B-A3B MoE", "additional large MoE variants"],
+    contextWindow: "262k native on 27B; long-context extensions available",
+    bestFor: ["Coding", "Multimodal workflows", "Multilingual", "Local workstations"],
+    notes:
+      "Current open-weight Qwen generation for local use. Qwen3.6-27B is the key workstation-class checkpoint: dense, multimodal and explicitly published for self-hosted inference. Qwen3.8-Max-Preview is newer but cloud/API-only as of August 15, 2026, so it is intentionally not listed as a downloadable local model.",
+    url: "https://huggingface.co/Qwen/Qwen3.6-27B",
+    releaseYear: 2026
+  },
+  {
     slug: "qwen-3-5",
     name: "Qwen 3.5",
     author: "Alibaba (Qwen team)",
     origin: "China",
-    license: "Apache 2.0 (small sizes); Qwen License (larger)",
-    paramSizes: ["1.8B", "4B", "7B", "14B", "32B", "72B", "MoE variants"],
-    contextWindow: "Up to 1M (long-context variant)",
-    bestFor: ["Multilingual", "Code", "Cost-sensitive deployments"],
+    license: "Apache 2.0",
+    paramSizes: ["2B", "9B", "27B", "35B-A3B MoE", "122B-A10B MoE", "397B-A17B MoE"],
+    contextWindow: "262k native; up to ~1M with supported scaling on selected models",
+    bestFor: ["Multimodal", "Multilingual", "Code", "Cost-sensitive deployments"],
     notes:
-      "The most permissive frontier-class family for smaller sizes. Strong on Asian languages, competitive on English code and reasoning benchmarks.",
-    url: "https://qwenlm.github.io",
-    releaseYear: 2025
+      "Released in 2026, not 2025. Qwen3.5 introduced a unified vision-language foundation and spans small local models through large MoE checkpoints. The 2B, 9B and 27B variants are particularly relevant to local inference.",
+    url: "https://huggingface.co/Qwen/Qwen3.5-27B",
+    releaseYear: 2026
   },
   {
     slug: "deepseek-v4",
     name: "DeepSeek V4 (Pro & Flash)",
     author: "DeepSeek AI",
     origin: "China",
-    license: "MIT (V4) / DeepSeek License (V4 Pro variants)",
-    paramSizes: ["236B MoE", "Distilled dense variants"],
+    license: "MIT",
+    paramSizes: ["Flash 284B MoE (13B active)", "Pro 1.6T MoE (49B active)"],
     contextWindow: "1M tokens",
-    bestFor: ["Mathematical reasoning", "Code generation", "Long-context analysis"],
+    bestFor: ["Mathematical reasoning", "Code generation", "Long-context analysis", "Agents"],
     notes:
-      "Topped open-source leaderboards on SWE-Bench and GPQA Diamond in early 2026. The MIT-licensed core variant is the most permissive of the top-tier open weights.",
-    url: "https://www.deepseek.com",
-    releaseYear: 2025
+      "DeepSeek V4 uses very large MoE checkpoints: active parameters drive much of the compute cost, while total parameters still drive memory requirements. V4 Pro is frontier-scale; Flash is the lighter sibling but still a high-memory workstation or multi-GPU model when self-hosted.",
+    url: "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    releaseYear: 2026
+  },
+  {
+    slug: "mistral-small-4",
+    name: "Mistral Small 4",
+    author: "Mistral AI",
+    origin: "France (EU)",
+    license: "Apache 2.0",
+    paramSizes: ["119B MoE (6.5B active)"],
+    contextWindow: "256k tokens",
+    bestFor: ["Reasoning", "Coding agents", "Multimodal workflows", "EU-friendly deployments"],
+    notes:
+      "Mistral Small 4 119B-A6B combines instruct, reasoning and coding modes in one multimodal MoE model. The low active-parameter count helps inference speed, but the full 119B weights still make memory capacity the main local constraint.",
+    url: "https://huggingface.co/mistralai/Mistral-Small-4-119B-2603",
+    releaseYear: 2026
   },
   {
     slug: "mistral-medium-3-5",
     name: "Mistral Medium 3.5",
     author: "Mistral AI",
     origin: "France (EU)",
-    license: "Apache 2.0 (open weight tier)",
-    paramSizes: ["~70B class"],
+    license: "Modified MIT / custom repository license",
+    paramSizes: ["128B dense"],
     contextWindow: "256k tokens",
-    bestFor: ["EU-friendly deployments", "Coding", "Compliance-sensitive workloads"],
+    bestFor: ["EU-friendly deployments", "Coding", "Reasoning", "Long context"],
     notes:
-      "Released April 2026. The most credible non-Chinese, non-American option at frontier level. Mistral remains the leading European LLM lab by capability.",
-    url: "https://mistral.ai",
+      "A dense 128B multimodal flagship that unifies instruction following, reasoning and coding. It is substantially larger than the ~70B figure previously shown here, so local memory requirements are correspondingly higher.",
+    url: "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B",
     releaseYear: 2026
   },
   {
@@ -74,26 +102,26 @@ export const models: ModelEntry[] = [
     name: "Gemma 4",
     author: "Google DeepMind",
     origin: "United States",
-    license: "Gemma Terms of Use",
-    paramSizes: ["2B", "9B", "27B"],
-    contextWindow: "128k tokens",
-    bestFor: ["On-device inference", "Apple Silicon", "Edge deployments"],
+    license: "Apache 2.0",
+    paramSizes: ["E2B", "E4B", "12B", "26B-A4B MoE", "31B dense"],
+    contextWindow: "128k (E2B/E4B); 256k (12B, 26B-A4B, 31B)",
+    bestFor: ["On-device inference", "Multimodal", "Consumer GPUs", "Workstations"],
     notes:
-      "Tuned for small-footprint deployment. Strong on consumer GPUs and Apple Silicon. The license is permissive for most commercial use but is not OSI-approved.",
-    url: "https://ai.google.dev/gemma",
+      "Gemma 4 is multimodal and spans edge through workstation hardware. The 26B-A4B variant activates about 4B parameters per token, while the 31B model is dense. Audio input is supported on E2B, E4B and 12B.",
+    url: "https://huggingface.co/google/gemma-4-31B",
     releaseYear: 2026
   },
   {
-    slug: "phi-5",
-    name: "Phi-5",
+    slug: "phi-4",
+    name: "Phi-4 family",
     author: "Microsoft Research",
     origin: "United States",
     license: "MIT",
-    paramSizes: ["3.8B", "7B", "14B"],
-    contextWindow: "128k tokens",
+    paramSizes: ["Phi-4 Mini 3.8B", "Phi-4 14B", "reasoning variants"],
+    contextWindow: "Varies by checkpoint",
     bestFor: ["Edge devices", "Reasoning per parameter", "Cost-sensitive inference"],
     notes:
-      "Small-model series with strong reasoning-per-parameter ratios. MIT licensed, ideal for embedded and on-device scenarios.",
+      "RunLocal previously listed a Phi-5 family that could not be verified in Microsoft's official model releases. Until Microsoft publishes an official Phi-5 model card, the verified Phi-4 family is the correct entry.",
     url: "https://huggingface.co/microsoft",
     releaseYear: 2025
   },
@@ -107,22 +135,8 @@ export const models: ModelEntry[] = [
     contextWindow: "2M tokens",
     bestFor: ["Coding agents", "Agentic workflows", "Long documents"],
     notes:
-      "June 2026 update of the K2 line: +21.8% over K2.6 on Kimi Code Bench v2, plus a HighSpeed variant with ~6× faster inference. For the frontier-scale Kimi K3 (2.8T), see the Frontier section below.",
+      "June 2026 update of the K2 line. For the frontier-scale Kimi K3 (2.8T), see the Frontier section.",
     url: "https://www.moonshot.cn",
-    releaseYear: 2026
-  },
-  {
-    slug: "qwen-3-6",
-    name: "Qwen 3.6",
-    author: "Alibaba (Qwen team)",
-    origin: "China",
-    license: "Apache 2.0 (small sizes); Qwen License (larger)",
-    paramSizes: ["Ladder of sizes from sub-1B to large MoE"],
-    contextWindow: "Up to 1M (long-context variants)",
-    bestFor: ["Multilingual", "Code", "Cost-sensitive deployments"],
-    notes:
-      "Mid-2026 refresh of the Qwen family. Keeps the permissive licensing on smaller sizes that made Qwen the default choice for commercial local deployments, with improved multilingual coverage.",
-    url: "https://qwenlm.github.io",
     releaseYear: 2026
   },
   {
@@ -135,7 +149,7 @@ export const models: ModelEntry[] = [
     contextWindow: "1M tokens, native multimodal",
     bestFor: ["Agentic coding", "Multimodal workflows", "Long documents"],
     notes:
-      "Released June 1, 2026: the first open weight to combine frontier coding (vendor-reported 59.0% on SWE-Bench Pro), a 1M-token context and native multimodality in one model. Quantized builds are demanding; check the memory estimates before downloading.",
+      "Released in 2026 with a 1M-token context and native multimodality. Quantized builds remain demanding; check the memory estimates before downloading.",
     url: "https://www.minimax.io",
     releaseYear: 2026
   },
@@ -149,7 +163,7 @@ export const models: ModelEntry[] = [
     contextWindow: "1M tokens",
     bestFor: ["Bilingual EN/ZH workloads", "Agentic coding"],
     notes:
-      "GLM-5.2 (June 2026) is the current #1 open weight on the Artificial Analysis Intelligence Index — but at 744B it belongs in the Frontier section below. The smaller 5.1-era sizes and GLM-4.7-Flash remain the runnable entry points, all MIT licensed.",
+      "GLM-5.2 is frontier-scale and belongs in the Frontier section. Smaller GLM variants remain the practical local entry points.",
     url: "https://chatglm.cn",
     releaseYear: 2026
   },
@@ -163,7 +177,7 @@ export const models: ModelEntry[] = [
     contextWindow: "128k tokens",
     bestFor: ["On-device inference", "Edge deployments", "Low-memory hardware"],
     notes:
-      "The edge-first family from OpenBMB (Tsinghua-affiliated). MiniCPM5-1B runs on phones and 8 GB laptops with room to spare, and holds its own against models twice its size. Nearly 400k downloads within two months of release.",
+      "The edge-first family from OpenBMB. MiniCPM5-1B is aimed at phones and low-memory laptops and is a useful alternative when larger local models do not fit.",
     url: "https://huggingface.co/openbmb/MiniCPM5-1B",
     releaseYear: 2026
   },
@@ -177,7 +191,7 @@ export const models: ModelEntry[] = [
     contextWindow: "32k tokens",
     bestFor: ["EU language coverage", "Public-sector AI", "Research"],
     notes:
-      "Fully open: weights, data pipeline, and training logs. Trained on the MareNostrum 5 supercomputer in Barcelona. Covers all 24 EU official languages plus 11 more. Not at frontier level on English benchmarks, but unique in its transparency.",
+      "Fully open: weights, data pipeline, and training logs. Trained on the MareNostrum 5 supercomputer in Barcelona. Covers all 24 EU official languages plus additional languages.",
     url: "https://huggingface.co/utter-project",
     releaseYear: 2025
   },
@@ -191,7 +205,7 @@ export const models: ModelEntry[] = [
     contextWindow: "8k tokens",
     bestFor: ["Reproducible research", "Auditable training", "Education"],
     notes:
-      "The most truly open model in the catalog: weights, data, training code, and intermediate checkpoints are all public. Capability is mid-tier, transparency is unmatched.",
+      "One of the most transparent families in the catalog: weights, data, training code and intermediate checkpoints are public. Capability is mid-tier; transparency is the differentiator.",
     url: "https://allenai.org/olmo",
     releaseYear: 2025
   },
@@ -205,7 +219,7 @@ export const models: ModelEntry[] = [
     contextWindow: "128k tokens",
     bestFor: ["RAG workloads", "Tool use", "Research / personal use"],
     notes:
-      "Open weights but non-commercial. Strong on retrieval-augmented generation and tool calling. A useful baseline for RAG work even if not deployable as-is in production.",
+      "Open weights but non-commercial. Strong on retrieval-augmented generation and tool calling. A useful RAG baseline, but check license constraints before production use.",
     url: "https://cohere.com",
     releaseYear: 2024
   },
@@ -219,7 +233,7 @@ export const models: ModelEntry[] = [
     contextWindow: "200k tokens",
     bestFor: ["Bilingual", "Cost-efficient deployments"],
     notes:
-      "Steady, well-documented series with bilingual strength and reasonable license terms. Less flashy than Qwen or DeepSeek but a solid choice for many production cases.",
+      "A well-documented bilingual family with reasonable deployment options. Less current than Qwen or DeepSeek, but still useful for comparison and existing deployments.",
     url: "https://01.ai",
     releaseYear: 2024
   }
