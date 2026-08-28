@@ -5,23 +5,48 @@
 // tag that has never existed, and nothing in the build will complain. The picker
 // then sends people to a 404. This script closes that gap.
 //
-//   npm run check:links            # Hugging Face paths (fatal) + Ollama tags (warn)
-//   npm run check:links -- --strict  # Ollama failures are fatal too
-//   npm run check:links -- --list    # print what would be checked, no network
+//   npm run check:links                     # HF paths (fatal) + Ollama tags (warn)
+//   npm run check:links -- --strict         # Ollama failures are fatal too
+//   npm run check:links -- --list           # print what would be checked, no network
+//   npm run check:links -- --probe a:1,b:2  # test candidate Ollama tags, nothing else
+//
+// --probe exists so a tag can be confirmed BEFORE it goes into the registry.
+// Guessing a plausible tag and shipping it is the failure this script prevents;
+// the workflow exposes it as a `probe_tags` input for exactly that check.
 //
 // Exit code 1 if any Hugging Face path is missing.
 
 import { catalog } from "../lib/model-registry";
 
 const args = new Set(process.argv.slice(2));
+const argv = process.argv.slice(2);
 const STRICT = args.has("--strict");
 const LIST_ONLY = args.has("--list");
+// --probe qwen3.8:27b,gemma4:12b  (or --probe=a,b)
+const PROBE = (() => {
+  const flag = argv.findIndex((a) => a === "--probe" || a.startsWith("--probe="));
+  if (flag === -1) return [];
+  const inline = argv[flag].includes("=") ? argv[flag].split("=").slice(1).join("=") : argv[flag + 1];
+  return (inline ?? "")
+    .split(/[,\s]+/)
+    .map((t) => t.trim())
+    .filter(Boolean);
+})();
 
 const HF_API = "https://huggingface.co/api/models";
-const OLLAMA_LIBRARY = "https://ollama.com/library";
+// The registry answers per tag; ollama.com/library only proves the model page
+// exists, which is why a wrong size suffix used to slip through unnoticed.
+const OLLAMA_REGISTRY = "https://registry.ollama.ai/v2/library";
 const TIMEOUT_MS = 15_000;
 
 type Check = { kind: "hf" | "ollama"; id: string; url: string; usedBy: string[] };
+
+// "qwen2.5-coder:32b" -> the manifest for tag "32b" of library model
+// "qwen2.5-coder". A bare name means the "latest" tag.
+function ollamaUrl(tag: string): string {
+  const [name, version = "latest"] = tag.split(":");
+  return `${OLLAMA_REGISTRY}/${name}/manifests/${version}`;
+}
 
 function collect(): Check[] {
   const byUrl = new Map<string, Check>();
@@ -40,9 +65,7 @@ function collect(): Check[] {
       add("hf", model.hfPath, `${HF_API}/${model.hfPath}`, model.id);
     }
     if (model.ollamaTag) {
-      // "qwen2.5-coder:32b" — several entries share one library page, so key on the name.
-      const [name] = model.ollamaTag.split(":");
-      add("ollama", name, `${OLLAMA_LIBRARY}/${name}`, model.id);
+      add("ollama", model.ollamaTag, ollamaUrl(model.ollamaTag), model.id);
     }
   }
 
@@ -73,6 +96,19 @@ async function probe(url: string): Promise<number | string> {
 }
 
 async function main() {
+  if (PROBE.length > 0) {
+    console.log(`Probing ${PROBE.length} candidate Ollama tag(s). Nothing else is checked.\n`);
+    let confirmed = 0;
+    for (const tag of PROBE) {
+      const status = await probe(ollamaUrl(tag));
+      const ok = status === 200;
+      if (ok) confirmed++;
+      console.log(`  ${ok ? "ok    " : "MISSING"} ${tag} → ${status}`);
+    }
+    console.log(`\n${confirmed} of ${PROBE.length} candidate tag(s) exist. Add only those to lib/model-registry.ts.`);
+    return;
+  }
+
   const checks = collect();
 
   if (LIST_ONLY) {
@@ -111,7 +147,7 @@ async function main() {
   if (warnings.length > 0) {
     console.log(`\n${warnings.length} Ollama tag(s) could not be confirmed:`);
     for (const w of warnings) console.log(`  - ${w}`);
-    console.log("  Ollama has no public metadata API; a non-200 here can also mean the page moved.");
+    console.log("  Each was looked up as a registry manifest, so a non-200 means that exact tag is not published.");
   }
 
   if (failures.length > 0) {
