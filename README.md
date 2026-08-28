@@ -68,9 +68,22 @@ entry has a `slug` that becomes part of the URL on the corresponding directory
 page. Long-form guides and posts live under `app/guides/<slug>/page.tsx` and
 `app/blog/<slug>/page.tsx` respectively.
 
-When adding a new model, fill in all fields in `lib/models.ts`. License notes
+When adding a new model, add a family to `lib/model-registry.ts` and, if it is
+runnable locally, one or more hardware profiles alongside it. License notes
 should be specific (MIT, Apache 2.0, Llama Community License, etc.) rather
-than generic (&ldquo;open&rdquo;).
+than generic (&ldquo;open&rdquo;), and should match the licence actually
+declared on the model card &mdash; not the one the family used last year.
+
+Hardware profiles carry download paths, and those are checked:
+
+```bash
+npm run check:links            # resolve every hfPath against the Hub
+npm run check:links -- --list  # print what would be checked, no network
+```
+
+CI runs this on every change to the registry and once a week. A plausible repo
+id is not the same thing as a real one, so add the entry, run the check, and
+only then write the prose around it.
 
 When adding a new guide, include the OS coverage, level, reading time, and
 last-updated month in `lib/guides.ts`, then create the corresponding page
