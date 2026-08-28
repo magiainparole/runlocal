@@ -7,6 +7,15 @@
 //   2. NOTABLE RECENT RELEASES — models updated in the last 21 days with
 //      significant traction, whatever the family. These catch new versions
 //      of families we already cover (e.g. GLM-5.3 after GLM-5.2).
+//   3. STALE VERSIONS — trending models whose family IS covered but whose
+//      version string appears nowhere in the catalog files. Substring
+//      coverage ("qwen") hides a catalog stuck two generations back
+//      ("Qwen 3.5" while the Hub has moved to Qwen 3.8); this catches it.
+//
+// It also asserts the coverage invariant: every family listed in
+// data/catalog-coverage.json must actually appear in one of the catalog
+// files. Otherwise a family can be silenced forever without ever being
+// documented — which is exactly how gpt-oss went a year unnoticed.
 //
 // The report is written to /tmp/freshness-report.md (or the path in
 // REPORT_PATH). The GitHub workflow turns a non-empty report into an issue.
@@ -24,6 +33,10 @@ const HF_API = "https://huggingface.co/api/models";
 const RECENT_DAYS = 21;
 const MIN_LIKES_NEW_FAMILY = 500;
 const MIN_LIKES_RECENT = 800;
+// Likes accumulate slowly; downloads do not. A model can be the release of the
+// month with a few hundred likes and six-figure downloads, so either signal
+// qualifies it as notable.
+const MIN_DOWNLOADS_RECENT = 100_000;
 // A "new family" candidate must also be alive: updated within this window.
 // Without this filter the list fills up with Bloom/Falcon-era models whose
 // cumulative likes are high but whose relevance died years ago.
@@ -50,14 +63,55 @@ async function fetchHf(params) {
 const coverage = JSON.parse(
   await readFile(path.join(REPO_ROOT, "data", "catalog-coverage.json"), "utf8")
 );
+
+// The catalog files, concatenated and lowercased. Used for two things: proving
+// every covered family is actually documented, and spotting versions that are
+// trending but absent from our pages.
+const CATALOG_FILES = [
+  "lib/model-registry.ts"
+];
+const catalogText = (
+  await Promise.all(
+    CATALOG_FILES.map((f) => readFile(path.join(REPO_ROOT, f), "utf8"))
+  )
+)
+  .join("\n")
+  // Drop line comments first: the type definitions carry example values
+  // ("Qwen 3.5", "DeepSeek V4") that would otherwise read as documentation.
+  // The leading group keeps "https://" from being mistaken for a comment.
+  .replace(/(^|[^:])\/\/.*$/gm, "$1")
+  .toLowerCase();
+// Collapse separators so "Qwen 3.8", "Qwen3.8" and "qwen-3-8" all compare equal.
+const catalogNormalized = catalogText.replace(/[\s._-]/g, "");
 const covered = coverage.coveredFamilies.map((s) => s.toLowerCase());
+// Alias families match model ids but are exempt from the documentation
+// invariant: they are Hub naming conventions, not names we write in prose.
+const aliases = (coverage.aliasFamilies || []).map((s) => s.toLowerCase());
+const matchable = [...covered, ...aliases];
 const ignoredAuthors = new Set(
   (coverage.ignoredAuthors || []).map((s) => s.toLowerCase())
 );
 
 function isCovered(id) {
   const idl = id.toLowerCase();
-  return covered.some((fam) => idl.includes(fam));
+  return matchable.some((fam) => idl.includes(fam));
+}
+
+// "Qwen/Qwen3.8-27B" -> "qwen3.8"; "zai-org/GLM-5.2" -> "glm5.2".
+// Deliberately conservative: only dotted versions count. Matching bare integers
+// would collide with parameter counts ("Qwen3-30B") and drown the report in
+// false positives, at the cost of missing single-digit families like Phi-5.
+// Returns null when the name carries no version number to compare.
+function versionToken(id) {
+  const name = (id.split("/")[1] || "").toLowerCase();
+  const match = name.match(/([a-z]+)[-_ ]?v?(\d+(?:\.\d+)+)/);
+  if (!match) return null;
+  return { family: match[1], version: match[2], token: `${match[1]}${match[2]}` };
+}
+
+// True when the catalog mentions this exact family+version anywhere.
+function versionIsDocumented(token) {
+  return catalogNormalized.includes(token.replace(/[\s._-]/g, ""));
 }
 
 function looksLikePersonalFinetune(id) {
@@ -65,6 +119,17 @@ function looksLikePersonalFinetune(id) {
   // fine-tunes tend to have long hyphen-soup names. Not perfect, flags only.
   const name = id.split("/")[1] || "";
   return (name.match(/-/g) || []).length >= 5;
+}
+
+// Invariant: a silenced family must be a documented one.
+const ghostFamilies = covered.filter((fam) => !catalogText.includes(fam));
+if (ghostFamilies.length > 0) {
+  console.error(
+    "coveredFamilies lists entries that appear in no catalog file: " +
+      ghostFamilies.join(", ") +
+      "\nEither add the model to lib/models.ts, or drop the family from data/catalog-coverage.json."
+  );
+  process.exitCode = 1;
 }
 
 // Pool: top by likes (established) + recently created with traction.
@@ -76,7 +141,24 @@ const byLikes = await fetchHf({
   full: "true"
 });
 
-const models = byLikes.filter(
+// Trending score is the Hub's own "what is hot right now" signal. Without this
+// pool a release like Nemotron 3.5 (170k downloads, 146 likes) never surfaces.
+const byTrending = await fetchHf({
+  pipeline_tag: "text-generation",
+  sort: "trendingScore",
+  direction: "-1",
+  limit: "50",
+  full: "true"
+});
+
+const seen = new Set();
+const pool = [...byLikes, ...byTrending].filter((m) => {
+  if (!m.id || seen.has(m.id)) return false;
+  seen.add(m.id);
+  return true;
+});
+
+const models = pool.filter(
   (m) =>
     m.id &&
     !ignoredAuthors.has(m.id.split("/")[0].toLowerCase()) &&
@@ -85,6 +167,7 @@ const models = byLikes.filter(
 
 const newFamilies = [];
 const recentNotable = [];
+const staleVersions = [];
 
 for (const m of models) {
   const likes = m.likes ?? 0;
@@ -98,8 +181,17 @@ for (const m of models) {
   ) {
     newFamilies.push({ ...m, _days: days, _finetune: looksLikePersonalFinetune(m.id) });
   }
-  if (days <= RECENT_DAYS && likes >= MIN_LIKES_RECENT) {
+  if (days <= RECENT_DAYS && (likes >= MIN_LIKES_RECENT || dl >= MIN_DOWNLOADS_RECENT)) {
     recentNotable.push({ ...m, _days: days, _covered: isCovered(m.id) });
+  }
+
+  // Covered family, undocumented version: the blind spot substring matching
+  // creates. Only worth reporting for models with real traction.
+  if (isCovered(m.id) && (likes >= 200 || dl >= MIN_DOWNLOADS_RECENT)) {
+    const v = versionToken(m.id);
+    if (v && !versionIsDocumented(v.token)) {
+      staleVersions.push({ ...m, _days: days, _token: v.token });
+    }
   }
 }
 
@@ -112,6 +204,15 @@ if (newFamilies.length > 0) {
   for (const m of newFamilies) {
     const ft = m._finetune ? " · ⚠ looks like a personal fine-tune" : "";
     report += `- [\`${m.id}\`](https://huggingface.co/${m.id}) — ♥${m.likes} · ↓${(m.downloads ?? 0).toLocaleString()} · updated ${m._days}d ago${ft}\n`;
+  }
+  report += "\n";
+}
+
+if (staleVersions.length > 0) {
+  report += "## Covered families with an undocumented version\n\n";
+  report += "The family is in `coveredFamilies`, so the check above stays quiet — but this specific version appears in none of the catalog files. Usually means the catalog entry is a generation or two behind.\n\n";
+  for (const m of staleVersions) {
+    report += `- [\`${m.id}\`](https://huggingface.co/${m.id}) — \`${m._token}\` not found in catalog · ♥${m.likes} · ↓${(m.downloads ?? 0).toLocaleString()} · updated ${m._days}d ago\n`;
   }
   report += "\n";
 }

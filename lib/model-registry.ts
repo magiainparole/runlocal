@@ -80,6 +80,19 @@ type Family = {
 
 export const families: Family[] = [
   {
+    id: "qwen-3-8",
+    directory: {
+      slug: "qwen-3-8", name: "Qwen 3.8", author: "Alibaba (Qwen team)", origin: "China",
+      license: "Apache 2.0 on the 27B; custom Qwen licence on the 2.4T MoE",
+      paramSizes: ["27B dense", "2.4T-A95B MoE"],
+      contextWindow: "262k tokens",
+      bestFor: ["Coding", "Multimodal workflows", "Multilingual", "Local workstations"],
+      notes: "August 2026, and the most-liked open-weight release of the summer. The 27B is dense, Apache 2.0, natively multimodal, and had GGUF builds from unsloth and bartowski within days — which makes it the current default for a 24 GB card. The 2.4T MoE sibling is frontier-scale and carries a different licence.",
+      url: "https://huggingface.co/Qwen/Qwen3.8-27B", releaseYear: 2026
+    },
+    pickerMeta: { family: "Qwen 3.8", origin: "Alibaba · China", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 262_144, releaseYear: 2026 }
+  },
+  {
     id: "qwen-3-6",
     directory: {
       slug: "qwen-3-6", name: "Qwen 3.6", author: "Alibaba (Qwen team)", origin: "China",
@@ -87,7 +100,7 @@ export const families: Family[] = [
       paramSizes: ["27B dense", "35B-A3B MoE", "additional large MoE variants"],
       contextWindow: "262k native on 27B; long-context extensions available",
       bestFor: ["Coding", "Multimodal workflows", "Multilingual", "Local workstations"],
-      notes: "Current open-weight Qwen generation for local use. Qwen3.6-27B is the key workstation-class checkpoint. Qwen3.8-Max-Preview is newer but cloud/API-only as of August 15, 2026 and is intentionally excluded from the local picker.",
+      notes: "The previous open-weight Qwen generation, still widely deployed and the base for most community quantization work, including the 1-bit and ternary Bonsai builds. Qwen 3.8 supersedes it for new installs.",
       url: "https://huggingface.co/Qwen/Qwen3.6-27B", releaseYear: 2026
     },
     pickerMeta: { family: "Qwen 3.6", origin: "Alibaba · China", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 262_144, releaseYear: 2026 }
@@ -148,7 +161,7 @@ export const families: Family[] = [
     pickerMeta: { family: "Phi-4", origin: "Microsoft · United States", license: { tier: "permissive", label: "MIT" }, contextWindow: 128_000, releaseYear: 2025 }
   },
   {
-    id: "llama-3",
+    id: "llama-4",
     directory: {
       slug: "llama-4", name: "Llama 4 (Scout & Maverick)", author: "Meta AI", origin: "United States", license: "Llama Community License (custom)",
       paramSizes: ["Scout 109B MoE", "Maverick 400B MoE"], contextWindow: "Up to 10M tokens (Scout)",
@@ -157,6 +170,52 @@ export const families: Family[] = [
       url: "https://llama.meta.com", releaseYear: 2025
     },
     pickerMeta: { family: "Llama", origin: "Meta · United States", license: { tier: "open-weight", label: "Llama Community License" }, contextWindow: 128_000, releaseYear: 2025 }
+  },
+  {
+    id: "gpt-oss",
+    directory: {
+      slug: "gpt-oss", name: "gpt-oss (20B & 120B)", author: "OpenAI", origin: "United States", license: "Apache 2.0",
+      paramSizes: ["20B MoE (MXFP4 weights)", "120B MoE"], contextWindow: "131k tokens",
+      bestFor: ["General assistant work", "Reasoning", "Consumer GPUs"],
+      notes: "OpenAI's open-weight release and, by download count, the most used open model of the past year. Ships natively in MXFP4, so the 20B fits a 16 GB card at the precision it was trained for. Apache 2.0, no usage caps, no licence acceptance step.",
+      url: "https://huggingface.co/openai/gpt-oss-20b", releaseYear: 2025
+    },
+    pickerMeta: { family: "gpt-oss", origin: "OpenAI · United States", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 131_072, releaseYear: 2025 }
+  },
+  {
+    id: "nemotron-3-5",
+    directory: {
+      slug: "nemotron-3-5-lightning", name: "Nemotron 3.5 Lightning", author: "NVIDIA", origin: "United States",
+      license: "NVIDIA Open Model License (custom — read before commercial use)",
+      paramSizes: ["30B-A3B hybrid Mamba/MoE (~3B active)"], contextWindow: "262k tokens",
+      bestFor: ["Fast local inference", "Long documents", "24 GB GPUs"],
+      notes: "August 2026. A hybrid Mamba-attention MoE: 31B of weights, roughly 3B active per token, so it answers at small-model speed. GGUF builds come from ggml-org and unsloth. The licence is custom, not OSI-approved.",
+      url: "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16", releaseYear: 2026
+    },
+    pickerMeta: { family: "Nemotron 3.5 Lightning", origin: "NVIDIA · United States", license: { tier: "open-weight", label: "NVIDIA Open Model License" }, contextWindow: 262_144, releaseYear: 2026 }
+  },
+  {
+    id: "glm-4-7",
+    directory: {
+      slug: "glm-4-7-flash", name: "GLM-4.7-Flash", author: "Z.ai (Zhipu)", origin: "China", license: "MIT",
+      paramSizes: ["31B MoE"], contextWindow: "202k tokens",
+      bestFor: ["Bilingual EN/ZH workloads", "Agentic coding", "Workstation GPUs"],
+      notes: "The runnable member of the GLM family, and the counterpart to the frontier-scale GLM-5.2: MIT licensed, 200k context, mature GGUF ecosystem, and one of the strongest agentic-coding models that fits on a single workstation GPU.",
+      url: "https://huggingface.co/zai-org/GLM-4.7-Flash", releaseYear: 2026
+    },
+    pickerMeta: { family: "GLM 4.7", origin: "Z.ai · China", license: { tier: "permissive", label: "MIT" }, contextWindow: 202_752, releaseYear: 2026 }
+  },
+  {
+    id: "lfm2-5",
+    directory: {
+      slug: "lfm2-5", name: "LFM2.5", author: "Liquid AI", origin: "United States",
+      license: "Custom Liquid AI licence (check the model card)",
+      paramSizes: ["2.6B"], contextWindow: "131k tokens",
+      bestFor: ["Edge deployments", "Phones", "Low-memory laptops"],
+      notes: "July 2026. A convolution-attention hybrid built for edge hardware, covering 16 languages at 2.6B parameters. Liquid publishes its own GGUF files, which is why it reached the llama.cpp crowd faster than most small models.",
+      url: "https://huggingface.co/LiquidAI/LFM2.5-2.6B", releaseYear: 2026
+    },
+    pickerMeta: { family: "LFM2.5", origin: "Liquid AI · United States", license: { tier: "open-weight", label: "Custom Liquid AI licence" }, contextWindow: 131_072, releaseYear: 2026 }
   },
   {
     id: "minicpm5",
@@ -177,13 +236,13 @@ export const families: Family[] = [
     pickerMeta: { family: "EuroLLM", origin: "European Union", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 32_000, releaseYear: 2025 }
   },
   {
-    id: "olmo-2",
+    id: "olmo-3",
     directory: {
-      slug: "olmo-2", name: "OLMo 2", author: "Allen Institute for AI", origin: "United States (non-profit)", license: "Apache 2.0",
-      paramSizes: ["1B", "7B", "13B"], contextWindow: "8k tokens", bestFor: ["Reproducible research", "Auditable training", "Education"],
-      notes: "Weights, data, training code and intermediate checkpoints are public; transparency is the differentiator.", url: "https://allenai.org/olmo", releaseYear: 2025
+      slug: "olmo-3", name: "Olmo 3 / 3.1", author: "Allen Institute for AI", origin: "United States (non-profit)", license: "Apache 2.0",
+      paramSizes: ["7B", "32B (Instruct and Think variants)"], contextWindow: "65k tokens", bestFor: ["Reproducible research", "Auditable training", "Education"],
+      notes: "Weights, data, training code and intermediate checkpoints are public; transparency is the differentiator. Olmo 3.1 (December 2025) added reasoning-tuned Think variants at 7B and 32B, so the transparency argument costs far less capability than it did with OLMo 2.", url: "https://allenai.org/olmo", releaseYear: 2025
     },
-    pickerMeta: { family: "OLMo 2", origin: "Allen Institute for AI · United States", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 8_192, releaseYear: 2025 }
+    pickerMeta: { family: "Olmo 3", origin: "Allen Institute for AI · United States", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 65_536, releaseYear: 2025 }
   }
 ];
 
@@ -191,13 +250,18 @@ const familyMap = new Map(families.map((f) => [f.id, f]));
 
 export const hardwareProfiles: HardwareProfile[] = [
   { id: "minicpm5-1b", familyId: "minicpm5", variant: "1B", paramBillions: 1, isMoE: false, useCase: { general: 5, code: 4, longContext: 5, math: 4 }, hfPath: "openbmb/MiniCPM5-1B", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 1.0 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 1.2 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 1.6 }] },
-  { id: "phi-4-mini-3-8b", familyId: "phi-4", variant: "Mini 3.8B", paramBillions: 3.8, isMoE: false, useCase: { general: 7, code: 7, longContext: 5, math: 8 }, ollamaTag: "phi4-mini:3.8b", hfPath: "bartowski/Phi-4-mini-instruct-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 3.5 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 4.0 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 5.5 }] },
-  { id: "qwen-3-5-9b", familyId: "qwen-3-5", variant: "9B", paramBillions: 9, isMoE: false, useCase: { general: 8, code: 8, longContext: 9, math: 8 }, quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 6.0 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 7.0 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 10.0 }] },
+  { id: "phi-4-mini-3-8b", familyId: "phi-4", variant: "Mini 3.8B", paramBillions: 3.8, isMoE: false, useCase: { general: 7, code: 7, longContext: 5, math: 8 }, ollamaTag: "phi4-mini:3.8b", hfPath: "unsloth/Phi-4-mini-instruct-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 3.5 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 4.0 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 5.5 }] },
+  { id: "qwen-3-5-9b", familyId: "qwen-3-5", variant: "9B", paramBillions: 9, isMoE: false, useCase: { general: 8, code: 8, longContext: 9, math: 8 }, hfPath: "unsloth/Qwen3.5-9B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 6.0 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 7.0 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 10.0 }] },
   { id: "phi-4-14b", familyId: "phi-4", variant: "14B", paramBillions: 14, isMoE: false, contextWindow: 16_000, useCase: { general: 8, code: 8, longContext: 5, math: 9 }, ollamaTag: "phi4:14b", hfPath: "bartowski/phi-4-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 9 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 10.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 16 }] },
-  { id: "gemma-4-12b", familyId: "gemma-4", variant: "12B", paramBillions: 12, isMoE: false, useCase: { general: 8, code: 7, longContext: 9, math: 7 }, quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 8 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 9.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 14 }] },
-  { id: "qwen-3-6-27b", familyId: "qwen-3-6", variant: "27B", paramBillions: 27, isMoE: false, useCase: { general: 9, code: 10, longContext: 9, math: 9 }, hfPath: "Qwen/Qwen3.6-27B", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 29 }], notes: "Current open-weight Qwen generation for workstation-class local inference." },
-  { id: "gemma-4-26b-a4b", familyId: "gemma-4", variant: "26B-A4B MoE", paramBillions: 26, activeParamBillions: 4, isMoE: true, useCase: { general: 9, code: 7, longContext: 9, math: 8 }, quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 29 }] },
-  { id: "gemma-4-31b", familyId: "gemma-4", variant: "31B dense", paramBillions: 31, isMoE: false, useCase: { general: 9, code: 8, longContext: 9, math: 8 }, hfPath: "google/gemma-4-31B", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 23 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34 }] },
+  { id: "gemma-4-12b", familyId: "gemma-4", variant: "12B", paramBillions: 12, isMoE: false, useCase: { general: 8, code: 7, longContext: 9, math: 7 }, hfPath: "google/gemma-4-12B-it-qat-q4_0-gguf", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 8 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 9.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 14 }] },
+  { id: "qwen-3-6-27b", familyId: "qwen-3-6", variant: "27B", paramBillions: 27, isMoE: false, useCase: { general: 9, code: 10, longContext: 9, math: 9 }, hfPath: "unsloth/Qwen3.6-27B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 29 }], notes: "Current open-weight Qwen generation for workstation-class local inference." },
+  { id: "gemma-4-26b-a4b", familyId: "gemma-4", variant: "26B-A4B MoE", paramBillions: 26, activeParamBillions: 4, isMoE: true, useCase: { general: 9, code: 7, longContext: 9, math: 8 }, hfPath: "google/gemma-4-26B-A4B-it-qat-q4_0-gguf", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 29 }] },
+  { id: "gemma-4-31b", familyId: "gemma-4", variant: "31B dense", paramBillions: 31, isMoE: false, useCase: { general: 9, code: 8, longContext: 9, math: 8 }, hfPath: "google/gemma-4-31B-it-qat-q4_0-gguf", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 23 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34 }] },
+  { id: "lfm2-5-2-6b", familyId: "lfm2-5", variant: "2.6B", paramBillions: 2.7, isMoE: false, useCase: { general: 6, code: 4, longContext: 6, math: 4 }, hfPath: "LiquidAI/LFM2.5-2.6B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 2.0 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 2.3 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 3.2 }], notes: "Convolution-attention hybrid for edge hardware. Liquid publishes its own GGUF files." },
+  { id: "gpt-oss-20b", familyId: "gpt-oss", variant: "20B MoE", paramBillions: 21.5, activeParamBillions: 3.6, isMoE: true, useCase: { general: 9, code: 8, longContext: 8, math: 8 }, hfPath: "ggml-org/gpt-oss-20b-GGUF", quants: [{ name: "MXFP4", qualityBucket: "high", memoryGb: 12.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 23 }], notes: "Ships natively in MXFP4, so the headline quantization is the precision it was trained for — it fits a 16 GB card without further loss." },
+  { id: "qwen-3-8-27b", familyId: "qwen-3-8", variant: "27B", paramBillions: 27.8, isMoE: false, useCase: { general: 10, code: 10, longContext: 9, math: 9 }, hfPath: "unsloth/Qwen3.8-27B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 30 }], notes: "Dense, Apache 2.0 and natively multimodal. The current default choice for a 24 GB card; bartowski publishes an imatrix build too." },
+  { id: "glm-4-7-flash-31b", familyId: "glm-4-7", variant: "Flash 31B MoE", paramBillions: 31.2, activeParamBillions: 3.4, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "unsloth/GLM-4.7-Flash-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 19 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 22.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34 }], notes: "MIT licensed, 200k context, and one of the strongest agentic-coding models that fits on a single workstation GPU." },
+  { id: "nemotron-3-5-lightning-30b", familyId: "nemotron-3-5", variant: "30B-A3B hybrid", paramBillions: 31.6, activeParamBillions: 3, isMoE: true, useCase: { general: 8, code: 8, longContext: 9, math: 7 }, hfPath: "ggml-org/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 19 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 22.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34 }], notes: "Only about 3B parameters are active per token, so it answers at small-model speed while occupying 30B of memory." },
   { id: "mistral-small-4-119b-a6b", familyId: "mistral-small-4", variant: "119B-A6B MoE", paramBillions: 119, activeParamBillions: 6.5, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "mistralai/Mistral-Small-4-119B-2603", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 68 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 80 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 125 }] },
   { id: "mistral-medium-3-5-128b", familyId: "mistral-medium-3-5", variant: "128B dense", paramBillions: 128, isMoE: false, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 75 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 88 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 135 }] }
 ];
@@ -219,18 +283,18 @@ export const directoryModels: DirectoryModel[] = families.map((f) => f.directory
 
 export const frontierModels: FrontierModel[] = [
   {
-    slug: "qwen-3-8-max-preview", name: "Qwen3.8-Max-Preview", author: "Alibaba (Qwen team)", origin: "China",
-    license: "Cloud/API preview — no public open weights verified", licenseTier: "open-weight", totalParams: "Not publicly disclosed as open weights", contextWindow: "API-defined",
-    released: "August 2026", headline: "The newest Qwen-branded preview is relevant to the frontier race, but it is not a local model today.",
-    hardwareReality: "There are no verified public weights to download, quantize or benchmark locally. It must not appear in the hardware picker until official open weights are published.",
-    accessInstead: "Use Alibaba/Qwen's hosted API or supported cloud endpoint.", littleSibling: "Qwen3.6-27B — the current verified open-weight workstation model in RunLocal's picker.", url: "https://qwen.ai"
+    slug: "qwen-3-8-2-4t", name: "Qwen3.8-2.4T-A95B", author: "Alibaba (Qwen team)", origin: "China",
+    license: "Custom Qwen licence — not the Apache 2.0 that covers the 27B", licenseTier: "open-weight", totalParams: "2.4T MoE (95B active)", contextWindow: "262k tokens, native multimodal",
+    released: "August 2026", headline: "The largest model Alibaba has published, and the top trending release on the Hub at launch. Same generation as the Apache-licensed 27B, under a different licence.",
+    hardwareReality: "Roughly 1.2 TB at 4-bit. Multi-node territory. Community GGUF conversions exist and are mostly of academic interest unless you have a cluster.",
+    accessInstead: "Alibaba Cloud's API and the usual inference providers. FP8 weights are published alongside the BF16 ones if you are renting datacenter GPUs.", littleSibling: "Qwen3.8-27B — dense, Apache 2.0, multimodal, and in the picker.", url: "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
   },
   {
     slug: "kimi-k3", name: "Kimi K3", author: "Moonshot AI", origin: "China", license: "Moonshot Open License", licenseTier: "open-weight",
-    totalParams: "2.8T MoE", contextWindow: "1M tokens, native multimodal", released: "July 2026",
+    totalParams: "2.8T MoE", contextWindow: "1M tokens, native multimodal", released: "June 2026 (weights public on the Hub)",
     headline: "A frontier-scale open-weight MoE whose sheer weight footprint makes it infrastructure rather than homelab software.",
     hardwareReality: "Even aggressive quantization requires well over a terabyte of memory. Practical self-hosting means a multi-node datacenter GPU cluster.",
-    accessInstead: "Moonshot API or a third-party inference provider.", littleSibling: "Kimi K2.x family for smaller agentic workloads.", url: "https://www.moonshot.cn"
+    accessInstead: "Moonshot API or a third-party inference provider.", littleSibling: "Kimi K2.x family for smaller agentic workloads.", url: "https://huggingface.co/moonshotai/Kimi-K3"
   },
   {
     slug: "glm-5-2", name: "GLM-5.2", author: "Z.ai (Zhipu)", origin: "China", license: "MIT", licenseTier: "permissive",

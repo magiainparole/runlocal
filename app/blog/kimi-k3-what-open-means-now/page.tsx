@@ -26,13 +26,22 @@ export default function PostKimiK3() {
         should actually do about it.
       </aside>
 
+      <aside className="mt-5 rounded-md border border-amber-500/40 bg-amber-500/10 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Update, August 2026:</strong>{" "}
+        this post originally described the K3 weights as promised but not yet
+        published. They are on Hugging Face and have been downloaded millions
+        of times. The sentences that treated the release as pending have been
+        corrected; the argument they supported — that public weights and a
+        runnable model are no longer the same thing — is unchanged.
+      </aside>
+
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         On July 16, Moonshot AI released Kimi K3: 2.8 trillion parameters, a
         mixture-of-experts design that activates 16 of its 896 experts per
         token, a one-million-token context window, native multimodality, and
         independent test results that place it fourth among all frontier
         models — ahead of several closed flagships. The weights are promised
-        for July 27. The stock market had DeepSeek flashbacks. The AI press
+        publicly. The stock market had DeepSeek flashbacks. The AI press
         declared, once again, that everything has changed.
       </p>
       <p>
@@ -82,7 +91,7 @@ export default function PostKimiK3() {
       </p>
       <p>
         First, price gravity. Kimi K3 launches at $3 per million input tokens
-        and $15 per million output. Once the weights land on July 27, any
+        and $15 per million output. With the weights public, any
         inference provider can undercut Moonshot&apos;s own API. This
         happened with every previous open frontier release: within weeks,
         serving competition pushed prices well below the closed-lab
@@ -110,9 +119,8 @@ export default function PostKimiK3() {
 
       <h2>The caveats the launch coverage skipped</h2>
       <p>
-        The license is Moonshot&apos;s own, not MIT or Apache. Until the full
-        text ships with the weights on July 27, treat every claim about what
-        you may do with them as provisional. DeepSeek set the gold standard
+        The license is Moonshot&apos;s own, not MIT or Apache. Read the full
+        text on the model card before treating any particular use as allowed. DeepSeek set the gold standard
         by releasing V4 under MIT; Moonshot has historically used custom
         terms. The difference matters enormously for anyone planning to
         serve, fine-tune or distill.
@@ -125,12 +133,11 @@ export default function PostKimiK3() {
         not any specific ordinal.
       </p>
       <p>
-        And the announced-versus-delivered gap is real. As of this writing
-        the weights are a promise with a date attached. We list models on
-        the Frontier page when the open-weight commitment is concrete; K3
-        is there because a dated public commitment from a lab with a track
-        record of shipping meets that bar. If July 27 passes without
-        weights, that entry gets an update with a very different tone.
+        The announced-versus-delivered gap is the one thing this release
+        did not have. The weights are on Hugging Face, they have been pulled
+        millions of times, and the Frontier entry reflects that. Worth
+        remembering the next time a lab announces open weights without a
+        repository to point at: the announcement is not the release.
       </p>
 
       <h2>What to actually do, by hardware class</h2>

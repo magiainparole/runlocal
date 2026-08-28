@@ -33,13 +33,22 @@ export default function PostKimiK3It() {
         dovrebbe fare, in concreto, chi esegue l’AI sul proprio hardware.
       </aside>
 
+      <aside className="mt-5 rounded-md border border-amber-500/40 bg-amber-500/10 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Aggiornamento, agosto 2026:</strong>{" "}
+        questo articolo descriveva i pesi di K3 come promessi ma non ancora
+        pubblicati. Sono su Hugging Face e sono stati scaricati milioni di
+        volte. Le frasi che trattavano il rilascio come imminente sono state
+        corrette; la tesi che sostenevano — pesi pubblici e modello eseguibile
+        non sono più la stessa cosa — resta invariata.
+      </aside>
+
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Il 16 luglio Moonshot AI ha rilasciato Kimi K3: 2.800 miliardi di
         parametri, un’architettura mixture-of-experts che attiva 16 dei suoi
         896 expert per token, una finestra di contesto da un milione di
         token, multimodalità nativa e risultati di test indipendenti che lo
         collocano quarto tra tutti i modelli frontier, davanti a diversi
-        flagship chiusi. I pesi sono promessi per il 27 luglio. La borsa ha
+        flagship chiusi, con i pesi pubblicati. La borsa ha
         avuto un déjà-vu in stile DeepSeek. La stampa di settore ha
         dichiarato, ancora una volta, che tutto è cambiato.
       </p>
@@ -91,8 +100,8 @@ export default function PostKimiK3It() {
       </p>
       <p>
         Primo, la gravità dei prezzi. Kimi K3 debutta a 3 dollari per
-        milione di token in input e 15 per milione in output. Quando i pesi
-        arriveranno, il 27 luglio, qualsiasi provider di inferenza potrà
+        milione di token in input e 15 per milione in output. Con i pesi
+        pubblici, qualsiasi provider di inferenza può
         praticare prezzi più bassi dell’API di Moonshot. È successo con ogni
         precedente rilascio frontier aperto: nel giro di settimane la
         concorrenza sul serving ha spinto i prezzi ben sotto gli
@@ -123,9 +132,8 @@ export default function PostKimiK3It() {
       <h2>Le avvertenze che la copertura del lancio ha saltato</h2>
       <p>
         La licenza è quella proprietaria di Moonshot, né MIT né Apache.
-        Finché il testo completo non arriverà insieme ai pesi il 27 luglio,
-        ogni affermazione su cosa sia permesso farne va considerata
-        provvisoria. DeepSeek ha fissato lo standard di riferimento
+        Leggi il testo completo sulla model card prima di dare per
+        consentito un uso specifico. DeepSeek ha fissato lo standard di riferimento
         rilasciando V4 sotto MIT; Moonshot storicamente usa termini
         propri. La differenza pesa parecchio per chiunque pianifichi
         serving, fine-tuning o distillazione.
@@ -139,13 +147,11 @@ export default function PostKimiK3It() {
         affezionarsi a un ordinale preciso.
       </p>
       <p>
-        E il divario tra annunciato e consegnato è reale. Nel momento in
-        cui scriviamo, i pesi sono una promessa con una data attaccata.
-        Inseriamo i modelli nella pagina Frontier quando l’impegno open
-        weight è concreto; K3 c’è perché un impegno pubblico datato, da
-        parte di un laboratorio con un track record di rilasci, supera
-        quella soglia. Se il 27 luglio passasse senza pesi, quella scheda
-        riceverebbe un aggiornamento con un tono molto diverso.
+        Il divario tra annunciato e consegnato è l’unica cosa che a questo
+        rilascio è mancata. I pesi sono su Hugging Face, sono stati scaricati
+        milioni di volte e la scheda Frontier lo riflette. Vale la pena
+        ricordarlo la prossima volta che un laboratorio annuncia pesi aperti
+        senza un repository da mostrare: l’annuncio non è il rilascio.
       </p>
 
       <h2>Cosa fare in pratica, per classe di hardware</h2>

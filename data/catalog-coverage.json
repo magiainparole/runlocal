@@ -1,5 +1,5 @@
 {
-  "comment": "Family substrings already covered by lib/models.ts or lib/frontier-models.ts. The freshness watchdog flags popular HF models whose id matches none of these. Lowercase, matched against the full model id.",
+  "comment": "Family substrings already covered by lib/model-registry.ts. The freshness watchdog flags popular HF models whose id matches none of these. Lowercase, matched against the full model id. INVARIANT: every coveredFamilies entry must appear in the registry, and the watchdog fails if it does not — so a family can never be silenced without also being documented.",
   "coveredFamilies": [
     "deepseek",
     "qwen",
@@ -12,16 +12,16 @@
     "moonshot",
     "glm",
     "chatglm",
-    "minimax",
     "gpt-oss",
-    "gpt2",
     "eurollm",
     "olmo",
-    "command-r",
-    "c4ai",
-    "yi-",
     "minicpm",
-    "nanbeige"
+    "nemotron",
+    "lfm2"
+  ],
+  "aliasComment": "Alternate repository naming for families already documented above. Exempt from the invariant because the name never appears in our prose — only in Hub repo ids.",
+  "aliasFamilies": [
+    "zai-org"
   ],
   "ignoredAuthors": [
     "openai-community"

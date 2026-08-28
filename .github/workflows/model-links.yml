@@ -1,0 +1,52 @@
+name: Model link check
+
+# Every download path in the curated catalog is hand-written, and a plausible
+# repo id is not the same thing as a real one. This job resolves each hfPath
+# against the Hugging Face API so a broken entry fails a pull request instead
+# of quietly sending readers to a 404.
+#
+# Runs on any change to the catalog, plus weekly — repositories get renamed
+# and deleted without anyone touching this repo.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lib/model-registry.ts"
+      - "scripts/check-model-links.ts"
+      - ".github/workflows/model-links.yml"
+  pull_request:
+    paths:
+      - "lib/model-registry.ts"
+      - "scripts/check-model-links.ts"
+      - ".github/workflows/model-links.yml"
+  schedule:
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: model-links-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Resolve every catalog download path
+        env:
+          HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+        run: npm run check:links
