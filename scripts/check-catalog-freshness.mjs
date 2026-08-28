@@ -186,8 +186,16 @@ for (const m of models) {
   }
 
   // Covered family, undocumented version: the blind spot substring matching
-  // creates. Only worth reporting for models with real traction.
-  if (isCovered(m.id) && (likes >= 200 || dl >= MIN_DOWNLOADS_RECENT)) {
+  // creates. Only worth reporting for models with real traction, and only
+  // while they are still alive — the top-likes pool is full of older
+  // generations (Llama 3.1 has years of accumulated likes) whose version will
+  // never appear in a registry that has moved on, and reporting those every
+  // week is noise, not a finding.
+  if (
+    isCovered(m.id) &&
+    days <= NEW_FAMILY_MAX_AGE_DAYS &&
+    (likes >= 200 || dl >= MIN_DOWNLOADS_RECENT)
+  ) {
     const v = versionToken(m.id);
     if (v && !versionIsDocumented(v.token)) {
       staleVersions.push({ ...m, _days: days, _token: v.token });

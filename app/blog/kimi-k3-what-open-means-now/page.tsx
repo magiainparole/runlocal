@@ -40,14 +40,14 @@ export default function PostKimiK3() {
         mixture-of-experts design that activates 16 of its 896 experts per
         token, a one-million-token context window, native multimodality, and
         independent test results that place it fourth among all frontier
-        models — ahead of several closed flagships. The weights are promised
-        publicly. The stock market had DeepSeek flashbacks. The AI press
+        models — ahead of several closed flagships. The weights are public. The
+        stock market had DeepSeek flashbacks. The AI press
         declared, once again, that everything has changed.
       </p>
       <p>
         Something has changed, but it is not the thing the headlines say. To
         see it, you have to hold two facts in your head at the same time. The
-        weights will be public. And at roughly 1.4 terabytes in aggressive
+        weights are public. And at roughly 1.4 terabytes in aggressive
         4-bit quantization, no consumer machine — no maxed-out Mac Studio, no
         four-GPU workstation, no homelab — will load them. Kimi K3 is open in
         the licensing sense and closed in every practical sense that matters

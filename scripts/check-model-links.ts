@@ -106,6 +106,9 @@ async function main() {
       console.log(`  ${ok ? "ok    " : "MISSING"} ${tag} → ${status}`);
     }
     console.log(`\n${confirmed} of ${PROBE.length} candidate tag(s) exist. Add only those to lib/model-registry.ts.`);
+    // A probe that reports MISSING and still exits green would let a bad tag
+    // through the very step meant to catch it.
+    if (confirmed < PROBE.length) process.exit(1);
     return;
   }
 

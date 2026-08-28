@@ -54,7 +54,7 @@ export default function PostKimiK3It() {
       </p>
       <p>
         Qualcosa è cambiato davvero, ma non ciò che raccontano i titoli. Per
-        vederlo bisogna tenere insieme due fatti. I pesi saranno pubblici. E
+        vederlo bisogna tenere insieme due fatti. I pesi sono pubblici. E
         con circa 1,4 terabyte in quantizzazione aggressiva a 4 bit, nessuna
         macchina consumer — nessun Mac Studio al massimo della
         configurazione, nessuna workstation a quattro GPU, nessun homelab —
