@@ -51,11 +51,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # --strict: an Ollama tag that stops resolving fails the build, same as a
+      # Hugging Face path. Every tag in the registry was confirmed against the
+      # registry manifest endpoint, so there is nothing left to tolerate.
       - name: Resolve every catalog download path
         if: inputs.probe_tags == ''
         env:
           HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
-        run: npm run check:links
+        run: npm run check:links -- --strict
 
       # Confirms a candidate Ollama tag exists before anyone writes it into the
       # registry. Run from the Actions tab with the probe_tags input set.

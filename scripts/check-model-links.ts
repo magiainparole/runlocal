@@ -5,8 +5,8 @@
 // tag that has never existed, and nothing in the build will complain. The picker
 // then sends people to a 404. This script closes that gap.
 //
-//   npm run check:links                     # HF paths (fatal) + Ollama tags (warn)
-//   npm run check:links -- --strict         # Ollama failures are fatal too
+//   npm run check:links                     # HF paths fatal, Ollama tags warn
+//   npm run check:links -- --strict         # Ollama failures are fatal too (CI)
 //   npm run check:links -- --list           # print what would be checked, no network
 //   npm run check:links -- --probe a:1,b:2  # test candidate Ollama tags, nothing else
 //
