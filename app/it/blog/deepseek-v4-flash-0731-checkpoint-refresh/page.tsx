@@ -38,8 +38,8 @@ export default function PostDeepSeekV4Flash0731It() {
         Non abbiamo saputo di DeepSeek-V4-Flash-0731 da un post di lancio o
         da un ciclo di stampa. Lo abbiamo saputo dalla nostra sincronizzazione
         settimanale con Hugging Face, la stessa pipeline che alimenta la{" "}
-        <Link href="/it/trending">lista trending</Link> di questo sito. Nello
-        snapshot scaricato il 24 agosto era in cima: circa 3,09 milioni di
+        <Link href="/it/trending">lista trending</Link> di questo sito. Nell&apos;ultimo
+        snapshot era in cima: circa 3,09 milioni di
         download e 3.656 like, davanti a GLM-5.2 e davanti a DeepSeek V4 Pro.
         Solo cinque repository in quella finestra avevano più download:
         gpt2, gpt-oss-20b, Llama 3.1 8B e DeepSeek R1, che accumulano

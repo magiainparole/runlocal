@@ -32,10 +32,10 @@ export default function PostOrnith() {
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         The repository ornith-ai/Ornith-1.0-35B-GGUF went up on July 18 —
         the same day Kimi K3&apos;s weights dominated every AI headline, which
-        is probably why nobody noticed. By the trending snapshot this site
-        fetched on August 24, it had accumulated 3,544,218 downloads and
-        1,053 likes. That download figure puts it ahead of every model in
-        that week&apos;s top sixteen except four repositories that have been
+        is probably why nobody noticed. In the latest trending snapshot on this
+        site it had accumulated 3,544,218 downloads and 1,053 likes. That
+        download figure puts it ahead of every model in the top sixteen
+        except four repositories that have been
         accumulating traffic for longer: gpt2, gpt-oss-20b, Llama 3.1 8B and
         DeepSeek R1.
         A brand-new 35B model from an unfamiliar account outdownloading GLM-5.2

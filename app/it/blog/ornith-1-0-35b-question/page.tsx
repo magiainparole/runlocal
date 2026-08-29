@@ -41,10 +41,10 @@ export default function PostOrnithIt() {
         Il repository ornith-ai/Ornith-1.0-35B-GGUF è comparso il 18 luglio —
         lo stesso giorno in cui i pesi di Kimi K3 dominavano ogni titolo
         sull&apos;AI, il che probabilmente spiega perché nessuno se ne sia
-        accorto. Nello snapshot scaricato da questo sito il 24 agosto aveva
+        accorto. Nell&apos;ultimo snapshot trending di questo sito aveva
         accumulato 3.544.218 download e 1.053 like. Quella cifra di download
-        lo colloca davanti a ogni modello nella top sedici di quella
-        settimana, tranne quattro repository che accumulano traffico da più
+        lo colloca davanti a ogni modello nella top sedici, tranne quattro
+        repository che accumulano traffico da più
         tempo: gpt2, gpt-oss-20b, Llama 3.1 8B e DeepSeek R1. Un modello da 35B nuovo di zecca,
         di un account sconosciuto, che supera in download GLM-5.2 e
         DeepSeek V4 Pro in cinque settimane è o un lancio davvero notevole o

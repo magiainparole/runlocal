@@ -33,7 +33,7 @@ export default function PostDeepSeekV4Flash0731() {
         press cycle. We heard about it from our own weekly Hugging Face
         sync, the same pipeline that feeds the{" "}
         <Link href="/trending">trending list</Link> on this site. In the
-        snapshot fetched on August 24, it sat at the top: roughly 3.09 million
+        latest snapshot it sat at the top: roughly 3.09 million
         downloads and 3,656 likes, ahead of GLM-5.2 and ahead of DeepSeek V4
         Pro. Only five repositories in that window carried more downloads:
         gpt2, gpt-oss-20b, Llama 3.1 8B and DeepSeek R1, which accumulate
