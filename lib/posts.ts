@@ -9,6 +9,24 @@ export type PostMeta = {
 
 export const posts: PostMeta[] = [
   {
+    slug: "ornith-1-0-35b-question",
+    title: "3.5 million downloads, almost no footprint: the Ornith-1.0-35B question",
+    subtitle:
+      "A 35B MIT-licensed model from an account we'd never heard of just outran everything else on Hugging Face's trending list except the evergreen giants. Here is what we checked, what we couldn't verify, and why it isn't in the directory.",
+    date: "2026-08-20",
+    readingTime: "8 min",
+    tags: ["Verification", "Directory", "Trending"]
+  },
+  {
+    slug: "deepseek-v4-flash-0731-checkpoint-refresh",
+    title: "DeepSeek V4 Flash-0731, and the case for dated checkpoints",
+    subtitle:
+      "A quiet mid-cycle refresh just became the most-downloaded model on the Hub. What a dated checkpoint tag means if you already run the model it's replacing.",
+    date: "2026-08-06",
+    readingTime: "8 min",
+    tags: ["DeepSeek", "Trending", "Analysis"]
+  },
+  {
     slug: "kimi-k3-what-open-means-now",
     title: "Kimi K3 changes the definition of 'open'",
     subtitle:
