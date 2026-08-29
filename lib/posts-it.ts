@@ -5,6 +5,42 @@ import type { PostMeta } from "./posts";
 // metadata already set in each app/it/blog/<slug>/page.tsx.
 export const postsIt: PostMeta[] = [
   {
+    slug: "dwarfstar-ds4-one-model-inference-engine",
+    title: "DwarfStar, e la tesi di un motore che esegue un modello solo",
+    subtitle:
+      "L’autore di Redis ha scritto in C un motore di inferenza che esegue sostanzialmente un modello solo, e fa cose che i runtime generalisti non fanno. Cosa azzecca ds4, e quanto costa in hardware.",
+    date: "2026-08-27",
+    readingTime: "10 min",
+    tags: ["Strumenti", "Inferenza", "Quantizzazione"]
+  },
+  {
+    slug: "qwen-3-8-27b-the-release-that-landed",
+    title: "Qwen 3.8 27B è il rilascio che è davvero atterrato",
+    subtitle:
+      "Alibaba ha pubblicato due modelli della stessa generazione questo mese. Uno ha quattro milioni di download, l’altro ventisettemila. La differenza non è la capacità.",
+    date: "2026-08-21",
+    readingTime: "9 min",
+    tags: ["Qwen", "Licenze", "Analisi"]
+  },
+  {
+    slug: "ornith-1-0-35b-question",
+    title: "3,5 milioni di download, quasi nessuna traccia: la domanda su Ornith-1.0-35B",
+    subtitle:
+      "Un modello da 35B con licenza MIT, di un account che non conoscevamo, ha appena superato in download quasi tutto il resto della lista trending di Hugging Face, tranne i giganti evergreen. Cosa abbiamo controllato, cosa non siamo riusciti a verificare, e perché non è ancora nella directory.",
+    date: "2026-08-20",
+    readingTime: "8 min",
+    tags: ["Verifica", "Directory", "Trending"]
+  },
+  {
+    slug: "deepseek-v4-flash-0731-checkpoint-refresh",
+    title: "DeepSeek V4 Flash-0731, e il caso dei checkpoint datati",
+    subtitle:
+      "Un aggiornamento silenzioso a metà ciclo è appena diventato il modello più scaricato sull'Hub. Cosa significa un checkpoint datato se già usi il modello che sostituisce.",
+    date: "2026-08-06",
+    readingTime: "8 min",
+    tags: ["DeepSeek", "Trending", "Analisi"]
+  },
+  {
     slug: "kimi-k3-what-open-means-now",
     title: "Kimi K3 cambia la definizione di “open”",
     subtitle:
