@@ -31,8 +31,7 @@ export default function PostDwarfStarIt() {
         ha scritto Redis — ha fatto il contrario e ha costruito un
         programma piccolo che esegue sostanzialmente un modello solo, molto
         bene. Questo articolo spiega il trucco che lo rende possibile, che
-        hardware serve, e perché non l’abbiamo ancora aggiunto al nostro
-        catalogo strumenti.
+        hardware serve, e cosa costa davvero farlo girare.
       </aside>
 
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -162,20 +161,18 @@ export default function PostDwarfStarIt() {
         velocità dovrebbe rileggere quella frase.
       </p>
 
-      <h2>Perché non è ancora nel nostro catalogo strumenti</h2>
+      <h2>Cosa è costato metterlo nel catalogo</h2>
       <p>
-        La nostra <Link href="/it/tools">pagina strumenti</Link> elenca
-        tredici voci e ds4 non è tra queste, il che è una lacuna e non un
-        giudizio. Il catalogo è costruito attorno a software che chi legge
-        può installare e usare con i modelli della nostra{" "}
-        <Link href="/it/models">directory</Link>, e ds4 al momento non
-        soddisfa in modo pulito nessuna delle due metà: la sua lista di
-        modelli si sovrappone appena a quello che raccomandiamo, e la sua
-        soglia di memoria sta sopra ogni profilo hardware che tracciamo.
-        Aggiungerlo significa o scrivere una scheda che vale per una fetta
-        ristretta di lettori, o allargare lo scopo del catalogo. Quella
-        decisione non è stata presa, e fingere il contrario aggiungendo una
-        scheda in silenzio sarebbe peggio che dirlo qui.
+        ds4 è ora nella <Link href="/it/tools">pagina strumenti</Link>, e
+        per portarcelo abbiamo dovuto allargare lo scopo di quella pagina.
+        Il catalogo dava per scontato software installabile sull’hardware a
+        cui si rivolge il resto del sito, il che metteva una soglia da 128
+        GB fuori portata per definizione. Abbiamo cambiato la regola invece
+        di piegare la scheda: macchine di quella classe non sono più
+        esotiche, e un catalogo che finge che il DGX Spark e i Mac Studio
+        grandi non esistano sta descrivendo il 2024. La scheda apre con il
+        requisito di memoria, così nessuno arriva alle istruzioni di
+        installazione prima di scoprire che non può usarle.
       </p>
       <p>
         DeepSeek V4 Flash — il modello per cui ds4 esiste — mancava dalla

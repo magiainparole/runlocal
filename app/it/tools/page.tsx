@@ -39,10 +39,13 @@ export default function ToolsPageIt() {
           Un modello è solo un file. Per usarlo serve un software che carichi
           quel file e ti permetta di parlarci. Gli strumenti qui sotto
           coprono tutto: dalle app di chat a un click per principianti ai
-          server industriali per team. Scegli per categoria: un Runtime è il
-          motore, una GUI è l&apos;app amichevole sopra, un Server serve per
-          condividerlo con più utenti. Le schede sono in inglese (dati del
-          catalogo). Se stai iniziando,{" "}
+          server industriali per team, più qualcuno che richiede una
+          workstation con più memoria di quanto disco abbiano molti laptop.
+          Scegli per categoria: un Runtime è il motore, una GUI è
+          l&apos;app amichevole sopra, un Server serve per condividerlo con
+          più utenti. Dove una voce ha una soglia hardware, i suoi
+          compromessi lo dicono per primi. Le schede sono in inglese (dati
+          del catalogo). Se stai iniziando,{" "}
           <Link href="/it/guides/ollama" className="text-brand-dark dark:text-brand-light hover:underline">
             Ollama
           </Link>{" "}

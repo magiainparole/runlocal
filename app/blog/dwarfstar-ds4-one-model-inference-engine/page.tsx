@@ -23,8 +23,7 @@ export default function PostDwarfStar() {
         Salvatore Sanfilippo — the programmer who wrote Redis — went the
         other way and built a small program that runs essentially one
         model, extremely well. This post explains the trick that makes it
-        work, what hardware you need, and why we have not added it to our
-        tool catalogue yet.
+        work, what hardware you need, and what it takes to run it.
       </aside>
 
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -149,19 +148,17 @@ export default function PostDwarfStar() {
         speed should read that sentence twice.
       </p>
 
-      <h2>Why it is not in our tool catalogue yet</h2>
+      <h2>What adding it to the catalogue cost us</h2>
       <p>
-        Our <Link href="/tools">tools page</Link> lists thirteen entries and
-        ds4 is not among them, which is a gap rather than a judgement. The
-        catalogue is built around software a reader can install and use
-        against the models in our{" "}
-        <Link href="/models">directory</Link>, and ds4 currently satisfies
-        neither half of that cleanly: its model list barely overlaps with
-        what we recommend, and its memory floor sits above every hardware
-        profile we track. Adding it means either writing an entry that
-        applies to a small slice of readers or expanding what the catalogue
-        is for. That decision has not been made, and pretending otherwise
-        by quietly adding a card would be worse than saying so here.
+        ds4 is now in the <Link href="/tools">tools page</Link>, and getting
+        it there meant widening what that page is for. The catalogue used to
+        assume software a reader could install on hardware the rest of the
+        site addresses, which put a 128 GB floor outside its scope by
+        definition. We changed the rule rather than bend the entry: machines
+        in that class are no longer exotic, and a catalogue that pretends
+        the DGX Spark and the large Mac Studio do not exist is describing
+        2024. The entry leads with the memory requirement so nobody reaches
+        the install instructions before finding out they cannot use them.
       </p>
       <p>
         DeepSeek V4 Flash — the model ds4 exists to run — was missing from

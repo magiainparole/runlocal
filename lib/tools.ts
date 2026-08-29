@@ -53,6 +53,28 @@ export const tools: ToolEntry[] = [
     guideSlug: "llama-cpp"
   },
   {
+    slug: "dwarfstar-ds4",
+    name: "DwarfStar (ds4)",
+    category: "Runtime",
+    platforms: ["macOS", "Linux"],
+    bestFor: "Running DeepSeek V4 Flash at usable speed on one 128 GB machine, and deliberately little else.",
+    license: "MIT",
+    pros: [
+      "Asymmetric 2-bit quantization of the routed MoE experts only, which is what puts a 300B-class model inside 128 GB",
+      "Metal, CUDA and ROCm backends, with benchmarks published per machine rather than as a single headline number",
+      "On-disk KV cache, so a long session survives a restart",
+      "SSD streaming when the model does not fit in RAM",
+      "Pipeline and tensor parallelism across two machines"
+    ],
+    cons: [
+      "Needs 96-128 GB of RAM for the Q2 build and 256 GB or more for Q4; below that it is not an option",
+      "Runs one model family on purpose: DeepSeek V4 Flash and PRO, plus GLM 5.2",
+      "The author calls it beta quality and the code changes fast",
+      "Distributed inference fits larger models and speeds up prefill; it does not make decode faster"
+    ],
+    url: "https://github.com/antirez/ds4"
+  },
+  {
     slug: "lm-studio",
     name: "LM Studio",
     category: "GUI",
