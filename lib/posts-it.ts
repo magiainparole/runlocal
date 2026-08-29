@@ -35,7 +35,7 @@ export const postsIt: PostMeta[] = [
     slug: "deepseek-v4-flash-0731-checkpoint-refresh",
     title: "DeepSeek V4 Flash-0731, e il caso dei checkpoint datati",
     subtitle:
-      "Un aggiornamento silenzioso a metà ciclo è appena diventato il modello più scaricato sull'Hub. Cosa significa un checkpoint datato se già usi il modello che sostituisce.",
+      "Un aggiornamento silenzioso a metà ciclo è andato dritto in cima alla nostra lista trending settimanale. Cosa significa un checkpoint datato se già usi il modello che sostituisce.",
     date: "2026-08-06",
     readingTime: "8 min",
     tags: ["DeepSeek", "Trending", "Analisi"]

@@ -129,15 +129,30 @@ function buildLlamaCppCommand(model: CatalogModel, quant: CatalogQuant): string 
     return `# Official model: https://huggingface.co/${model.hfPath}\n# Choose a trusted GGUF conversion for ${quant.name}; RunLocal will not guess a download filename.`;
   }
 
-  const repoName = model.hfPath.split("/").pop() ?? "model-GGUF";
-  const stem = repoName.replace(/-GGUF$/i, "");
-  const fileGuess = `${stem}-${quant.name}.gguf`;
+  // The filename is never inferred from the repo name. Repositories vary too
+  // much for that: some prefix the quant (Qwen3.8-27B-UD-Q4_K_M), some use a
+  // dot (Phi-4-mini-instruct.Q8_0), some split a build across a subdirectory
+  // of shards. A guess that looks right and 404s is worse than no command.
+  if (!quant.path) {
+    return [
+      `# ${model.hfPath} publishes GGUF builds, but RunLocal has not verified a`,
+      `# filename for ${quant.name}. Open the repository and pick the file yourself.`
+    ].join("\n");
+  }
+
+  // A path with a directory component is a sharded build: fetch the whole
+  // directory and point llama.cpp at the first shard, which loads the rest.
+  const shardDir = quant.path.includes("/") ? quant.path.split("/")[0] : null;
+  const download = shardDir
+    ? `huggingface-cli download ${model.hfPath} --include "${shardDir}/*" \\`
+    : `huggingface-cli download ${model.hfPath} ${quant.path} \\`;
+
   return [
-    `huggingface-cli download ${model.hfPath} ${fileGuess} \\`,
+    download,
     `  --local-dir ./models`,
     ``,
     `./build/bin/llama-server \\`,
-    `  --model ./models/${fileGuess} \\`,
+    `  --model ./models/${quant.path} \\`,
     `  --ctx-size 8192 \\`,
     `  --n-gpu-layers 999 \\`,
     `  --port 8080`

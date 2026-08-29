@@ -31,7 +31,7 @@ export default function PostDeepSeekV4Flash0731It() {
         architettura, nessun salto di versione — eppure in pochi giorni era in
         cima alla nostra lista trending settimanale. Questo articolo spiega cosa cambia davvero in un
         checkpoint datato, se serve fare qualcosa se già usi il modello che
-        sostituisce, e perché non l&apos;abbiamo ancora aggiunto al picker.
+        sostituisce, e cosa corregge la nota di aggiornamento qui sopra.
       </aside>
 
       <aside className="mt-5 rounded-md border border-amber-500/40 bg-amber-500/10 p-4 text-sm leading-relaxed">
@@ -98,20 +98,32 @@ export default function PostDeepSeekV4Flash0731It() {
         tramite la voce V4 Pro nella{" "}
         <Link href="/it/frontier">pagina Frontier</Link>) ma la cui versione
         specifica sull&apos;Hub non compare in nessuno dei nostri file di
-        catalogo. V4 Flash-0731 è esattamente questo caso: la famiglia è
-        coperta, il checkpoint non è documentato, quindi l&apos;esecuzione di
-        lunedì l&apos;ha segnalato come versione superata giorni prima che
-        chiunque di noi lo avrebbe trovato scorrendo l&apos;Hub a mano. È un
-        pezzo di automazione piccolo e poco appariscente, e sta facendo più
-        segnalazioni reali su questo sito di quanto qualsiasi di noi vorrebbe
-        ammettere.
+        catalogo.
+      </p>
+      <p>
+        L&apos;esecuzione di lunedì ha fatto emergere questo checkpoint sotto
+        la prima voce, come rilascio recente di rilievo appartenente a una
+        famiglia coperta. Il secondo controllo, quello sulle versioni non
+        documentate, non avrebbe potuto intercettarlo: riconosce una versione
+        solo se il numero contiene un punto, quindi legge GLM-5.2 e si perde
+        del tutto un suffisso datato come 0731. È un compromesso voluto,
+        perché accettare numeri interi nudi finirebbe per confondersi con i
+        conteggi di parametri e sommergere il report di rumore. Vuol dire
+        però che l&apos;angolo cieco di cui parla questo articolo, un
+        rilascio che cambia il modello senza cambiare la stringa di versione,
+        è proprio quello a cui il controllo sulle versioni è cieco.
+        L&apos;automazione ci è arrivata lo stesso, per la via più grezza del
+        volume di download.
       </p>
 
       <h2>Vale la pena scaricarlo</h2>
       <p>
         Se già usi DeepSeek V4 Flash in locale: sì, con un&apos;avvertenza.
-        L&apos;architettura e l&apos;ingombro in memoria non cambiano, quindi
-        i tuoi calcoli sull&apos;hardware restano validi — ma la conversione
+        Il nucleo mixture-of-experts non cambia, l&apos;ingombro sì: il
+        modulo DSpark aggiunge circa 13 miliardi di parametri, quindi rifai i
+        conti sulla memoria invece di dare per validi quelli di giugno. La{" "}
+        <Link href="/it/models">scheda nella directory</Link> riporta le
+        dimensioni misurate delle build attuali. E la conversione
         GGUF che stai usando è stata quantizzata sui pesi vecchi. Un nuovo
         giro di tuning può cambiare il comportamento di una quantizzazione a
         bit bassi anche quando il modello a piena precisione migliora, quindi
@@ -125,9 +137,9 @@ export default function PostDeepSeekV4Flash0731It() {
         Se stai valutando DeepSeek V4 Flash per la prima volta: il numero di
         download è un segnale reale, ma non è la stessa cosa della verifica
         a cui questo sito sottopone un modello prima che arrivi nel{" "}
-        <Link href="/it/picker">picker</Link>. Usalo direttamente se te la
-        senti di giudicare la qualità dell&apos;output da solo; altrimenti
-        aspetta.
+        <Link href="/it/picker">picker</Link> — verifica che nel frattempo
+        ha superato, quindi la scheda c&apos;è, con i valori di memoria
+        misurati per ogni quantizzazione.
       </p>
 
       <h2>Il vuoto che l&apos;articolo ammetteva, ora colmato</h2>

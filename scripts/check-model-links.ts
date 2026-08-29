@@ -34,12 +34,13 @@ const PROBE = (() => {
 })();
 
 const HF_API = "https://huggingface.co/api/models";
+const HF_RESOLVE = "https://huggingface.co";
 // The registry answers per tag; ollama.com/library only proves the model page
 // exists, which is why a wrong size suffix used to slip through unnoticed.
 const OLLAMA_REGISTRY = "https://registry.ollama.ai/v2/library";
 const TIMEOUT_MS = 15_000;
 
-type Check = { kind: "hf" | "ollama"; id: string; url: string; usedBy: string[] };
+type Check = { kind: "hf" | "file" | "ollama"; id: string; url: string; usedBy: string[] };
 
 // "qwen2.5-coder:32b" -> the manifest for tag "32b" of library model
 // "qwen2.5-coder". A bare name means the "latest" tag.
@@ -63,6 +64,14 @@ function collect(): Check[] {
   for (const model of catalog) {
     if (model.hfPath) {
       add("hf", model.hfPath, `${HF_API}/${model.hfPath}`, model.id);
+    }
+    // A repository that resolves is not the same thing as a download that
+    // works. Every quant filename in the catalog is checked individually,
+    // because the picker prints these paths as copy-paste commands.
+    for (const quant of model.quants) {
+      if (!quant.path) continue;
+      const file = `${model.hfPath}/${quant.path}`;
+      add("file", file, `${HF_RESOLVE}/${model.hfPath}/resolve/main/${encodeURI(quant.path)}`, model.id);
     }
     if (model.ollamaTag) {
       add("ollama", model.ollamaTag, ollamaUrl(model.ollamaTag), model.id);
@@ -135,7 +144,7 @@ async function main() {
 
       if (ok) {
         console.log(`  ok    ${line}`);
-      } else if (next.kind === "hf") {
+      } else if (next.kind === "hf" || next.kind === "file") {
         failures.push(line);
         console.log(`  FAIL  ${line}`);
       } else {
@@ -156,7 +165,7 @@ async function main() {
   if (failures.length > 0) {
     console.error(`\n${failures.length} Hugging Face path(s) do not resolve:`);
     for (const f of failures) console.error(`  - ${f}`);
-    console.error("\nFix the hfPath in lib/model-registry.ts, or remove the entry.");
+    console.error("\nFix the hfPath or the quant path in lib/model-registry.ts, or remove the entry.");
     process.exit(1);
   }
 
