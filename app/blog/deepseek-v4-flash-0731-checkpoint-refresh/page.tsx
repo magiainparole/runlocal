@@ -28,6 +28,18 @@ export default function PostDeepSeekV4Flash0731() {
         added it to the picker.
       </aside>
 
+      <aside className="mt-5 rounded-md border border-amber-500/40 bg-amber-500/10 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Update, August 29, 2026:</strong>{" "}
+        two corrections. This post described the refresh as carrying the same
+        parameter count as the June checkpoint. It does not: the Hub reports
+        290.9B for the June weights and 304.2B for 0731, because 0731 ships
+        with a DSpark speculative-decoding module attached, and DeepSeek
+        calls it the official release superseding a preview rather than a
+        mid-cycle nudge. And the gap admitted at the end of this post is
+        closed — DeepSeek V4 Flash now has a directory entry and a hardware
+        profile in the picker.
+      </aside>
+
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         We didn&apos;t hear about DeepSeek-V4-Flash-0731 from a blog post or a
         press cycle. We heard about it from our own weekly Hugging Face
@@ -49,10 +61,13 @@ export default function PostDeepSeekV4Flash0731() {
         DeepSeek has leaned on this pattern before for updates that fall
         between major releases: keep the model name, append the push date,
         and let the repository speak for itself instead of writing a launch
-        post. There is no new architecture here and no claim of a generation
-        bump — V4 Flash-0731 is the same mixture-of-experts design, the same
-        parameter count, the same context window as the June checkpoint.
-        What changes in a refresh like this is usually the training beyond
+        post. There is no generation bump here: the mixture-of-experts core
+        is unchanged at 256 routed experts with 6 active per token, and the
+        million-token context window is the same as the June checkpoint. The
+        weights are not identical in size, though. The June repository
+        reports 290.9B parameters and 0731 reports 304.2B, because this
+        checkpoint carries a DSpark speculative-decoding module the earlier
+        one lacked. What else changes in a refresh like this is the training beyond
         that point: another round of reinforcement learning, a data mix
         adjustment, bug fixes to tokenizer edge cases. None of it shows up in
         a spec sheet. All of it can show up in output quality.
@@ -103,18 +118,25 @@ export default function PostDeepSeekV4Flash0731() {
         wait.
       </p>
 
-      <h2>The honest gap</h2>
+      <h2>The gap this post admitted, since closed</h2>
       <p>
-        Here is the part we&apos;d rather not bury in a footnote: despite the
-        download count, despite the family being covered on the Frontier
-        page, DeepSeek V4 Flash — old checkpoint or new — is not yet in the
-        directory or the picker. Adding it properly means a hardware
-        profile with real memory numbers per quant and a Hugging Face path
-        that has been checked, not just a paragraph of prose asserting it is
-        good. That work isn&apos;t done. Treat the trending position as a
-        strong hint that this model is worth your attention, not as a
-        substitute for the entry we haven&apos;t finished writing yet — and
-        when it clears that bar, it will show up in the usual places.
+        When this went up, DeepSeek V4 Flash was missing from the directory
+        and the picker despite the download count, and we said so rather
+        than let the omission pass unremarked. Adding it properly meant a
+        hardware profile with real memory numbers per quant and a Hugging
+        Face path that had been checked, not a paragraph of prose asserting
+        the model is good. That work has since been done: the model is in
+        the <Link href="/models">directory</Link>, and the{" "}
+        <Link href="/picker">picker</Link> now recommends it on machines
+        with enough memory, which in practice means 128 GB and up.
+      </p>
+      <p>
+        The memory figures there are the measured sizes of the unsloth GGUF
+        builds rather than estimates, and the honest edge of that entry is
+        worth repeating here: at 96 GB nothing in that repository fits. The
+        96 GB number that circulates around this model comes from
+        DwarfStar&apos;s own asymmetric quantization recipe, not from a
+        stock GGUF file.
       </p>
       <p>
         It is worth holding this next to{" "}

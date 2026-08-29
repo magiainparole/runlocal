@@ -164,12 +164,16 @@ export default function PostDwarfStar() {
         by quietly adding a card would be worse than saying so here.
       </p>
       <p>
-        The related gap is that DeepSeek V4 Flash — the model ds4 exists to
-        run — is also still missing from the directory and the picker,
-        despite sitting at the top of our{" "}
-        <Link href="/trending">trending list</Link>. The two absences share
-        a cause. Both need hardware profiles with real memory numbers
-        behind them, and that work is not done.
+        DeepSeek V4 Flash — the model ds4 exists to run — was missing from
+        the directory for the same reason when this post went up. That half
+        has since been fixed: it now has an entry and a hardware profile,
+        with memory figures measured from the unsloth GGUF builds. Worth
+        noting where those figures land against the numbers above, because
+        they do not agree. The smallest stock GGUF in that repository is
+        about 91 GB and the Q2 build is about 97 GB, so a 96 GB machine
+        misses both once you leave room for context. The 96 GB floor quoted
+        here is a property of ds4&apos;s own quantization, not of the model,
+        and that is precisely the point the engine is making.
       </p>
 
       <h2>The broader point about specialisation</h2>

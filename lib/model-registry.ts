@@ -93,6 +93,18 @@ export const families: Family[] = [
     pickerMeta: { family: "Qwen 3.8", origin: "Alibaba · China", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 262_144, releaseYear: 2026 }
   },
   {
+    id: "deepseek-v4-flash",
+    directory: {
+      slug: "deepseek-v4-flash", name: "DeepSeek V4 Flash", author: "DeepSeek AI", origin: "China", license: "MIT",
+      paramSizes: ["304B-A13B MoE (284B before the DSpark decoder)"],
+      contextWindow: "1M tokens (65k native, extended 16x with YaRN)",
+      bestFor: ["Agentic coding", "Long documents", "High-memory workstations"],
+      notes: "The most-downloaded open-weight model on the Hub, and the largest entry here that a single machine can still load. 256 routed experts with 6 active per token means roughly 13B parameters fire on any given token, so it answers far faster than 304B suggests. The 0731 checkpoint supersedes the June preview and carries a DSpark speculative-decoding module, which is where the extra weights over the 284B base come from. Weights ship natively in FP8, so a Q8 build costs only about 7 GB more than Q4.",
+      url: "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731", releaseYear: 2026
+    },
+    pickerMeta: { family: "DeepSeek V4 Flash", origin: "DeepSeek · China", license: { tier: "permissive", label: "MIT" }, contextWindow: 1_048_576, releaseYear: 2026 }
+  },
+  {
     id: "qwen-3-6",
     directory: {
       slug: "qwen-3-6", name: "Qwen 3.6", author: "Alibaba (Qwen team)", origin: "China",
@@ -264,6 +276,7 @@ export const hardwareProfiles: HardwareProfile[] = [
   { id: "qwen-3-8-27b", familyId: "qwen-3-8", variant: "27B", paramBillions: 27.8, isMoE: false, useCase: { general: 10, code: 10, longContext: 9, math: 9 }, ollamaTag: "qwen3.8:27b", hfPath: "unsloth/Qwen3.8-27B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 30 }], notes: "Dense, Apache 2.0 and natively multimodal. The current default choice for a 24 GB card; bartowski publishes an imatrix build too." },
   { id: "glm-4-7-flash-31b", familyId: "glm-4-7", variant: "Flash 31B MoE", paramBillions: 31.2, activeParamBillions: 3.4, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, ollamaTag: "glm-4.7-flash:latest", hfPath: "unsloth/GLM-4.7-Flash-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 19 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 22.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34 }], notes: "MIT licensed, 200k context, and one of the strongest agentic-coding models that fits on a single workstation GPU." },
   { id: "nemotron-3-5-lightning-30b", familyId: "nemotron-3-5", variant: "30B-A3B hybrid", paramBillions: 31.6, activeParamBillions: 3, isMoE: true, useCase: { general: 8, code: 8, longContext: 9, math: 7 }, hfPath: "ggml-org/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 19 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 22.5 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34 }], notes: "Only about 3B parameters are active per token, so it answers at small-model speed while occupying 30B of memory." },
+  { id: "deepseek-v4-flash-0731", familyId: "deepseek-v4-flash", variant: "0731 (304B-A13B MoE)", paramBillions: 304, activeParamBillions: 13, isMoE: true, useCase: { general: 9, code: 10, longContext: 10, math: 9 }, hfPath: "unsloth/DeepSeek-V4-Flash-0731-GGUF", quants: [{ name: "UD-IQ2_XXS", qualityBucket: "medium", memoryGb: 91 }, { name: "UD-Q2_K_XL", qualityBucket: "medium", memoryGb: 97 }, { name: "UD-Q4_K_XL", qualityBucket: "high", memoryGb: 155 }, { name: "UD-Q8_K_XL", qualityBucket: "near-fp16", memoryGb: 162 }], notes: "Memory figures are the measured sizes of the unsloth GGUF builds on the Hub. A 128 GB machine reaches UD-Q2_K_XL; 96 GB does not fit these files — the 96 GB number quoted around DwarfStar comes from that engine’s own asymmetric recipe, not from a stock GGUF. Because the weights are natively FP8, UD-Q8_K_XL is effectively lossless at only about 7 GB more than UD-Q4_K_XL." },
   { id: "mistral-small-4-119b-a6b", familyId: "mistral-small-4", variant: "119B-A6B MoE", paramBillions: 119, activeParamBillions: 6.5, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "mistralai/Mistral-Small-4-119B-2603", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 68 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 80 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 125 }] },
   { id: "mistral-medium-3-5-128b", familyId: "mistral-medium-3-5", variant: "128B dense", paramBillions: 128, isMoE: false, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "unsloth/Mistral-Medium-3.5-128B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 75 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 88 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 135 }] }
 ];
@@ -311,6 +324,6 @@ export const frontierModels: FrontierModel[] = [
   {
     slug: "deepseek-v4-pro", name: "DeepSeek V4 Pro", author: "DeepSeek AI", origin: "China", license: "MIT", licenseTier: "permissive",
     totalParams: "1.6T MoE (49B active)", contextWindow: "1M tokens", released: "2026", headline: "Frontier-scale DeepSeek model for code, math and agents under a permissive license.",
-    hardwareReality: "The full checkpoint needs several hundred gigabytes to more than a terabyte depending on precision and runtime overhead.", accessInstead: "DeepSeek API or third-party hosting.", littleSibling: "DeepSeek V4 Flash is smaller but remains high-memory workstation territory.", url: "https://www.deepseek.com"
+    hardwareReality: "The full checkpoint needs several hundred gigabytes to more than a terabyte depending on precision and runtime overhead.", accessInstead: "DeepSeek API or third-party hosting.", littleSibling: "DeepSeek V4 Flash — 304B-A13B, MIT, and in the picker for machines with 128 GB or more.", url: "https://www.deepseek.com"
   }
 ];
