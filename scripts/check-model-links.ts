@@ -81,12 +81,16 @@ function collect(): Check[] {
   return [...byUrl.values()].sort((a, b) => a.kind.localeCompare(b.kind) || a.id.localeCompare(b.id));
 }
 
-async function probe(url: string): Promise<number | string> {
+// GGUF files run to tens of gigabytes, so a file check must never open the
+// body: HEAD asks the CDN for the headers alone. Any body that does arrive is
+// cancelled explicitly, otherwise dozens of LFS connections stay open and
+// later checks time out waiting for the pool.
+async function probe(url: string, method: "GET" | "HEAD" = "GET"): Promise<number | string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
     const res = await fetch(url, {
-      method: "GET",
+      method,
       redirect: "follow",
       headers: {
         Accept: "application/json",
@@ -96,6 +100,7 @@ async function probe(url: string): Promise<number | string> {
       },
       signal: controller.signal
     });
+    await res.body?.cancel().catch(() => {});
     return res.status;
   } catch (err) {
     return err instanceof Error ? err.message : String(err);
@@ -138,7 +143,7 @@ async function main() {
   const queue = [...checks];
   const workers = Array.from({ length: 4 }, async () => {
     for (let next = queue.shift(); next; next = queue.shift()) {
-      const status = await probe(next.url);
+      const status = await probe(next.url, next.kind === "file" ? "HEAD" : "GET");
       const ok = status === 200;
       const line = `${next.id} → ${status} (${next.usedBy.join(", ")})`;
 

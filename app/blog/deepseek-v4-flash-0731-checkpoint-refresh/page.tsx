@@ -90,9 +90,10 @@ export default function PostDeepSeekV4Flash0731() {
         version on the Hub appears nowhere in our own catalog files.
       </p>
       <p>
-        Monday&apos;s run surfaced this checkpoint under the first heading,
-        as a notable recent release with a covered family — and the second
-        check, the one for undocumented versions, could not have caught it.
+        Monday&apos;s run surfaced this checkpoint in the report&apos;s third
+        section, &ldquo;Notable releases in the last 3 weeks&rdquo;, flagged
+        as belonging to a family we already cover. The section above it, the
+        one for undocumented versions, could not have caught it.
         It recognises a version only when the number contains a dot, so it
         reads GLM-5.2 and skips a date suffix like 0731 entirely. That is a
         deliberate trade: matching bare integers would collide with

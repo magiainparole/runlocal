@@ -110,14 +110,16 @@ function passesLicenseFilter(model: CatalogModel, filter: LicenseFilter): boolea
   return filter !== "permissive-only" || model.license.tier === "permissive";
 }
 
-function buildOllamaCommand(model: CatalogModel, quant: CatalogQuant): string {
+function buildOllamaCommand(model: CatalogModel): string {
   if (!model.ollamaTag) {
     return "# No verified Ollama tag in the RunLocal catalog yet; check ollama.com/library or the model card.";
   }
-  const base = model.ollamaTag;
-  const hasQuant = /q\d/i.test(base);
-  const tag = hasQuant ? base : `${base}-${quant.name.toLowerCase()}`;
-  return `ollama run ${tag}`;
+  // Only the tag CI has resolved is printed. This used to append the quant
+  // name to the base tag, which produced tags nobody had checked — and in
+  // some cases could not exist, like glm-4.7-flash:latest-q8_0. Ollama's own
+  // default for a tag is usually a 4-bit build; when you want a specific
+  // quantization, the llama.cpp command below names the exact file.
+  return `ollama run ${model.ollamaTag}`;
 }
 
 function buildLlamaCppCommand(model: CatalogModel, quant: CatalogQuant): string {
@@ -194,7 +196,7 @@ export function recommend(spec: HardwareSpec, limit = 6): {
       headroomGb: headroom,
       speedBucket: predictSpeed(model, spec),
       score: scoreRecommendation(model, quant, headroom, spec.useCase),
-      ollamaCommand: buildOllamaCommand(model, quant),
+      ollamaCommand: buildOllamaCommand(model),
       llamaCppCommand: buildLlamaCppCommand(model, quant)
     });
   }
