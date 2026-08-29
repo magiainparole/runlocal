@@ -39,7 +39,7 @@ export const posts: PostMeta[] = [
     slug: "deepseek-v4-flash-0731-checkpoint-refresh",
     title: "DeepSeek V4 Flash-0731, and the case for dated checkpoints",
     subtitle:
-      "A quiet mid-cycle refresh just became the most-downloaded model on the Hub. What a dated checkpoint tag means if you already run the model it's replacing.",
+      "A quiet mid-cycle refresh went straight to the top of our weekly trending list. What a dated checkpoint tag means if you already run the model it's replacing.",
     date: "2026-08-06",
     readingTime: "8 min",
     tags: ["DeepSeek", "Trending", "Analysis"]

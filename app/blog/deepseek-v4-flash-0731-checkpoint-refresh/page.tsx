@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "DeepSeek V4 Flash-0731, and the case for dated checkpoints",
   description:
-    "DeepSeek quietly replaced its mid-size open model with an updated checkpoint carrying a date instead of a version bump. It went straight to the top of our weekly trending list. Here is what changed, what didn't, and why it isn't in our picker yet."
+    "DeepSeek quietly replaced its mid-size open model with an updated checkpoint carrying a date instead of a version bump. It went straight to the top of our weekly trending list. Here is what changed, what didn't, and what it means if you already run it."
 };
 
 export default function PostDeepSeekV4Flash0731() {
@@ -24,8 +24,8 @@ export default function PostDeepSeekV4Flash0731() {
         no version bump — and within days it was at the top of our weekly
         trending list. This post explains what a
         dated checkpoint actually changes, whether you need to redo anything
-        if you already run the model it replaces, and why we still haven&apos;t
-        added it to the picker.
+        if you already run the model it replaces, and what the update note
+        above corrects.
       </aside>
 
       <aside className="mt-5 rounded-md border border-amber-500/40 bg-amber-500/10 p-4 text-sm leading-relaxed">
@@ -87,20 +87,30 @@ export default function PostDeepSeekV4Flash0731() {
         the one that applies here — is a family we do track (&ldquo;deepseek&rdquo;
         is covered, via the V4 Pro entry on the{" "}
         <Link href="/frontier">Frontier page</Link>) where the specific
-        version on the Hub appears nowhere in our own catalog files. V4
-        Flash-0731 is exactly that: the family is covered, the checkpoint is
-        not documented, so Monday&apos;s run filed it as a stale version days
-        before any of us would have found it browsing the Hub by hand. It is
-        a small, unglamorous piece of automation, and it is doing more of
-        the actual reporting on this site than any of us would like to
-        admit.
+        version on the Hub appears nowhere in our own catalog files.
+      </p>
+      <p>
+        Monday&apos;s run surfaced this checkpoint under the first heading,
+        as a notable recent release with a covered family — and the second
+        check, the one for undocumented versions, could not have caught it.
+        It recognises a version only when the number contains a dot, so it
+        reads GLM-5.2 and skips a date suffix like 0731 entirely. That is a
+        deliberate trade: matching bare integers would collide with
+        parameter counts and bury the report in noise. It also means the
+        blind spot this post is about, a release that changes the model
+        without changing its version string, is precisely the one the
+        version check is blind to. The automation found this anyway, through
+        the cruder signal of download volume.
       </p>
 
       <h2>Should you pull it</h2>
       <p>
         If you already run DeepSeek V4 Flash locally: yes, with one caveat.
-        The architecture and memory footprint are unchanged, so nothing
-        about your hardware math changes — but the GGUF conversion you are
+        The mixture-of-experts core is unchanged, but the footprint is not:
+        the DSpark module adds roughly 13B parameters, so redo the memory
+        arithmetic rather than assuming the June numbers carry over. The
+        <Link href="/models">directory entry</Link> carries measured sizes
+        for the current builds. And the GGUF conversion you are
         running was quantized against the old weights. A retuning pass can
         shift how a low-bit quant behaves even when the full-precision
         model improves, so a fresh Q4 or Q5 build from the new checkpoint is
@@ -113,9 +123,9 @@ export default function PostDeepSeekV4Flash0731() {
         If you are evaluating DeepSeek V4 Flash for the first time: the
         download count is a real signal, but it is not the same thing as
         the verification this site puts a model through before it reaches
-        the <Link href="/picker">picker</Link>. Use it directly if
-        you&apos;re comfortable judging output quality yourself; otherwise
-        wait.
+        the <Link href="/picker">picker</Link> — a check it has since
+        passed, so the entry is there with measured memory figures per
+        quantization.
       </p>
 
       <h2>The gap this post admitted, since closed</h2>

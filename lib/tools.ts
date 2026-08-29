@@ -67,7 +67,7 @@ export const tools: ToolEntry[] = [
       "Pipeline and tensor parallelism across two machines"
     ],
     cons: [
-      "Needs 96-128 GB of RAM for the Q2 build and 256 GB or more for Q4; below that it is not an option",
+      "Wants 96-128 GB of RAM to hold the Q2 build in memory, 256 GB or more for Q4; below that you are on the slower SSD-streaming path",
       "Runs one model family on purpose: DeepSeek V4 Flash and PRO, plus GLM 5.2",
       "The author calls it beta quality and the code changes fast",
       "Distributed inference fits larger models and speeds up prefill; it does not make decode faster"
