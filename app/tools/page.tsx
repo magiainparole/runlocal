@@ -24,9 +24,11 @@ export default function ToolsPage() {
           A model is just a file. To use it, you need software that loads
           the file and lets you talk to it. The tools below cover everything
           from one-click chat apps for beginners to industrial servers for
-          teams. Pick by category: a Runtime is the engine, a GUI is the
-          friendly app on top, a Server is for sharing it with multiple
-          users at once. If you are just starting,{" "}
+          teams, and a few that need a workstation with more memory than
+          most laptops have disk. Pick by category: a Runtime is the engine,
+          a GUI is the friendly app on top, a Server is for sharing it with
+          multiple users at once. Where an entry has a hardware floor, its
+          trade-offs say so first. If you are just starting,{" "}
           <a href="/guides/ollama" className="text-brand-dark dark:text-brand-light hover:underline">
             Ollama
           </a>

@@ -85,6 +85,14 @@ CI runs this on every change to the registry and once a week. A plausible repo
 id is not the same thing as a real one, so add the entry, run the check, and
 only then write the prose around it.
 
+The tool catalogue in `lib/tools.ts` covers software that needs a
+high-memory workstation, not only software that runs on a laptop. Machines in
+the 128 GB class &mdash; DGX Spark, the larger Mac Studio configurations
+&mdash; are common enough that leaving out the engines built for them would
+misdescribe the field. An entry with a hardware floor must lead with it: put
+the requirement first in `cons`, because the tool cards render only the first
+three entries of that list.
+
 When adding a new guide, include the OS coverage, level, reading time, and
 last-updated month in `lib/guides.ts`, then create the corresponding page
 under `app/guides/<slug>/page.tsx`.
