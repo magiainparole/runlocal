@@ -34,6 +34,18 @@ export default function PostDeepSeekV4Flash0731It() {
         sostituisce, e perché non l&apos;abbiamo ancora aggiunto al picker.
       </aside>
 
+      <aside className="mt-5 rounded-md border border-amber-500/40 bg-amber-500/10 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Aggiornamento, 29 agosto 2026:</strong>{" "}
+        due correzioni. Questo articolo descriveva l&apos;aggiornamento come
+        portatore dello stesso numero di parametri del checkpoint di giugno.
+        Non è così: l&apos;Hub riporta 290,9 miliardi per i pesi di giugno e
+        304,2 per 0731, perché 0731 ha attaccato un modulo di decodifica
+        speculativa DSpark, e DeepSeek lo definisce il rilascio ufficiale che
+        sostituisce una preview, non un ritocco a metà ciclo. E il vuoto
+        ammesso in fondo all&apos;articolo è colmato: DeepSeek V4 Flash ha
+        ora una scheda nella directory e un profilo hardware nel picker.
+      </aside>
+
       <p className="mt-5 text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
         Non abbiamo saputo di DeepSeek-V4-Flash-0731 da un post di lancio o
         da un ciclo di stampa. Lo abbiamo saputo dalla nostra sincronizzazione
@@ -55,12 +67,15 @@ export default function PostDeepSeekV4Flash0731It() {
         DeepSeek ha già usato questo schema per aggiornamenti che cadono tra
         un rilascio maggiore e l&apos;altro: tenere il nome del modello,
         aggiungere la data di pubblicazione e lasciare che sia il repository
-        a parlare, senza un post di lancio. Qui non c&apos;è una nuova
-        architettura né la pretesa di un salto di generazione —
-        V4 Flash-0731 ha la stessa architettura mixture-of-experts, lo
-        stesso numero di parametri, la stessa finestra di contesto del
-        checkpoint di giugno. Ciò che cambia in un aggiornamento come questo
-        è di solito l&apos;addestramento successivo a quel punto: un altro
+        a parlare, senza un post di lancio. Qui non c&apos;è la pretesa di
+        un salto di generazione: il nucleo mixture-of-experts è invariato,
+        256 expert instradati con 6 attivi per token, e la finestra di
+        contesto da un milione di token è la stessa del checkpoint di
+        giugno. I pesi però non sono identici in dimensione. Il repository
+        di giugno riporta 290,9 miliardi di parametri e 0731 ne riporta
+        304,2, perché questo checkpoint si porta dietro un modulo di
+        decodifica speculativa DSpark che il precedente non aveva. Quello
+        che cambia per il resto è l&apos;addestramento successivo: un altro
         giro di reinforcement learning, un aggiustamento del mix di dati,
         correzioni ai casi limite del tokenizer. Niente di tutto questo
         compare in una scheda tecnica. Tutto può comparire nella qualità
@@ -115,19 +130,27 @@ export default function PostDeepSeekV4Flash0731It() {
         aspetta.
       </p>
 
-      <h2>Il vuoto che ammettiamo</h2>
+      <h2>Il vuoto che l&apos;articolo ammetteva, ora colmato</h2>
       <p>
-        Ecco la parte che preferiremmo non nascondere in una nota a piè di
-        pagina: nonostante il numero di download, nonostante la famiglia sia
-        coperta nella pagina Frontier, DeepSeek V4 Flash — vecchio checkpoint
-        o nuovo — non è ancora nella directory né nel picker. Aggiungerlo
-        correttamente significa un profilo hardware con numeri di memoria
-        reali per ogni quantizzazione e un percorso Hugging Face verificato,
-        non solo un paragrafo di prosa che afferma che è buono. Quel lavoro
-        non è ancora fatto. Prendi la posizione in classifica come un
-        indizio forte che questo modello merita attenzione, non come un
-        sostituto della voce che non abbiamo ancora finito di scrivere — e
-        quando supererà quella soglia, comparirà nei posti soliti.
+        Quando questo pezzo è uscito, DeepSeek V4 Flash mancava dalla
+        directory e dal picker nonostante il numero di download, e lo
+        abbiamo scritto invece di lasciar passare l&apos;omissione sotto
+        silenzio. Aggiungerlo correttamente significava un profilo hardware
+        con numeri di memoria reali per ogni quantizzazione e un percorso
+        Hugging Face verificato, non un paragrafo di prosa che afferma che
+        il modello è buono. Quel lavoro è stato fatto: il modello è nella{" "}
+        <Link href="/it/models">directory</Link>, e il{" "}
+        <Link href="/it/picker">picker</Link> ora lo raccomanda sulle
+        macchine con memoria sufficiente, che in pratica significa da 128 GB
+        in su.
+      </p>
+      <p>
+        I valori di memoria lì sono le dimensioni misurate delle build GGUF
+        di unsloth, non stime, e vale la pena ripetere qui il limite onesto
+        di quella scheda: a 96 GB non entra niente di quel repository. I 96
+        GB che circolano attorno a questo modello vengono dalla ricetta di
+        quantizzazione asimmetrica di DwarfStar, non da un file GGUF
+        standard.
       </p>
       <p>
         Vale la pena affiancarlo al{" "}

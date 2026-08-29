@@ -178,12 +178,17 @@ export default function PostDwarfStarIt() {
         scheda in silenzio sarebbe peggio che dirlo qui.
       </p>
       <p>
-        La lacuna collegata è che DeepSeek V4 Flash — il modello per cui
-        ds4 esiste — manca ancora dalla directory e dal picker, pur stando
-        in cima alla nostra{" "}
-        <Link href="/it/trending">lista trending</Link>. Le due assenze
-        hanno la stessa causa. Entrambe richiedono profili hardware con
-        numeri di memoria reali alle spalle, e quel lavoro non è fatto.
+        DeepSeek V4 Flash — il modello per cui ds4 esiste — mancava dalla
+        directory per la stessa ragione quando questo pezzo è uscito. Quella
+        metà è stata sistemata: ora ha una scheda e un profilo hardware, con
+        valori di memoria misurati sulle build GGUF di unsloth. Vale la pena
+        notare dove cadono quei valori rispetto ai numeri qui sopra, perché
+        non coincidono. La GGUF standard più piccola di quel repository pesa
+        circa 91 GB e la build Q2 circa 97, quindi una macchina da 96 GB le
+        manca entrambe una volta lasciato spazio per il contesto. La soglia
+        dei 96 GB citata qui è una proprietà della quantizzazione di ds4,
+        non del modello, ed è esattamente il punto che quel motore sta
+        dimostrando.
       </p>
 
       <h2>Il punto più generale sulla specializzazione</h2>
