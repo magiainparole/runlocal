@@ -101,10 +101,11 @@ export default function PostDeepSeekV4Flash0731It() {
         catalogo.
       </p>
       <p>
-        L&apos;esecuzione di lunedì ha fatto emergere questo checkpoint sotto
-        la prima voce, come rilascio recente di rilievo appartenente a una
-        famiglia coperta. Il secondo controllo, quello sulle versioni non
-        documentate, non avrebbe potuto intercettarlo: riconosce una versione
+        L&apos;esecuzione di lunedì ha fatto emergere questo checkpoint nella
+        terza sezione del report, “Rilasci di rilievo nelle ultime 3
+        settimane”, segnalato come appartenente a una famiglia che già
+        copriamo. La sezione sopra, quella sulle versioni non documentate,
+        non avrebbe potuto intercettarlo: riconosce una versione
         solo se il numero contiene un punto, quindi legge GLM-5.2 e si perde
         del tutto un suffisso datato come 0731. È un compromesso voluto,
         perché accettare numeri interi nudi finirebbe per confondersi con i
