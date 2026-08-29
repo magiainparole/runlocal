@@ -9,6 +9,24 @@ export type PostMeta = {
 
 export const posts: PostMeta[] = [
   {
+    slug: "dwarfstar-ds4-one-model-inference-engine",
+    title: "DwarfStar, and the case for an engine that runs one model",
+    subtitle:
+      "The author of Redis wrote an inference engine in C that runs essentially a single model, and it does things the general-purpose runtimes cannot. What ds4 gets right, and what it costs in hardware.",
+    date: "2026-08-27",
+    readingTime: "10 min",
+    tags: ["Tools", "Inference", "Quantization"]
+  },
+  {
+    slug: "qwen-3-8-27b-the-release-that-landed",
+    title: "Qwen 3.8 27B is the release that actually landed",
+    subtitle:
+      "Alibaba published two models in the same generation this month. One has four million downloads, the other twenty-seven thousand. The difference is not capability.",
+    date: "2026-08-21",
+    readingTime: "9 min",
+    tags: ["Qwen", "Licensing", "Analysis"]
+  },
+  {
     slug: "ornith-1-0-35b-question",
     title: "3.5 million downloads, almost no footprint: the Ornith-1.0-35B question",
     subtitle:

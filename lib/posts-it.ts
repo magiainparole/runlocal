@@ -5,6 +5,24 @@ import type { PostMeta } from "./posts";
 // metadata already set in each app/it/blog/<slug>/page.tsx.
 export const postsIt: PostMeta[] = [
   {
+    slug: "dwarfstar-ds4-one-model-inference-engine",
+    title: "DwarfStar, e la tesi di un motore che esegue un modello solo",
+    subtitle:
+      "L’autore di Redis ha scritto in C un motore di inferenza che esegue sostanzialmente un modello solo, e fa cose che i runtime generalisti non fanno. Cosa azzecca ds4, e quanto costa in hardware.",
+    date: "2026-08-27",
+    readingTime: "10 min",
+    tags: ["Strumenti", "Inferenza", "Quantizzazione"]
+  },
+  {
+    slug: "qwen-3-8-27b-the-release-that-landed",
+    title: "Qwen 3.8 27B è il rilascio che è davvero atterrato",
+    subtitle:
+      "Alibaba ha pubblicato due modelli della stessa generazione questo mese. Uno ha quattro milioni di download, l’altro ventisettemila. La differenza non è la capacità.",
+    date: "2026-08-21",
+    readingTime: "9 min",
+    tags: ["Qwen", "Licenze", "Analisi"]
+  },
+  {
     slug: "ornith-1-0-35b-question",
     title: "3,5 milioni di download, quasi nessuna traccia: la domanda su Ornith-1.0-35B",
     subtitle:
