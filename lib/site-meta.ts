@@ -1,4 +1,4 @@
-// The date the footer shows.
+// The date the footer shows, resolved once at build time.
 //
 // It is recomputed on every build, which on this repo means every push: Vercel
 // rebuilds from main, so the footer can no longer drift the way a hardcoded
@@ -7,13 +7,12 @@
 // SITE_LAST_UPDATED overrides it. Set it to YYYY-MM when the date should stand
 // for something a person did — a pass over the model data, a licence re-read —
 // rather than for the last deploy. A typo fix is a deploy, not a review.
+//
+// Only the ISO string crosses into the Footer, which is a client component:
+// evaluating `new Date()` there would print the visitor's clock instead of the
+// build's. Formatting happens on the other side, where the locale is known.
 
 const OVERRIDE = process.env.SITE_LAST_UPDATED;
-
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
 
 function resolve(): Date {
   if (OVERRIDE && /^\d{4}-\d{2}$/.test(OVERRIDE)) {
@@ -22,10 +21,5 @@ function resolve(): Date {
   return new Date();
 }
 
-const resolved = resolve();
-
-/** "August 2026" — formatted by hand so the output does not depend on the ICU data present at build time. */
-export const lastUpdatedLabel = `${MONTHS[resolved.getUTCMonth()]} ${resolved.getUTCFullYear()}`;
-
-/** Machine-readable counterpart for the <time> element. */
-export const lastUpdatedIso = resolved.toISOString().slice(0, 10);
+/** "2026-08-30" — build date, or the first of the overridden month. */
+export const lastUpdatedIso = resolve().toISOString().slice(0, 10);
