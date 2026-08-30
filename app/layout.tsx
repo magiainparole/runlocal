@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { lastUpdatedIso } from "@/lib/site-meta";
+import { lastUpdatedIso, buildYear } from "@/lib/site-meta";
 
 export const metadata: Metadata = {
   title: {
@@ -75,7 +75,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-white dark:bg-ink text-ink dark:text-slate-200">
         <Header />
         <main className="flex-1">{children}</main>
-        <Footer lastUpdatedIso={lastUpdatedIso} />
+        <Footer lastUpdatedIso={lastUpdatedIso} buildYear={buildYear} />
       </body>
     </html>
   );

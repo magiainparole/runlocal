@@ -34,7 +34,13 @@ function monthYear(iso: string, months: string[]): string {
   return `${months[Number(month) - 1]} ${year}`;
 }
 
-export default function Footer({ lastUpdatedIso }: { lastUpdatedIso: string }) {
+export default function Footer({
+  lastUpdatedIso,
+  buildYear
+}: {
+  lastUpdatedIso: string;
+  buildYear: number;
+}) {
   const pathname = usePathname() || "/";
   const isItalian = pathname === "/it" || pathname.startsWith("/it/");
 
@@ -66,7 +72,6 @@ export default function Footer({ lastUpdatedIso }: { lastUpdatedIso: string }) {
 
   const links = isItalian ? linksIt : linksEn;
   const updated = monthYear(lastUpdatedIso, isItalian ? MONTHS_IT : MONTHS_EN);
-  const year = lastUpdatedIso.slice(0, 4);
 
   return (
     <footer className="mt-24 border-t border-slate-200/60 dark:border-slate-800/60">
@@ -106,7 +111,7 @@ export default function Footer({ lastUpdatedIso }: { lastUpdatedIso: string }) {
       <div className="border-t border-slate-200/60 dark:border-slate-800/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5 text-xs text-slate-500 flex flex-wrap items-center justify-between gap-2">
           <span>
-            &copy; {year} RunLocal. {t.licence}
+            &copy; {buildYear} RunLocal. {t.licence}
           </span>
           <span>
             {t.madeBy}{" "}

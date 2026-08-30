@@ -23,3 +23,10 @@ function resolve(): Date {
 
 /** "2026-08-30" — build date, or the first of the overridden month. */
 export const lastUpdatedIso = resolve().toISOString().slice(0, 10);
+
+/**
+ * The year in the copyright line. Deliberately not derived from
+ * `lastUpdatedIso`: pinning SITE_LAST_UPDATED to an editorial pass in a past
+ * year would otherwise backdate the copyright along with it.
+ */
+export const buildYear = new Date().getUTCFullYear();
