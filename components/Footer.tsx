@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { lastUpdatedLabel, lastUpdatedIso } from "@/lib/site-meta";
 
 export default function Footer() {
   return (
@@ -30,14 +31,28 @@ export default function Footer() {
           <ul className="space-y-1.5 text-slate-600 dark:text-slate-400">
             <li>Editorially independent.</li>
             <li>No affiliate links on tool pages.</li>
-            <li>Last reviewed: May 2026.</li>
+            <li>
+              Last updated:{" "}
+              <time dateTime={lastUpdatedIso}>{lastUpdatedLabel}</time>.
+            </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-slate-200/60 dark:border-slate-800/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5 text-xs text-slate-500 flex flex-wrap items-center justify-between gap-2">
           <span>&copy; {new Date().getFullYear()} RunLocal. All content licensed CC BY 4.0 unless noted.</span>
-          <span>Built with Next.js and Tailwind. No tracking, no ads.</span>
+          <span>
+            Made by{" "}
+            <a
+              href="https://www.ballerano.com/vibe-coder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-brand-dark dark:hover:text-brand-light"
+            >
+              Luciano Ballerano
+            </a>
+            . Built with Next.js and Tailwind. No tracking, no ads.
+          </span>
         </div>
       </div>
     </footer>
