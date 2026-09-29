@@ -127,6 +127,43 @@ export const families: Family[] = [
     pickerMeta: { family: "GLM-5.3-Flash", origin: "Z.ai · China", license: { tier: "permissive", label: "MIT" }, contextWindow: 1_048_576, releaseYear: 2026 }
   },
   {
+    id: "ornith-1-5",
+    directory: {
+      slug: "ornith-1-5", name: "Ornith 1.5", author: "ornith-ai", origin: "Not stated on the model card", license: "MIT",
+      paramSizes: ["9B dense", "35B-A3B MoE", "397B MoE"],
+      contextWindow: "262k tokens",
+      bestFor: ["Agentic coding", "Multimodal workflows", "Consumer GPUs"],
+      notes: "August 2026. Unlike Ornith 1.0, which shipped with no model card at all, 1.5 documents its lineage (continued pretraining and reinforcement learning on top of Qwen 3.5 and Gemma 4) and publishes benchmarks, all vendor-run. The 9B and 35B-A3B keep the Qwen 3.5 architecture, so the official GGUF files run on stock llama.cpp. Download counts are very high and like counts unusually thin for the traffic, roughly one like per 7,900 downloads on the 35B GGUF; we list the model because its licence and lineage now check out, and we still cannot explain that ratio. The 397B is a single 244 GB file at Q4_K_M.",
+      url: "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B", releaseYear: 2026
+    },
+    pickerMeta: { family: "Ornith 1.5", origin: "ornith-ai · origin not stated", license: { tier: "permissive", label: "MIT" }, contextWindow: 262_144, releaseYear: 2026 }
+  },
+  {
+    id: "mimo-v2-6-flash",
+    directory: {
+      slug: "mimo-v2-6-flash", name: "MiMo-V2.6-Flash", author: "Xiaomi (MiMo team)", origin: "China", license: "MIT",
+      paramSizes: ["309B MoE (15B active)"],
+      contextWindow: "1M tokens",
+      bestFor: ["Agentic coding", "Multimodal workflows (text, image, video, audio)", "High-memory workstations"],
+      notes: "September 2026. The efficiency-balanced checkpoint of MiMo V2.6: 309B total with 15B active, text, image, video and audio in one model, and a 1M context thanks to a mostly sliding-window backbone. ggml-org publishes the GGUF conversion, which means stock llama.cpp runs it: Q2_K is about 126 GB and MXFP4, which keeps the experts at their native precision, about 167 GB. That puts it just past a 128 GB machine and comfortably inside 192 GB. Benchmarks on the card are Xiaomi's own.",
+      url: "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL", releaseYear: 2026
+    },
+    pickerMeta: { family: "MiMo V2.6 Flash", origin: "Xiaomi · China", license: { tier: "permissive", label: "MIT" }, contextWindow: 1_048_576, releaseYear: 2026 }
+  },
+  {
+    id: "minimax-m2-7",
+    directory: {
+      slug: "minimax-m2-7", name: "MiniMax M2.7", author: "MiniMax", origin: "China",
+      license: "MiniMax non-commercial licence (commercial use needs written permission)",
+      paramSizes: ["229B MoE (8 of 256 experts per token)"],
+      contextWindow: "205k tokens",
+      bestFor: ["Agentic coding", "Personal self-hosting", "High-memory workstations"],
+      notes: "April 2026, and still one of the most downloaded large models on the Hub. Read the licence before anything else: personal use, self-hosted deployment for your own coding and agents, and non-profit research are explicitly free, while any commercial use needs prior written authorisation from MiniMax. unsloth's GGUF builds run from about 75 GB (UD-Q2_K_XL) to 141 GB (UD-Q4_K_XL), so a 96 or 128 GB machine can hold it. Not in the picker, because the picker's licence filter cannot yet express 'free at home, not at work'.",
+      url: "https://huggingface.co/MiniMaxAI/MiniMax-M2.7", releaseYear: 2026
+    },
+    pickerMeta: { family: "MiniMax M2.7", origin: "MiniMax · China", license: { tier: "non-commercial", label: "Non-commercial" }, contextWindow: 204_800, releaseYear: 2026 }
+  },
+  {
     id: "qwen-3-6",
     directory: {
       slug: "qwen-3-6", name: "Qwen 3.6", author: "Alibaba (Qwen team)", origin: "China",
@@ -261,6 +298,30 @@ export const families: Family[] = [
     pickerMeta: { family: "MiniCPM5", origin: "OpenBMB · China", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 128_000, releaseYear: 2026 }
   },
   {
+    id: "spark-x2-5",
+    directory: {
+      slug: "spark-x2-5", name: "Spark-X2.5", author: "XHToken", origin: "Not stated on the model card", license: "Apache 2.0",
+      paramSizes: ["1.7B", "4B"],
+      contextWindow: "1M tokens",
+      bestFor: ["Edge deployments", "Multilingual (200+ languages)", "Low-memory laptops", "Tool calling"],
+      notes: "September 2026. Two small dense models with a hybrid attention design (three sliding-window layers for every full-attention layer) that keeps a 1M context affordable. Official GGUF files from XHToken; the architecture is new, so you need llama.cpp build b10828 or later, Ollama 0.34.1 or later, or LM Studio runtime 2.34.0 or later. Quality claims on the card are the vendor's.",
+      url: "https://huggingface.co/XHToken/Spark-X2.5-4B", releaseYear: 2026
+    },
+    pickerMeta: { family: "Spark-X2.5", origin: "XHToken", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 1_048_576, releaseYear: 2026 }
+  },
+  {
+    id: "xing-4-0",
+    directory: {
+      slug: "xing-4-0", name: "Xing4.0-29B-A4B", author: "China Telecom AI (XingChen-AGI, formerly TeleChat)", origin: "China", license: "Apache 2.0",
+      paramSizes: ["29B MoE (4B active)"],
+      contextWindow: "256k tokens (512k with extension)",
+      bestFor: ["Agentic coding", "24 GB GPUs", "Domain fine-tuning"],
+      notes: "September 2026, and the first model of this size trained entirely on Huawei Ascend hardware. The official GGUF is a single 18 GB IQ4_NL file that fits a 24 GB card. Not in the picker: the architecture is custom and the official guide builds llama.cpp from a dedicated xing4_0-port branch, which we do not print commands for. vLLM, SGLang and KTransformers support it directly.",
+      url: "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B", releaseYear: 2026
+    },
+    pickerMeta: { family: "Xing4.0", origin: "China Telecom · China", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 262_144, releaseYear: 2026 }
+  },
+  {
     id: "eurollm",
     directory: {
       slug: "eurollm-22b", name: "EuroLLM-22B", author: "EuroLLM Consortium", origin: "European Union", license: "Apache 2.0",
@@ -285,6 +346,8 @@ const familyMap = new Map(families.map((f) => [f.id, f]));
 export const hardwareProfiles: HardwareProfile[] = [
   { id: "minicpm5-1b", familyId: "minicpm5", variant: "1B", paramBillions: 1, isMoE: false, useCase: { general: 5, code: 4, longContext: 5, math: 4 }, hfPath: "openbmb/MiniCPM5-1B", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 1.0 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 1.2 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 1.6 }] },
   { id: "minicpm5-2b", familyId: "minicpm5", variant: "2B", paramBillions: 2.5, isMoE: false, contextWindow: 131_072, useCase: { general: 6, code: 6, longContext: 6, math: 6 }, hfPath: "openbmb/MiniCPM5-2B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 2.0, path: "MiniCPM5-2B-Q4_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 3.2, path: "MiniCPM5-2B-Q8_0.gguf" }], notes: "Official OpenBMB GGUF files, Q4_K_M and Q8_0 only. Dense 2.5B with a 131k context, small enough for a phone-class device or any laptop." },
+  { id: "spark-x2-5-1-7b", familyId: "spark-x2-5", variant: "1.7B", paramBillions: 1.7, isMoE: false, useCase: { general: 5, code: 4, longContext: 6, math: 4 }, hfPath: "XHToken/Spark-X2.5-1.7B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 1.5, path: "Spark-X2.5-1.7B-Q4_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 2.4, path: "Spark-X2.5-1.7B-Q8_0.gguf" }], notes: "Needs llama.cpp b10828 or later: older builds do not know the spark2_5 architecture." },
+  { id: "spark-x2-5-4b", familyId: "spark-x2-5", variant: "4B", paramBillions: 4.1, isMoE: false, useCase: { general: 7, code: 6, longContext: 7, math: 6 }, hfPath: "XHToken/Spark-X2.5-4B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 3.2, path: "Spark-X2.5-4B-Q4_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 5.2, path: "Spark-X2.5-4B-Q8_0.gguf" }], notes: "Needs llama.cpp b10828 or later: older builds do not know the spark2_5 architecture. 1M context and more than 200 languages at 4B." },
   { id: "phi-4-mini-3-8b", familyId: "phi-4", variant: "Mini 3.8B", paramBillions: 3.8, isMoE: false, useCase: { general: 7, code: 7, longContext: 5, math: 8 }, ollamaTag: "phi4-mini:3.8b", hfPath: "unsloth/Phi-4-mini-instruct-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 3.5, path: "Phi-4-mini-instruct-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 4.0, path: "Phi-4-mini-instruct-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 5.5, path: "Phi-4-mini-instruct.Q8_0.gguf" }] },
   { id: "qwen-3-5-9b", familyId: "qwen-3-5", variant: "9B", paramBillions: 9, isMoE: false, useCase: { general: 8, code: 8, longContext: 9, math: 8 }, ollamaTag: "qwen3.5:9b", hfPath: "unsloth/Qwen3.5-9B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 6.0, path: "Qwen3.5-9B-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 7.0, path: "Qwen3.5-9B-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 10.0, path: "Qwen3.5-9B-Q8_0.gguf" }] },
   { id: "phi-4-14b", familyId: "phi-4", variant: "14B", paramBillions: 14, isMoE: false, contextWindow: 16_000, useCase: { general: 8, code: 8, longContext: 5, math: 9 }, ollamaTag: "phi4:14b", hfPath: "bartowski/phi-4-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 9, path: "phi-4-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 10.5, path: "phi-4-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 16, path: "phi-4-Q8_0.gguf" }] },
@@ -298,9 +361,12 @@ export const hardwareProfiles: HardwareProfile[] = [
   { id: "gpt-oss-20b", familyId: "gpt-oss", variant: "20B MoE", paramBillions: 21.5, activeParamBillions: 3.6, isMoE: true, useCase: { general: 9, code: 8, longContext: 8, math: 8 }, ollamaTag: "gpt-oss:20b", hfPath: "ggml-org/gpt-oss-20b-GGUF", quants: [{ name: "MXFP4", qualityBucket: "high", memoryGb: 12.5, path: "gpt-oss-20b-MXFP4.gguf" }], notes: "Ships natively in MXFP4, so the headline quantization is the precision it was trained for — it fits a 16 GB card without further loss." },
   { id: "qwen-3-8-27b", familyId: "qwen-3-8", variant: "27B", paramBillions: 27.8, isMoE: false, useCase: { general: 10, code: 10, longContext: 9, math: 9 }, ollamaTag: "qwen3.8:27b", hfPath: "unsloth/Qwen3.8-27B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17, path: "Qwen3.8-27B-UD-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20, path: "Qwen3.8-27B-UD-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 30, path: "Qwen3.8-27B-Q8_0.gguf" }], notes: "Dense, Apache 2.0 and natively multimodal. The current default choice for a 24 GB card; bartowski publishes an imatrix build too." },
   { id: "qwen-3-8-27b-ternary-bonsai-2", familyId: "qwen-3-8", variant: "27B (Ternary Bonsai 2, 1.72-bit)", paramBillions: 27.4, isMoE: false, useCase: { general: 9, code: 9, longContext: 9, math: 9 }, hfPath: "prism-ml/Ternary-Bonsai-2-27B-gguf", quants: [{ name: "PTQ1_0", qualityBucket: "medium", memoryGb: 7, path: "Ternary-Bonsai-2-27B-PTQ1_0.gguf", forkRepo: "https://github.com/PrismML-Eng/llama.cpp" }, { name: "PQ2_0", qualityBucket: "medium", memoryGb: 8.5, path: "Ternary-Bonsai-2-27B-PQ2_0.gguf", forkRepo: "https://github.com/PrismML-Eng/llama.cpp" }], notes: "Prism ML's ternary rebuild of Qwen3.8-27B, September 2026: 5.95 GB (PTQ1_0) or 7.21 GB (PQ2_0) on disk, Apache 2.0. Vendor-reported 84.78 average across 14 thinking-mode benchmarks against 86.32 for FP16, unverified by us. Stock llama.cpp will not run either file: use Prism ML's fork. It is a reasoning model that thinks at length by default, so give it a large output limit (-n 16384) or the answer gets cut off mid-thought." },
+  { id: "ornith-1-5-9b", familyId: "ornith-1-5", variant: "9B", paramBillions: 9, isMoE: false, useCase: { general: 8, code: 9, longContext: 8, math: 8 }, hfPath: "ornith-ai/Ornith-1.5-9B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 6.3, path: "Ornith-1.5-9B-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 7.2, path: "Ornith-1.5-9B-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 10.3, path: "Ornith-1.5-9B-Q8_0.gguf" }], notes: "Qwen 3.5 architecture, so stock llama.cpp runs it. Benchmarks on the card are vendor-run." },
+  { id: "ornith-1-5-35b-a3b", familyId: "ornith-1-5", variant: "35B-A3B MoE", paramBillions: 36, activeParamBillions: 3, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "ornith-ai/Ornith-1.5-35B-A3B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 22.5, path: "Ornith-1.5-35B-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 26, path: "Ornith-1.5-35B-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 38.5, path: "Ornith-1.5-35B-Q8_0.gguf" }], notes: "Qwen 3.5 MoE architecture with about 3B active per token. The Q4_K_M file alone is 21.7 GB, which is tight on a 24 GB card once context is added." },
   { id: "glm-4-7-flash-31b", familyId: "glm-4-7", variant: "Flash 31B MoE", paramBillions: 31.2, activeParamBillions: 3.4, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, ollamaTag: "glm-4.7-flash:latest", hfPath: "unsloth/GLM-4.7-Flash-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 19, path: "GLM-4.7-Flash-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 22.5, path: "GLM-4.7-Flash-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34, path: "GLM-4.7-Flash-Q8_0.gguf" }], notes: "MIT licensed, 200k context, and one of the strongest agentic-coding models that fits on a single workstation GPU." },
   { id: "nemotron-3-5-lightning-30b", familyId: "nemotron-3-5", variant: "30B-A3B hybrid", paramBillions: 31.6, activeParamBillions: 3, isMoE: true, useCase: { general: 8, code: 8, longContext: 9, math: 7 }, hfPath: "ggml-org/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF", quants: [{ name: "Q4_0", qualityBucket: "high", memoryGb: 19, path: "NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q4_0.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 34, path: "NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q8_0.gguf" }], notes: "Only about 3B parameters are active per token, so it answers at small-model speed while occupying 30B of memory." },
   { id: "deepseek-v4-flash-0731", familyId: "deepseek-v4-flash", variant: "0731 (304B-A13B MoE)", paramBillions: 304, activeParamBillions: 13, isMoE: true, useCase: { general: 9, code: 10, longContext: 10, math: 9 }, hfPath: "unsloth/DeepSeek-V4-Flash-0731-GGUF", quants: [{ name: "UD-IQ2_XXS", qualityBucket: "medium", memoryGb: 91, path: "UD-IQ2_XXS/DeepSeek-V4-Flash-0731-UD-IQ2_XXS-00001-of-00003.gguf" }, { name: "UD-Q2_K_XL", qualityBucket: "medium", memoryGb: 97, path: "UD-Q2_K_XL/DeepSeek-V4-Flash-0731-UD-Q2_K_XL-00001-of-00003.gguf" }, { name: "UD-Q4_K_XL", qualityBucket: "high", memoryGb: 155, path: "UD-Q4_K_XL/DeepSeek-V4-Flash-0731-UD-Q4_K_XL-00001-of-00005.gguf" }, { name: "UD-Q8_K_XL", qualityBucket: "near-fp16", memoryGb: 162, path: "UD-Q8_K_XL/DeepSeek-V4-Flash-0731-UD-Q8_K_XL-00001-of-00005.gguf" }], notes: "Memory figures are the measured sizes of the unsloth GGUF builds on the Hub. A 128 GB machine reaches UD-Q2_K_XL; 96 GB does not fit these files — the 96 GB number quoted around DwarfStar comes from that engine’s own asymmetric recipe, not from a stock GGUF. Because the weights are natively FP8, UD-Q8_K_XL is effectively lossless at only about 7 GB more than UD-Q4_K_XL." },
+  { id: "mimo-v2-6-flash-rl", familyId: "mimo-v2-6-flash", variant: "Flash-RL (309B-A15B MoE)", paramBillions: 309, activeParamBillions: 15, isMoE: true, useCase: { general: 9, code: 9, longContext: 10, math: 9 }, hfPath: "ggml-org/MiMo-V2.6-Flash-RL-GGUF", quants: [{ name: "Q2_K", qualityBucket: "medium", memoryGb: 128, path: "MiMo-V2.6-Flash-RL-Q2_K-00001-of-00002.gguf" }, { name: "MXFP4", qualityBucket: "high", memoryGb: 170, path: "MiMo-V2.6-Flash-RL-MXFP4-00001-of-00002.gguf" }], notes: "ggml-org's automatic conversion. Q2_K keeps the expert down-projections at MXFP4 and uses no imatrix; MXFP4 keeps all routed experts at their native precision. Vision and audio need the separate mmproj file." },
   { id: "mistral-small-4-119b-a6b", familyId: "mistral-small-4", variant: "119B-A6B MoE", paramBillions: 119, activeParamBillions: 6.5, isMoE: true, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "mistralai/Mistral-Small-4-119B-2603", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 68 }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 80 }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 125 }] },
   { id: "mistral-medium-3-5-128b", familyId: "mistral-medium-3-5", variant: "128B dense", paramBillions: 128, isMoE: false, useCase: { general: 9, code: 9, longContext: 9, math: 8 }, hfPath: "unsloth/Mistral-Medium-3.5-128B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 75, path: "Q4_K_M/Mistral-Medium-3.5-128B-Q4_K_M-00001-of-00003.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 88, path: "Q5_K_M/Mistral-Medium-3.5-128B-Q5_K_M-00001-of-00003.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 135, path: "Q8_0/Mistral-Medium-3.5-128B-Q8_0-00001-of-00004.gguf" }] }
 ];
@@ -339,6 +405,13 @@ export const frontierModels: FrontierModel[] = [
     slug: "glm-5-3", name: "GLM-5.3", author: "Z.ai (Zhipu)", origin: "China", license: "GLM-5.3 License (MIT-style, with a security-review clause for the largest API providers)", licenseTier: "open-weight",
     totalParams: "753B MoE", contextWindow: "1M tokens", released: "September 2026", headline: "Same base model as GLM-5.2, with every gain coming from post-training. Z.ai reports the strongest open-weight coding scores to date; the benchmark table on the model card is vendor-run.",
     hardwareReality: "The smallest unsloth GGUF (UD-IQ1_S) is about 217 GB; UD-Q2_K_XL is 254 GB and UD-Q4_K_XL 467 GB. Even the 1-bit build needs a 256 GB machine, and anything worth running needs more.", accessInstead: "Z.ai API and most large inference providers (Together, Fireworks, DeepInfra, Novita, Baseten).", littleSibling: "GLM-5.3-Flash — 321B MoE with 18B active, MIT, around 109 GB at UD-Q2_K_XL. For a single 24 GB card, GLM-4.7-Flash is still the one in the picker.", url: "https://huggingface.co/zai-org/GLM-5.3"
+  },
+  {
+    slug: "mimo-v2-6-pro", name: "MiMo-V2.6-Pro-RL", author: "Xiaomi (MiMo team)", origin: "China", license: "MIT", licenseTier: "permissive",
+    totalParams: "1.02T MoE", contextWindow: "1M tokens, text, image, video and audio", released: "September 2026",
+    headline: "The flagship of Xiaomi's V2.6 series, trained with one mixed reinforcement-learning run across coding, agents, vision and security. Xiaomi's own table puts it close to the closed frontier on agentic coding.",
+    hardwareReality: "About a terabyte in the FP8 weights Xiaomi publishes, and still well over 500 GB at 4-bit. Community GGUF conversions exist; running one means a server, not a workstation.",
+    accessInstead: "Xiaomi's MiMo API platform, or a rented multi-GPU node.", littleSibling: "MiMo-V2.6-Flash — 309B with 15B active, MIT, and in the picker for machines with 192 GB or more.", url: "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL"
   },
   {
     slug: "llama-4-maverick", name: "Llama 4 Maverick", author: "Meta AI", origin: "United States", license: "Llama 4 Community License", licenseTier: "open-weight",

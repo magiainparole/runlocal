@@ -18,7 +18,12 @@
     "minicpm",
     "nemotron",
     "lfm2",
-    "bonsai"
+    "bonsai",
+    "ornith",
+    "mimo",
+    "minimax",
+    "spark-x",
+    "xing"
   ],
   "aliasComment": "Alternate repository naming for families already documented above. Exempt from the invariant because the name never appears in our prose — only in Hub repo ids.",
   "aliasFamilies": [
@@ -26,6 +31,10 @@
   ],
   "ignoredAuthors": [
     "openai-community",
-    "bigscience"
+    "bigscience",
+    "tokenrhythm",
+    "altworld",
+    "yuxinlu1",
+    "harshatheg"
   ]
 }
