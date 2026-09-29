@@ -18,6 +18,21 @@ export default function PostOrnith() {
         question
       </h1>
 
+      <aside className="mt-5 rounded-md border border-amber-400/50 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Update, September 29, 2026:</strong>{" "}
+        ornith-ai has since released Ornith 1.5 (9B, 35B-A3B and 397B),
+        and this time with a model card. It says the family was built by
+        continued pretraining and reinforcement learning on top of Qwen 3.5
+        and Gemma 4, publishes benchmarks (run by ornith-ai), and confirms
+        the MIT licence. That clears the bar this post set, so Ornith 1.5
+        is now in the <Link href="/models">directory</Link> and the 9B and
+        35B-A3B are in the <Link href="/picker">picker</Link>. The part we
+        still cannot explain has grown rather than shrunk: the 35B-A3B GGUF
+        shows about 3.7 million downloads and 468 likes, roughly one like
+        per 7,900 downloads, against one per 3,370 for 1.0. Ornith 1.0
+        itself stays out of the catalogue.
+      </aside>
+
       <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
         <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
         a 35-billion-parameter model from an account called ornith-ai

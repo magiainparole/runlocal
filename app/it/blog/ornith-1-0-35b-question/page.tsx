@@ -25,6 +25,22 @@ export default function PostOrnithIt() {
         Ornith-1.0-35B
       </h1>
 
+      <aside className="mt-5 rounded-md border border-amber-400/50 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Aggiornamento del 29 settembre 2026:</strong>{" "}
+        nel frattempo ornith-ai ha pubblicato Ornith 1.5 (9B, 35B-A3B e
+        397B), e stavolta con una scheda del modello. Vi si legge che la
+        famiglia nasce da pre-training continuato e reinforcement learning
+        sopra Qwen 3.5 e Gemma 4, ci sono dei benchmark (misurati da
+        ornith-ai stessa) e la licenza MIT è confermata. È quanto questo
+        articolo chiedeva, per cui Ornith 1.5 adesso è nella{" "}
+        <Link href="/it/models">directory</Link>, e il 9B e il 35B-A3B
+        sono nel <Link href="/it/picker">picker</Link>. La parte che non
+        sappiamo spiegare invece è cresciuta: il GGUF del 35B-A3B segna
+        circa 3,7 milioni di download e 468 like, più o meno un like ogni
+        7.900 download, contro uno ogni 3.370 della versione 1.0. Ornith
+        1.0 resta fuori dal catalogo.
+      </aside>
+
       <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
         <strong className="text-slate-900 dark:text-slate-100">In parole semplici:</strong>{" "}
         un modello da 35 miliardi di parametri di un account chiamato

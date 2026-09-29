@@ -144,10 +144,16 @@ function buildLlamaCppCommand(model: CatalogModel, quant: CatalogQuant): string 
 
   // A path with a directory component is a sharded build: fetch the whole
   // directory and point llama.cpp at the first shard, which loads the rest.
+  // Some repos keep shards at the root instead (ggml-org does), so a
+  // "-00001-of-N" name fetches its siblings by prefix; otherwise the command
+  // would download a few-megabyte header shard and nothing else.
   const shardDir = quant.path.includes("/") ? quant.path.split("/")[0] : null;
+  const rootShard = !shardDir ? quant.path.match(/^(.*)-00001-of-\d+\.gguf$/) : null;
   const download = shardDir
     ? `huggingface-cli download ${model.hfPath} --include "${shardDir}/*" \\`
-    : `huggingface-cli download ${model.hfPath} ${quant.path} \\`;
+    : rootShard
+      ? `huggingface-cli download ${model.hfPath} --include "${rootShard[1]}-*.gguf" \\`
+      : `huggingface-cli download ${model.hfPath} ${quant.path} \\`;
 
   // Files that only a fork can load get the fork's build steps in front, so
   // the ./build/bin path below points at a binary that understands them.
