@@ -92,7 +92,7 @@ export default function ModelsPageIt() {
             I giganti che (probabilmente) non puoi eseguire a casa →
           </h2>
           <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            Kimi K3, GLM-5.2, Llama 4 Maverick, DeepSeek V4 Pro: cosa serve
+            Kimi K3, GLM-5.3, Llama 4 Maverick, DeepSeek V4 Pro: cosa serve
             davvero per eseguirli, e il fratello minore eseguibile di ogni
             famiglia.
           </p>

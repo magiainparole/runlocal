@@ -9,6 +9,24 @@ export type PostMeta = {
 
 export const posts: PostMeta[] = [
   {
+    slug: "bonsai-2-27b-in-six-gigabytes",
+    title: "Bonsai 2 fits a 27B in six gigabytes, on Prism ML's terms",
+    subtitle:
+      "The most downloaded model on the Hub this month is a ternary rebuild of Qwen3.8-27B that fits a laptop. The numbers hold up better than the last round, and the catch is the runtime.",
+    date: "2026-09-29",
+    readingTime: "8 min",
+    tags: ["Quantization", "Qwen", "Tools"]
+  },
+  {
+    slug: "glm-5-3-two-models-one-name",
+    title: "GLM-5.3 is two different models sharing a version number",
+    subtitle:
+      "Z.ai shipped a 753B post-trained GLM-5.2 under a new licence and a 321B model built from scratch under MIT, and gave them the same name. The smaller one is the one to watch, once llama.cpp catches up.",
+    date: "2026-09-29",
+    readingTime: "7 min",
+    tags: ["GLM", "Licensing", "Analysis"]
+  },
+  {
     slug: "dwarfstar-ds4-one-model-inference-engine",
     title: "DwarfStar, and the case for an engine that runs one model",
     subtitle:

@@ -5,7 +5,7 @@ import { frontierModels } from "@/lib/frontier-models";
 export const metadata: Metadata = {
   title: "Frontier open weights — i giganti che (probabilmente) non puoi eseguire a casa",
   description:
-    "I più grandi modelli AI open weight: Kimi K3, GLM-5.2, Llama 4 Maverick, DeepSeek V4 Pro. Cosa serve davvero per eseguirli e le alternative realistiche.",
+    "I più grandi modelli AI open weight: Kimi K3, GLM-5.3, Llama 4 Maverick, DeepSeek V4 Pro. Cosa serve davvero per eseguirli e le alternative realistiche.",
   alternates: {
     canonical: "https://runlocal.blog/it/frontier",
     languages: {
@@ -31,15 +31,15 @@ const it: Record<
     littleSibling:
       "Kimi K2.7 Code (giugno 2026) — il fratello agentic-coding, che quantizzato gira su una workstation da 96 GB+."
   },
-  "glm-5-2": {
+  "glm-5-3": {
     headline:
-      "L'attuale #1 fra gli open weight sull'Artificial Analysis Intelligence Index. Batte GPT-5.5 su diversi benchmark di coding long-horizon a circa un sesto del prezzo — con licenza MIT.",
+      "Stesso modello base di GLM-5.2: tutti i miglioramenti arrivano dal post-training. Z.ai dichiara i punteggi di coding più alti mai visti su un modello open weight, ma la tabella sulla scheda del modello l'ha compilata Z.ai stessa.",
     hardwareReality:
-      "Circa 370–400 GB a 4 bit. Tecnicamente alla portata di un cluster di Mac Studio al massimo o di un nodo 4× H100, ma ben oltre le singole GPU consumer. Preventiva cinque cifre per hardware che lo esegua in modo accettabile.",
+      "Il GGUF più piccolo di unsloth (UD-IQ1_S) pesa circa 217 GB, UD-Q2_K_XL 254 GB e UD-Q4_K_XL 467 GB. Anche la build a 1 bit chiede una macchina da 256 GB, e per qualcosa di usabile serve di più.",
     accessInstead:
-      "L'API di Z.ai ha prezzi aggressivi. Quasi tutti i provider di inferenza (Together, Fireworks, DeepInfra) lo ospitano. La licenza MIT significa che chiunque può servirlo, il che tiene i prezzi competitivi.",
+      "L'API di Z.ai e buona parte dei grandi provider di inferenza (Together, Fireworks, DeepInfra, Novita, Baseten). La licenza è in stile MIT, con una clausola di revisione di sicurezza che riguarda solo chi vende API e fattura oltre 10 miliardi di dollari l'anno.",
     littleSibling:
-      "GLM-4.7-Flash — la variante distillata veloce che gira su una GPU da 24 GB e resta nella nostra classifica trending."
+      "GLM-5.3-Flash, MoE da 321B con 18B attivi e licenza MIT, circa 109 GB in UD-Q2_K_XL. Per una singola scheda da 24 GB il riferimento nel picker resta GLM-4.7-Flash."
   },
   "llama-4-maverick": {
     headline:

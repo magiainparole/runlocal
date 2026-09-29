@@ -149,7 +149,19 @@ function buildLlamaCppCommand(model: CatalogModel, quant: CatalogQuant): string 
     ? `huggingface-cli download ${model.hfPath} --include "${shardDir}/*" \\`
     : `huggingface-cli download ${model.hfPath} ${quant.path} \\`;
 
+  // Files that only a fork can load get the fork's build steps in front, so
+  // the ./build/bin path below points at a binary that understands them.
+  const forkBuild = quant.forkRepo
+    ? [
+        `# Stock llama.cpp cannot run ${quant.name}. Build the fork this file needs:`,
+        `git clone ${quant.forkRepo} && cd llama.cpp`,
+        `cmake -B build -DGGML_CUDA=ON && cmake --build build -j   # drop -DGGML_CUDA=ON on a Mac`,
+        ``
+      ]
+    : [];
+
   return [
+    ...forkBuild,
     download,
     `  --local-dir ./models`,
     ``,
