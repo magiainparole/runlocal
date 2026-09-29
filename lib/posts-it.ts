@@ -5,6 +5,24 @@ import type { PostMeta } from "./posts";
 // metadata already set in each app/it/blog/<slug>/page.tsx.
 export const postsIt: PostMeta[] = [
   {
+    slug: "bonsai-2-27b-in-six-gigabytes",
+    title: "Bonsai 2 fa stare un 27B in sei gigabyte, alle condizioni di Prism ML",
+    subtitle:
+      "Il modello più scaricato del mese su Hugging Face è una ricostruzione ternaria di Qwen3.8-27B che entra in un portatile. I numeri reggono meglio del giro precedente, il problema è il runtime.",
+    date: "2026-09-29",
+    readingTime: "8 min",
+    tags: ["Quantizzazione", "Qwen", "Strumenti"]
+  },
+  {
+    slug: "glm-5-3-two-models-one-name",
+    title: "GLM-5.3 sono due modelli diversi con lo stesso numero di versione",
+    subtitle:
+      "Z.ai ha pubblicato un GLM-5.2 da 753B riaddestrato, con una licenza nuova, e un modello da 321B costruito da zero sotto MIT, e li ha chiamati allo stesso modo. Quello da tenere d’occhio è il più piccolo, appena llama.cpp lo supporterà.",
+    date: "2026-09-29",
+    readingTime: "7 min",
+    tags: ["GLM", "Licenze", "Analisi"]
+  },
+  {
     slug: "dwarfstar-ds4-one-model-inference-engine",
     title: "DwarfStar, e la tesi di un motore che esegue un modello solo",
     subtitle:

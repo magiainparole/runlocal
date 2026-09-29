@@ -17,13 +17,15 @@
     "olmo",
     "minicpm",
     "nemotron",
-    "lfm2"
+    "lfm2",
+    "bonsai"
   ],
   "aliasComment": "Alternate repository naming for families already documented above. Exempt from the invariant because the name never appears in our prose — only in Hub repo ids.",
   "aliasFamilies": [
     "zai-org"
   ],
   "ignoredAuthors": [
-    "openai-community"
+    "openai-community",
+    "bigscience"
   ]
 }

@@ -5,7 +5,7 @@ import { frontierModels } from "@/lib/frontier-models";
 export const metadata: Metadata = {
   title: "Frontier open weights — the giants you (probably) can't run at home",
   description:
-    "The largest open-weight AI models: Kimi K3, GLM-5.2, Llama 4 Maverick, DeepSeek V4 Pro. What running them actually takes, realistic access options, and the runnable siblings from each family."
+    "The largest open-weight AI models: Kimi K3, GLM-5.3, Llama 4 Maverick, DeepSeek V4 Pro. What running them actually takes, realistic access options, and the runnable siblings from each family."
 };
 
 export default function FrontierPage() {

@@ -84,7 +84,7 @@ export default function ModelsPage() {
             The giants you (probably) can&apos;t run at home →
           </h2>
           <p className="mt-2 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-            Kimi K3, GLM-5.2, Llama 4 Maverick, DeepSeek V4 Pro: what running
+            Kimi K3, GLM-5.3, Llama 4 Maverick, DeepSeek V4 Pro: what running
             them actually takes, and the runnable sibling from each family.
           </p>
         </Link>
