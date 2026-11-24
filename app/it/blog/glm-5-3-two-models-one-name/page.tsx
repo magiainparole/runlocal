@@ -36,8 +36,11 @@ export default function PostGlm53It() {
         request di unsloth riportano <code>glm5next</code> e non si
         caricano. unsloth pubblica i primi pezzi corretti in una cartella{" "}
         <code>Shard_Rewrite</code>. Abbiamo aggiornato la voce nella{" "}
-        <Link href="/it/models">directory</Link>, e il modello entrerà nel
-        picker appena avremo verificato quale nome portano i file attuali.
+        <Link href="/it/models">directory</Link>. Poi abbiamo letto
+        l’intestazione dei file attuali di unsloth, che usano il nome
+        ufficiale, e da oggi GLM-5.3-Flash è nel{" "}
+        <Link href="/it/picker">picker</Link> per le macchine da 128 GB di
+        memoria in su.
       </aside>
 
       <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">

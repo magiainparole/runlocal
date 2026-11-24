@@ -28,9 +28,11 @@ export default function PostGlm53() {
         for unsloth&apos;s pull request say <code>glm5next</code> and do not
         load. unsloth publishes corrected first shards in a{" "}
         <code>Shard_Rewrite</code> folder. The{" "}
-        <Link href="/models">directory</Link> entry has been updated, and
-        the model will join the picker once we have confirmed which name
-        the current files carry.
+        <Link href="/models">directory</Link> entry has been updated. We
+        have since read the headers of unsloth&apos;s current files, which
+        use the upstream name, so GLM-5.3-Flash is now in the{" "}
+        <Link href="/picker">picker</Link> for machines with 128 GB of
+        memory or more.
       </aside>
 
       <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
