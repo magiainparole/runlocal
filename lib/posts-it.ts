@@ -5,6 +5,15 @@ import type { PostMeta } from "./posts";
 // metadata already set in each app/it/blog/<slug>/page.tsx.
 export const postsIt: PostMeta[] = [
   {
+    slug: "deepseek-v4-1-flash-the-lab-quant",
+    title: "Il DeepSeek V4.1 Flash più scaricato l’ha fatto un laboratorio universitario",
+    subtitle:
+      "A quattro settimane dall’uscita, la copia di DeepSeek V4.1 Flash che la gente scarica davvero è una quantizzazione dell’IST Austria, non i pesi di DeepSeek né la conversione di unsloth. Perché è successo, cosa chiedono davvero i file, e una correzione al nostro catalogo.",
+    date: "2026-11-23",
+    readingTime: "8 min",
+    tags: ["DeepSeek", "Quantizzazione", "Analisi"]
+  },
+  {
     slug: "bonsai-2-27b-in-six-gigabytes",
     title: "Bonsai 2 fa stare un 27B in sei gigabyte, alle condizioni di Prism ML",
     subtitle:
