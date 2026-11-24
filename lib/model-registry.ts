@@ -292,13 +292,47 @@ export const families: Family[] = [
     id: "lfm2-5",
     directory: {
       slug: "lfm2-5", name: "LFM2.5", author: "Liquid AI", origin: "United States",
-      license: "Custom Liquid AI licence (check the model card)",
-      paramSizes: ["2.6B"], contextWindow: "131k tokens",
-      bestFor: ["Edge deployments", "Phones", "Low-memory laptops"],
-      notes: "July 2026. A convolution-attention hybrid built for edge hardware, covering 16 languages at 2.6B parameters. Liquid publishes its own GGUF files, which is why it reached the llama.cpp crowd faster than most small models.",
+      license: "LFM Open License v1.0 (no commercial use above 10 million dollars of annual revenue)",
+      paramSizes: ["2.6B", "24B-A2B MoE"], contextWindow: "131k tokens",
+      bestFor: ["Edge deployments", "Phones", "Low-memory laptops", "Local agents"],
+      notes: "July 2026. A convolution-attention hybrid built for edge hardware, covering 16 languages. The 24B-A2B (November 2026) is the largest and last LFM2.5: a reasoning MoE with about 2.45B active parameters that always thinks before answering, which keeps it quick even on CPU. Liquid publishes its own GGUF files, including quantization-aware (QAD) Q4_0 and Q2_K_L builds. Licence is the LFM Open License v1.0: commercial use is not licensed for companies with annual revenue of 10 million dollars or more.",
       url: "https://huggingface.co/LiquidAI/LFM2.5-2.6B", releaseYear: 2026
     },
-    pickerMeta: { family: "LFM2.5", origin: "Liquid AI · United States", license: { tier: "open-weight", label: "Custom Liquid AI licence" }, contextWindow: 131_072, releaseYear: 2026 }
+    pickerMeta: { family: "LFM2.5", origin: "Liquid AI · United States", license: { tier: "open-weight", label: "LFM Open License v1.0" }, contextWindow: 131_072, releaseYear: 2026 }
+  },
+  {
+    id: "lfm3",
+    directory: {
+      slug: "lfm3", name: "LFM3", author: "Liquid AI", origin: "United States",
+      license: "LFM Open License v1.0 (no commercial use above 10 million dollars of annual revenue)",
+      paramSizes: ["1.7B"], contextWindow: "256k tokens",
+      bestFor: ["Local agents", "Tool calling", "Phones", "Fine-tuning"],
+      notes: "November 2026. A 1.73B text model on a new three-way hybrid (13 short-convolution, 5 sliding-window and 6 global attention layers) with a 256k context and 16 languages, Italian included. Official GGUF files run on stock llama.cpp from build b11960 (v0.8.0), Ollama 0.40.12 and LM Studio; the NVFP4 file needs b12088 and gives wrong output on older builds, so we leave it out. Liquid itself advises against agentic coding and long multi-step reasoning at this size.",
+      url: "https://huggingface.co/LiquidAI/LFM3-1.7B", releaseYear: 2026
+    },
+    pickerMeta: { family: "LFM3", origin: "Liquid AI · United States", license: { tier: "open-weight", label: "LFM Open License v1.0" }, contextWindow: 262_144, releaseYear: 2026 }
+  },
+  {
+    id: "nanbeige-4-3",
+    directory: {
+      slug: "nanbeige-4-3", name: "Nanbeige4.3", author: "Nanbeige", origin: "China", license: "Apache 2.0",
+      paramSizes: ["33B dense"], contextWindow: "512k tokens (per config)",
+      bestFor: ["Agentic coding", "Workstation GPUs", "Bilingual EN/ZH workloads"],
+      notes: "October 2026. A dense 33B on the plain Llama architecture, so bartowski's GGUF files run on stock llama.cpp with nothing special. Nanbeige calls it the teacher for smaller Nanbeige4.3 models to come and reports agentic-coding scores above Qwen3.8-27B (DeepSWE 65.5 against 42.5), though slightly below it on SWE-Bench Pro; all vendor-run and not yet reproduced. It always opens a think block.",
+      url: "https://huggingface.co/Nanbeige/Nanbeige4.3-33B", releaseYear: 2026
+    },
+    pickerMeta: { family: "Nanbeige4.3", origin: "Nanbeige · China", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 524_288, releaseYear: 2026 }
+  },
+  {
+    id: "flint",
+    directory: {
+      slug: "flint", name: "Recursive Flint", author: "Recursive", origin: "Not stated on the model card", license: "Apache 2.0",
+      paramSizes: ["39.8B-A2.5B MoE"], contextWindow: "262k tokens",
+      bestFor: ["Agentic coding", "Consumer GPUs", "Apple Silicon"],
+      notes: "October 2026. A mixture-of-experts coding model trained from scratch, 39.8B total with about 2.5B active per token, mixing sliding-window and full attention. The official card only covers SGLang on a single B300 or H200; bartowski's GGUF files declare the flint architecture, which stock llama.cpp supports (his conversions use build b11804). Benchmark figures on the card are the vendor's.",
+      url: "https://huggingface.co/RecursiveSI/flint", releaseYear: 2026
+    },
+    pickerMeta: { family: "Flint", origin: "Recursive · origin not stated", license: { tier: "permissive", label: "Apache 2.0" }, contextWindow: 262_144, releaseYear: 2026 }
   },
   {
     id: "minicpm5",
@@ -370,6 +404,10 @@ export const hardwareProfiles: HardwareProfile[] = [
   { id: "gemma-4-26b-a4b", familyId: "gemma-4", variant: "26B-A4B MoE", paramBillions: 26, activeParamBillions: 4, isMoE: true, useCase: { general: 9, code: 7, longContext: 9, math: 8 }, ollamaTag: "gemma4:26b", hfPath: "google/gemma-4-26B-A4B-it-qat-q4_0-gguf", quants: [{ name: "Q4_0", qualityBucket: "high", memoryGb: 15, path: "gemma-4-26B_q4_0-it.gguf" }], notes: "Quantization-aware-trained q4_0, the only build Google publishes for this size." },
   { id: "gemma-4-31b", familyId: "gemma-4", variant: "31B dense", paramBillions: 31, isMoE: false, useCase: { general: 9, code: 8, longContext: 9, math: 8 }, ollamaTag: "gemma4:31b", hfPath: "google/gemma-4-31B-it-qat-q4_0-gguf", quants: [{ name: "Q4_0", qualityBucket: "high", memoryGb: 18, path: "gemma-4-31B_q4_0-it.gguf" }], notes: "Quantization-aware-trained q4_0, the only build Google publishes for this size." },
   { id: "lfm2-5-2-6b", familyId: "lfm2-5", variant: "2.6B", paramBillions: 2.7, isMoE: false, useCase: { general: 6, code: 4, longContext: 6, math: 4 }, hfPath: "LiquidAI/LFM2.5-2.6B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 2.0, path: "LFM2.5-2.6B-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 2.3, path: "LFM2.5-2.6B-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 3.2, path: "LFM2.5-2.6B-Q8_0.gguf" }], notes: "Convolution-attention hybrid for edge hardware. Liquid publishes its own GGUF files." },
+  { id: "lfm2-5-24b-a2b", familyId: "lfm2-5", variant: "24B-A2B MoE", paramBillions: 24, activeParamBillions: 2.5, isMoE: true, contextWindow: 131_072, useCase: { general: 7, code: 6, longContext: 7, math: 7 }, hfPath: "LiquidAI/LFM2.5-24B-A2B-GGUF", quants: [{ name: "QAD-Q2_K_L", qualityBucket: "medium", memoryGb: 10.5, path: "LFM2.5-24B-A2B-QAD-Q2_K_L.gguf" }, { name: "Q4_K_M", qualityBucket: "high", memoryGb: 15.5, path: "LFM2.5-24B-A2B-Q4_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 27, path: "LFM2.5-24B-A2B-Q8_0.gguf" }], notes: "Official Liquid GGUF files. About 2.45B active per token, so it stays fast on CPU and Apple Silicon. QAD-Q2_K_L is trained to recover the 2-bit loss (9.5 GB file). Always reasons before answering. Licence bars commercial use above 10 million dollars of annual revenue." },
+  { id: "lfm3-1-7b", familyId: "lfm3", variant: "1.7B", paramBillions: 1.7, isMoE: false, contextWindow: 262_144, useCase: { general: 6, code: 4, longContext: 7, math: 4 }, hfPath: "LiquidAI/LFM3-1.7B-GGUF", quants: [{ name: "QAD-Q4_0", qualityBucket: "high", memoryGb: 1.4, path: "LFM3-1.7B-QAD-Q4_0.gguf" }, { name: "Q4_K_M", qualityBucket: "high", memoryGb: 1.5, path: "LFM3-1.7B-Q4_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 2.3, path: "LFM3-1.7B-Q8_0.gguf" }], notes: "Needs llama.cpp b11960 (v0.8.0) or later, or Ollama 0.40.12. Official Liquid GGUF files; QAD-Q4_0 is trained to recover the 4-bit loss. Built for local agents and tool calling, not for agentic coding. Licence bars commercial use above 10 million dollars of annual revenue." },
+  { id: "nanbeige-4-3-33b", familyId: "nanbeige-4-3", variant: "33B", paramBillions: 33, isMoE: false, useCase: { general: 8, code: 9, longContext: 8, math: 8 }, hfPath: "bartowski/Nanbeige_Nanbeige4.3-33B-GGUF", quants: [{ name: "IQ3_M", qualityBucket: "medium", memoryGb: 19, path: "Nanbeige_Nanbeige4.3-33B-IQ3_M.gguf" }, { name: "Q4_K_M", qualityBucket: "high", memoryGb: 22, path: "Nanbeige_Nanbeige4.3-33B-Q4_K_M.gguf" }, { name: "Q6_K", qualityBucket: "high", memoryGb: 30.5, path: "Nanbeige_Nanbeige4.3-33B-Q6_K.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 37, path: "Nanbeige_Nanbeige4.3-33B-Q8_0.gguf" }], notes: "Plain Llama architecture, runs on any recent llama.cpp. The Q4_K_M file is 20.8 GB, tight on a 24 GB card once context is added; IQ3_M (17.8 GB) leaves more room. Benchmarks are the vendor's." },
+  { id: "flint-40b-a2-5b", familyId: "flint", variant: "39.8B-A2.5B MoE", paramBillions: 40, activeParamBillions: 2.5, isMoE: true, contextWindow: 262_144, useCase: { general: 7, code: 9, longContext: 8, math: 7 }, hfPath: "bartowski/RecursiveSI_flint-GGUF", quants: [{ name: "IQ3_M", qualityBucket: "medium", memoryGb: 22, path: "RecursiveSI_flint-IQ3_M.gguf" }, { name: "Q4_K_M", qualityBucket: "high", memoryGb: 26.5, path: "RecursiveSI_flint-Q4_K_M.gguf" }, { name: "Q6_K", qualityBucket: "high", memoryGb: 36.5, path: "RecursiveSI_flint-Q6_K.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 44, path: "RecursiveSI_flint-Q8_0.gguf" }], notes: "Needs llama.cpp b11804 or later (flint architecture). About 2.5B active per token, so partial CPU offload stays usable. Give it a large output budget: Recursive recommends at least 32k tokens for hard problems, reasoning included." },
   { id: "gpt-oss-20b", familyId: "gpt-oss", variant: "20B MoE", paramBillions: 21.5, activeParamBillions: 3.6, isMoE: true, useCase: { general: 9, code: 8, longContext: 8, math: 8 }, ollamaTag: "gpt-oss:20b", hfPath: "ggml-org/gpt-oss-20b-GGUF", quants: [{ name: "MXFP4", qualityBucket: "high", memoryGb: 12.5, path: "gpt-oss-20b-MXFP4.gguf" }], notes: "Ships natively in MXFP4, so the headline quantization is the precision it was trained for — it fits a 16 GB card without further loss." },
   { id: "qwen-3-8-27b", familyId: "qwen-3-8", variant: "27B", paramBillions: 27.8, isMoE: false, useCase: { general: 10, code: 10, longContext: 9, math: 9 }, ollamaTag: "qwen3.8:27b", hfPath: "unsloth/Qwen3.8-27B-GGUF", quants: [{ name: "Q4_K_M", qualityBucket: "high", memoryGb: 17, path: "Qwen3.8-27B-UD-Q4_K_M.gguf" }, { name: "Q5_K_M", qualityBucket: "high", memoryGb: 20, path: "Qwen3.8-27B-UD-Q5_K_M.gguf" }, { name: "Q8_0", qualityBucket: "near-fp16", memoryGb: 30, path: "Qwen3.8-27B-Q8_0.gguf" }], notes: "Dense, Apache 2.0 and natively multimodal. The current default choice for a 24 GB card; bartowski publishes an imatrix build too." },
   { id: "qwen-3-8-27b-ternary-bonsai-2", familyId: "qwen-3-8", variant: "27B (Ternary Bonsai 2, 1.72-bit)", paramBillions: 27.4, isMoE: false, useCase: { general: 9, code: 9, longContext: 9, math: 9 }, hfPath: "prism-ml/Ternary-Bonsai-2-27B-gguf", quants: [{ name: "PTQ1_0", qualityBucket: "medium", memoryGb: 7, path: "Ternary-Bonsai-2-27B-PTQ1_0.gguf", forkRepo: "https://github.com/PrismML-Eng/llama.cpp" }, { name: "PQ2_0", qualityBucket: "medium", memoryGb: 8.5, path: "Ternary-Bonsai-2-27B-PQ2_0.gguf", forkRepo: "https://github.com/PrismML-Eng/llama.cpp" }], notes: "Prism ML's ternary rebuild of Qwen3.8-27B, September 2026: 5.95 GB (PTQ1_0) or 7.21 GB (PQ2_0) on disk, Apache 2.0. Vendor-reported 84.78 average across 14 thinking-mode benchmarks against 86.32 for FP16, unverified by us. Stock llama.cpp will not run either file: use Prism ML's fork. It is a reasoning model that thinks at length by default, so give it a large output limit (-n 16384) or the answer gets cut off mid-thought." },
