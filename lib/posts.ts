@@ -9,6 +9,15 @@ export type PostMeta = {
 
 export const posts: PostMeta[] = [
   {
+    slug: "deepseek-v4-1-flash-the-lab-quant",
+    title: "The most downloaded DeepSeek V4.1 Flash was made by a university lab",
+    subtitle:
+      "Four weeks after release, the copy of DeepSeek V4.1 Flash that people actually download is a quantization from IST Austria, not DeepSeek's weights or unsloth's. Why that happened, what the files really need, and a correction to our own catalogue.",
+    date: "2026-11-23",
+    readingTime: "8 min",
+    tags: ["DeepSeek", "Quantization", "Analysis"]
+  },
+  {
     slug: "bonsai-2-27b-in-six-gigabytes",
     title: "Bonsai 2 fits a 27B in six gigabytes, on Prism ML's terms",
     subtitle:
