@@ -17,6 +17,22 @@ export default function PostGlm53() {
         GLM-5.3 is two different models sharing a version number
       </h1>
 
+      <aside className="mt-5 rounded-md border border-amber-400/50 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm leading-relaxed">
+        <strong className="text-slate-900 dark:text-slate-100">Update, November 24, 2026:</strong>{" "}
+        the day after this post went up, stock llama.cpp added support for
+        GLM-5.3-Flash, in build b11279 on September 30, and the stable 0.6.0
+        release carried it from October 5. So the section below on why the
+        model was not in the picker stopped being true almost at once, and
+        we only noticed now. One catch remains: upstream calls the
+        architecture <code>glm5-next</code>, while GGUF files made earlier
+        for unsloth&apos;s pull request say <code>glm5next</code> and do not
+        load. unsloth publishes corrected first shards in a{" "}
+        <code>Shard_Rewrite</code> folder. The{" "}
+        <Link href="/models">directory</Link> entry has been updated, and
+        the model will join the picker once we have confirmed which name
+        the current files carry.
+      </aside>
+
       <aside className="mt-5 rounded-md border border-brand/30 bg-brand/5 p-4 text-sm leading-relaxed">
         <strong className="text-slate-900 dark:text-slate-100">In plain English:</strong>{" "}
         the Chinese lab Z.ai released two AI models called GLM-5.3 in the
