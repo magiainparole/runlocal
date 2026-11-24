@@ -133,7 +133,7 @@ export const families: Family[] = [
       paramSizes: ["321B MoE (18B active)"],
       contextWindow: "1M tokens (three linear-attention layers for every sparse one)",
       bestFor: ["Agentic coding", "Multimodal workflows", "High-memory workstations"],
-      notes: "Late August 2026, and the first natively multimodal GLM. A new base model rather than a GLM-5.2 derivative, MIT licensed, and at 5 million downloads the most pulled GLM on the Hub. unsloth's GGUF builds run from about 98 GB (UD-IQ1_M) through 109 GB (UD-Q2_K_XL) to 200 GB (UD-Q4_K_XL), which puts it in the same 128 GB class as DeepSeek V4 Flash. Not in the picker yet: the hybrid attention needs a llama.cpp pull request that has not reached a release, and we do not print commands for a build you would have to assemble by hand.",
+      notes: "Late August 2026, and the first natively multimodal GLM. A new base model rather than a GLM-5.2 derivative, MIT licensed, and at 5 million downloads the most pulled GLM on the Hub. unsloth's GGUF builds run from about 98 GB (UD-IQ1_M) through 109 GB (UD-Q2_K_XL) to 200 GB (UD-Q4_K_XL), which puts it in the same 128 GB class as DeepSeek V4 Flash. Stock llama.cpp supports it since build b11279 (September 30, 2026), under the architecture name glm5-next. GGUF files made before that for unsloth's earlier pull request say glm5next and do not load on it; unsloth publishes corrected first shards in a Shard_Rewrite folder. Not in the picker until we have confirmed which name the current files carry.",
       url: "https://huggingface.co/zai-org/GLM-5.3-Flash", releaseYear: 2026
     },
     pickerMeta: { family: "GLM-5.3-Flash", origin: "Z.ai · China", license: { tier: "permissive", label: "MIT" }, contextWindow: 1_048_576, releaseYear: 2026 }
